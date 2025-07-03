@@ -1,0 +1,91 @@
+.button {
+    width: 2.9em;
+    height: 2.9em;
+    filter: drop-shadow(0 0.2em 0.2em rgba(0, 0, 0, 0.25));
+}
+
+.button--medium {
+    font-size: 1rem;
+}
+
+.button--small {
+    font-size: 0.2rem;
+}
+
+.button,
+.button__label,
+.button__shadow,
+.button__light,
+.button__surface {
+    border-radius: 50%;
+}
+
+.button__label,
+.button__icon,
+.button__surface,
+.button__light,
+.button__shadow {
+    position: absolute;
+}
+
+.button__light,
+.button__shadow,
+.button__surface {
+    width: 84.5%;
+    height: 84.5%;
+}
+
+.button__light {
+    left: 5%;
+    top: 5%;
+    background: #BBAA85;
+}
+
+.button__light--pressed {
+    background: #9e9071;
+}
+
+.button__shadow {
+    left: 10%;
+    top: 10%;
+    background: #261000;
+}
+
+.button__surface {
+    left: 7.5%;
+    top: 7.5%;
+    background: #4C4B50;
+}
+
+.button__surface--pressed {
+    box-shadow: inset 0.08em 0.08em 0.5em rgba(0, 0, 0, 0.53);
+}
+
+.button__label {
+    font-family: "Inter", sans-serif;
+    font-size: 1.5em;
+    top: 19%;
+    left: 34%;
+    color: #2D2F2F;
+    text-transform: uppercase   ;
+    text-shadow:
+    -0.015em -0.015em 0 #252626,
+    0.015em -0.015em 0 #252626,
+    -0.015em  0.015em 0 #252626,
+       0.015em  0.015em 0 #252626;
+}
+
+.button__label--pressed {
+    color: #252626;
+}
+
+.button__icon {
+    left: 28%;
+    top: 28%;
+    width: 1.3em;
+    color: #2D2F2F;
+}
+
+.button__icon--pressed {
+    color: #252626
+}

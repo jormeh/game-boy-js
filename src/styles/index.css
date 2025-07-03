@@ -1,0 +1,15 @@
+button {
+    all: unset;
+    cursor: pointer;
+}
+
+p {
+    all: unset;
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/inter-regular.woff2') format('woff2');
+}
