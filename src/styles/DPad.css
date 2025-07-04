@@ -1,0 +1,106 @@
+.dpad { 
+    width: 100px;
+    height: 100px;
+    filter: drop-shadow(0px 0px 9.5px rgba(0, 0, 0, 0.7));
+    border: 1px solid black;
+}
+
+.dpad__surface,
+.dpad__shadow,
+.dpad__light {
+    position: absolute;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: 
+      ". up ."
+      "left center right"
+      ". down .";
+    width: 100%;
+    height: 100%;
+}
+
+.dpad__button {
+    background: #4C4B50;
+}
+
+.dpad__shadow {
+    top: 1.5%;
+    left: 1.5%;
+}
+
+.dpad__shadow--up-pressed {
+    top: 4.5% ;
+    left: 0;
+}
+
+.dpad__shadow--left-pressed {
+    top: 0;
+    left: 3.5%;
+}
+
+.dpad__shadow--right-pressed {
+    top: 0;
+    left: -3.5%;
+}
+
+.dpad__shadow--down-pressed {
+    left: 0;
+    top: -4.5%;
+}
+
+.dpad__light {
+    top: -1.5%;
+    left: -1.5%;
+}
+
+.dpad__light--up-pressed,
+.dpad__light--left-pressed,
+.dpad__light--right-pressed,
+.dpad__light--down-pressed {
+    display: none;
+}
+
+
+.dpad__shadow-offset {
+    background: #261000;
+}
+
+.dpad__light-offset {
+    background: #BBAA85;
+}
+
+.dpad__button--up,
+.dpad__shadow-offset--up,
+.dpad__light-offset--up {
+    grid-area: up;
+    border-radius: 8% 8% 0 0;
+}
+
+.dpad__button--left,
+.dpad__shadow-offset--left,
+.dpad__light-offset--left {
+    grid-area: left;
+    border-radius: 8% 0 0 8%;
+
+}
+
+.dpad__button--center,
+.dpad__shadow-offset--center,
+.dpad__light-offset--center {
+    grid-area: center
+}
+
+.dpad__button--right,
+.dpad__shadow-offset--right,
+.dpad__light-offset--right {
+    grid-area: right;
+    border-radius: 0 8% 8% 0;    
+}
+
+.dpad__button--down,
+.dpad__shadow-offset--down,
+.dpad__light-offset--down {
+    grid-area: down;
+    border-radius: 0 0 8% 8%;
+}
