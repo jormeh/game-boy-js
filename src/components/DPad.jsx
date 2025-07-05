@@ -12,7 +12,7 @@ const changeStyle = (className, buttonState) => {
     return `${className} ${className}--${active}-pressed`;
 }  
 
-export default function DPad() {
+export default function DPad({ size, x, y }) {
     // State to track which directional buttons are pressed
     const [isPressed, setIsPressed] = useState({
         up: false,
@@ -42,7 +42,7 @@ export default function DPad() {
     });
 
     return (
-        <div className="dpad">
+        <div className="dpad" style={{width: size, left: x, top: y}}>
             {/* Shadow layer for visual depth */}
             <DPadLayer 
                 blockClassName={"dpad__shadow"}
