@@ -1,36 +1,22 @@
 .button {
-    width: 2.9em;
-    height: 2.9em;
+    aspect-ratio: 1 /1 ;
     filter: drop-shadow(0 0.2em 0.2em rgba(0, 0, 0, 0.25));
 }
 
-.button--medium {
-    font-size: 1rem;
-}
-
-.button--small {
-    font-size: 0.2rem;
-}
 
 .button,
-.button__label,
 .button__shadow,
 .button__light,
-.button__surface {
+.button__surface, 
+.button__label {
+    position: absolute;
     border-radius: 50%;
 }
 
-.button__label,
-.button__icon,
-.button__surface,
-.button__light,
-.button__shadow {
-    position: absolute;
-}
-
 .button__light,
 .button__shadow,
-.button__surface {
+.button__surface,
+.button__label {
     width: 84.5%;
     height: 84.5%;
 }
@@ -52,22 +38,15 @@
 }
 
 .button__surface {
+    font-size: clamp(12px, 50%, 29.4px);
     left: 7.5%;
     top: 7.5%;
     background: #4C4B50;
-}
-
-.button__surface--pressed {
-    box-shadow: inset 0.08em 0.08em 0.5em rgba(0, 0, 0, 0.53);
-}
-
-.button__label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-family: "Inter", sans-serif;
-    font-size: 1.5em;
-    top: 19%;
-    left: 34%;
     color: #2D2F2F;
-    text-transform: uppercase   ;
     text-shadow:
     -0.015em -0.015em 0 #252626,
     0.015em -0.015em 0 #252626,
@@ -75,17 +54,7 @@
        0.015em  0.015em 0 #252626;
 }
 
-.button__label--pressed {
-    color: #252626;
-}
-
-.button__icon {
-    left: 28%;
-    top: 28%;
-    width: 1.3em;
-    color: #2D2F2F;
-}
-
-.button__icon--pressed {
-    color: #252626
+.button__surface--pressed {
+    box-shadow: inset 0.08em 0.08em 0.5em rgba(0, 0, 0, 0.53);
+    stroke: #252626;
 }

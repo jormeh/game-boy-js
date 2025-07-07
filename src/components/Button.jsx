@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { Children, useState } from "react";
 import "../styles/Button.css";
 import "../styles/index.css";
 
-// A reusable Button component with optional label, icon, and size
-export default function Button({ label = "", icon: Icon, size = "medium" }) {
+// A reusable Button component
+export default function Button({size, x, y, children}) {
     // Track whether the button is currently being pressed
     const [isPressed, setIsPressed] = useState(false);
 
@@ -19,7 +19,8 @@ export default function Button({ label = "", icon: Icon, size = "medium" }) {
 
     return (
         <button
-            className={`button button--${size}`} // Base and size modifier class
+            className="button"
+            style={{width: size, left: x, top: y}}
             onMouseDown={handlePressStart}
             onMouseUp={handlePressEnd}
             onMouseLeave={handlePressEnd}
@@ -34,17 +35,9 @@ export default function Button({ label = "", icon: Icon, size = "medium" }) {
             <div className="button__shadow"></div>
 
             {/* Main surface of the button with pressed state styling */}
-            <div className={changeStyle("button__surface")}></div>
-
-            {/* Optional label (only rendered if provided) */}
-            {label && (
-                <p className={changeStyle("button__label")}>{label}</p>
-            )}
-
-            {/* Optional icon (only rendered if provided) */}
-            {Icon && (
-                <Icon className={changeStyle("button__icon")} />
-            )}
+            <div className={changeStyle("button__surface")}>
+                {children}
+            </div>
         </button>
     );
 }

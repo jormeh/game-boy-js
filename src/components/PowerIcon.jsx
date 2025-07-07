@@ -1,7 +1,8 @@
-export default function PowerIcon({className}) {
+export default function PowerIcon({size}) {
     return (
         <svg 
-            className={className}
+            width={size}
+            height={size}
             viewBox="0 0 11 12"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -22,7 +23,7 @@ export default function PowerIcon({className}) {
                 d="M5.6499 0.650757V5.65076"
                 stroke="currentColor"
                 strokeLinecap="round"
-                strokeL inejoin="round"/>
+                strokeLinejoin="round"/>
         </svg>
     )
 }
