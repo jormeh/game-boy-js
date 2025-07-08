@@ -1,8 +1,8 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, createContext } from 'react';
 
 export const GameStateContext = createContext();
 
-export function GameStateProvider() {
+export function GameStateProvider({ children }) {
   const [gameState, setGameState] = useState('off');
 
   return (
