@@ -17,15 +17,15 @@ export default function GameBoy() {
       <Button size="6.8%" x="46.6%" y="63.3%">
         <PowerIcon size="60%" />
       </Button>
-      <Button size="14%" x="77.3%" y="67.9%">
+      <Button size="14%" x="77.5%" y="67.6%">
         <LetterAIcon size="50%" />
       </Button>
-      <Button size="14%" x="58.5%" y="70.4%">
+      <Button size="14%" x="58.1%" y="70.1%">
         <LetterBIcon size="40%" />
       </Button>
-      <DPad size="22%" x="15.1%" y="69.2%" />
-      <Button size="6.8%" x="36.7%" y="91.8%" />
-      <Button size="6.8%" x="56.6%" y="91.8%" />
+      <DPad size="22%" x="15.1%" y="69%" />
+      <Button size="6.8%" x="36.6%" y="91.8%" />
+      <Button size="6.8%" x="56.4%" y="91.8%" />
       <img className="gameboy__shell" src={gameboyShell} />
     </div>
   );
