@@ -3,12 +3,15 @@ import '../styles/Button.css';
 import '../styles/index.css';
 
 // A reusable Button component
-export default function Button({ size, x, y, children }) {
+export default function Button({ size, x, y, children, onPress = () => {} }) {
   // Track whether the button is currently being pressed
   const [isPressed, setIsPressed] = useState(false);
 
   // Set pressed state to true when interaction starts
-  const handlePressStart = () => setIsPressed(true);
+  const handlePressStart = () => {
+    setIsPressed(true);
+    onPress();
+  };
 
   // Reset pressed state when interaction ends
   const handlePressEnd = () => setIsPressed(false);
