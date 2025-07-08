@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 
-export const GameStateContext = useContext();
+export const GameStateContext = createContext();
 
 export function GameStateProvider() {
   const [gameState, setGameState] = useState('off');
