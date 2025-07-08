@@ -1,13 +1,14 @@
 .gameboy {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    width: fit-content;
-    max-width: 402px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  max-width: 402px;
+  max-height: 874px;
 }
 
 .gameboy__shell {
-    max-width: 100vw;
-    max-height: 100vh;
-    border: 1px solid black;
+  max-width: 100vw;
+  max-height: 100vh;
+  border: 1px solid black;
 }
