@@ -6,10 +6,12 @@ import PowerIcon from './PowerIcon';
 import LetterAIcon from './LetterAIcon';
 import LetterBIcon from './LetterBIcon';
 import PowerLight from './PowerLight';
+import Screen from './Screen';
 
 export default function GameBoy() {
   return (
     <div className="gameboy">
+      <Screen width="84.6%" height="33.6%" y="6.5%" />
       <PowerLight size="2.1%" y="61.2%" isPowerOn={true} />
       <PowerLight size="2.1%" y="63.5%" isPowerOn={false} />
       <Button size="6.8%" x="46.6%" y="63.3%">
