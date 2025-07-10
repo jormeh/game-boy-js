@@ -14,7 +14,9 @@ export function GameStateProvider({ children }) {
 
   useEffect(() => {
     if (gameState === 'startup') {
-      setTimeout(() => setGameState('off'), 4000);
+      setTimeout(() => setGameState('disclaimer'), 4000);
+    } else if (gameState === 'disclaimer') {
+      setTimeout(() => setGameState(`off`), 6500);
     }
   });
 

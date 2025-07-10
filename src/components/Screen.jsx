@@ -1,6 +1,7 @@
 import { useContext, useEffect, useMemo, useRef } from 'react';
 import '../styles/Screen.css';
 import { GameStateContext } from '../context/GameStateContext';
+import { Foreground } from './Foreground';
 
 function resizeCanvas(canvas, ctx) {
   const rect = canvas.getBoundingClientRect();
@@ -33,11 +34,13 @@ export default function Screen({ width, height, y }) {
 
   return (
     <div className="screen" style={{ width, height, top: y }}>
-      <div className="screen__foreground"></div>
       <div
         className={backgroundClassName}
         style={{ width: '100%', height: '100%' }}
       ></div>
+      <div className="screen__foreground">
+        <Foreground gameState={gameState} />
+      </div>
       <canvas
         ref={canvasRef}
         className="screen__canvas"

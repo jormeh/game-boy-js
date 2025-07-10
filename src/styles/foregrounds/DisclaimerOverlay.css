@@ -1,0 +1,21 @@
+@font-face {
+  font-family: 'PressStart2P';
+  src: url('public/fonts/press-start-2p.woff2') format('woff2');
+  font-display: swap;
+}
+
+.screen__disclaimer {
+  padding: 5%;
+}
+
+.screen__disclaimer-text {
+  font-family: 'PressStart2P', monospace;
+  text-align: center;
+  font-size: 10px;
+}
+
+@media (max-width: 375px) {
+  .screen__disclaimer-text {
+    font-size: 7.5px;
+  }
+}
