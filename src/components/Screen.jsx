@@ -1,15 +1,15 @@
-import { useEffect, useRef } from 'react';
+import { useContext, useEffect, useMemo, useRef } from 'react';
 import '../styles/Screen.css';
+import { GameStateContext } from '../context/GameStateContext';
 
 function resizeCanvas(canvas, ctx) {
   const rect = canvas.getBoundingClientRect();
   canvas.width = rect.width;
   canvas.height = rect.height;
-  ctx.fillStyle = '#222';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
 export default function Screen({ width, height, y }) {
+  const { gameState } = useContext(GameStateContext);
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -27,12 +27,22 @@ export default function Screen({ width, height, y }) {
     return () => observer.disconnect();
   }, []);
 
+  const backgroundClassName = useMemo(() => {
+    return `screen__background screen__background--${gameState}`;
+  }, [gameState]);
+
   return (
-    <canvas
-      ref={canvasRef}
-      id="canvas"
-      className={'screen'}
-      style={{ width, height, top: y }}
-    ></canvas>
+    <div className="screen" style={{ width, height, top: y }}>
+      <div className="screen__foreground"></div>
+      <div
+        className={backgroundClassName}
+        style={{ width: '100%', height: '100%' }}
+      ></div>
+      <canvas
+        ref={canvasRef}
+        className="screen__canvas"
+        style={{ width: '100%', height: '100%' }}
+      ></canvas>
+    </div>
   );
 }

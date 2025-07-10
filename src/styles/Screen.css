@@ -1,6 +1,28 @@
-#canvas {
+.screen,
+.screen__foreground,
+.screen__canvas,
+.screen__background {
   position: absolute;
-  background: linear-gradient(180deg, #131313 0%, #000000 100%);
   border-radius: 4%;
+}
+
+.screen__foreground,
+.screen__canvas,
+.screen__background {
+  height: 100%;
+}
+
+.screen__background--off {
+  background: linear-gradient(180deg, #131313 0%, #000000 100%);
+}
+
+.screen__background--startup {
+  background: url(src/assets/ui/startup-screen.gif);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.screen__canvas {
   image-rendering: pixelated;
 }

@@ -15,7 +15,7 @@ export default function GameBoy() {
   const isGameOn = gameState !== 'off';
 
   const handlePowerButton = () =>
-    setGameState((previous) => (previous === 'off' ? 'loading' : 'off'));
+    setGameState((previous) => (previous === 'off' ? 'startup' : 'off'));
 
   return (
     <div className="gameboy">
