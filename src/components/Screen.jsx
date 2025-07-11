@@ -34,18 +34,11 @@ export default function Screen({ width, height, y }) {
 
   return (
     <div className="screen" style={{ width, height, top: y }}>
-      <div
-        className={backgroundClassName}
-        style={{ width: '100%', height: '100%' }}
-      ></div>
+      <div className={backgroundClassName}></div>
       <div className="screen__foreground">
         <Foreground gameState={gameState} />
       </div>
-      <canvas
-        ref={canvasRef}
-        className="screen__canvas"
-        style={{ width: '100%', height: '100%' }}
-      ></canvas>
+      <canvas ref={canvasRef} className="screen__canvas"></canvas>
     </div>
   );
 }
