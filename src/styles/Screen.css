@@ -18,7 +18,6 @@
 }
 
 .screen__background--startup {
-  background: url(src/assets/ui/startup-screen.gif);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

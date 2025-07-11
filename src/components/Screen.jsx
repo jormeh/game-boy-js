@@ -32,9 +32,22 @@ export default function Screen({ width, height, y }) {
     return `screen__background screen__background--${gameState}`;
   }, [gameState]);
 
+  const startUpGifUrl = useMemo(() => {
+    return `url(src/assets/ui/startup-screen.gif?${Date.now()})`;
+  }, [gameState]);
+
   return (
     <div className="screen" style={{ width, height, top: y }}>
-      <div className={backgroundClassName}></div>
+      <div
+        className={backgroundClassName}
+        style={
+          gameState === 'startup'
+            ? {
+                backgroundImage: startUpGifUrl,
+              }
+            : {}
+        }
+      ></div>
       <div className="screen__foreground">
         <Foreground gameState={gameState} />
       </div>
