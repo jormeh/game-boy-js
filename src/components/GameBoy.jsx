@@ -18,7 +18,7 @@ export default function GameBoy() {
     setGameState((previous) => (previous === 'off' ? 'startup' : 'off'));
 
   const handleStartButton = () =>
-    setGameState((previous) => (previous === 'menu' ? 'off' : previous));
+    setGameState((previous) => (previous === 'menu-start' ? 'off' : previous));
 
   return (
     <div className="gameboy">

@@ -5,7 +5,7 @@ export function Foreground({ gameState }) {
   switch (gameState) {
     case 'disclaimer':
       return <DisclaimerOverlay />;
-    case 'menu':
+    case 'menu-start':
       return <MenuOverlay />;
     default:
       return null;

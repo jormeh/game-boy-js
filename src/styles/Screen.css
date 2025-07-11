@@ -31,8 +31,8 @@
   background: #f4f5f4;
 }
 
-.screen__background--menu::before,
-.screen__background--menu::after {
+.screen__background--menu-start::before,
+.screen__background--menu-start::after {
   content: '';
   position: absolute;
   top: 0;
@@ -45,7 +45,7 @@
   animation: scroll 8s linear infinite;
 }
 
-.screen__background--menu::after {
+.screen__background--menu-start::after {
   left: 100%;
 }
 
