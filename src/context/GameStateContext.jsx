@@ -9,15 +9,22 @@ export function GameStateProvider({ children }) {
 
   useEffect(() => {
     const timeouts = [];
+    const audios = [];
 
     switch (gameState) {
       case 'startup':
-        playStartupScene(timeouts, setGameState);
+        playStartupScene(timeouts, audios, setGameState);
       case 'disclaimer':
         playDisclaimerScene(timeouts, setGameState);
     }
 
-    return () => timeouts.forEach((timeout) => clearTimeout(timeout));
+    return () => {
+      timeouts.forEach((timeout) => clearTimeout(timeout));
+      audios.forEach((audio) => {
+        audio.pause();
+        audio.currentTime = 0;
+      });
+    };
   }, [gameState]);
 
   return (

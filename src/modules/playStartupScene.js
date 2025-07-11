@@ -1,7 +1,8 @@
-export default function playStartupScene(timeouts, setGameState) {
-  const audio = new Audio('src/assets/audio/sfx/startup.mp3');
-  const audioTimeout = setTimeout(() => audio.play(), 250);
+export default function playStartupScene(timeouts, audios, setGameState) {
+  const sfx = new Audio('src/assets/audio/sfx/startup.mp3');
+  const sfxTimeout = setTimeout(() => sfx.play(), 250);
   const transitionTimeout = setTimeout(() => setGameState('disclaimer'), 4000);
-  console.log('hello');
-  timeouts.push(audioTimeout, transitionTimeout);
+
+  timeouts.push(sfxTimeout, transitionTimeout);
+  audios.push(sfx);
 }
