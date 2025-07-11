@@ -2,14 +2,15 @@
   padding: 5%;
 }
 
-.screen__disclaimer-text {
+.screen__statement {
   font-family: 'PressStart2P', monospace;
   text-align: center;
   font-size: 10px;
+  text-transform: uppercase;
 }
 
 @media (max-width: 375px) {
-  .screen__disclaimer-text {
+  .screen__statement {
     font-size: 7.5px;
   }
 }
