@@ -13,6 +13,10 @@
   height: 100%;
 }
 
+.screen__background {
+  overflow: hidden;
+}
+
 .screen__background--off {
   background: linear-gradient(180deg, #131313 0%, #000000 100%);
 }
@@ -25,6 +29,33 @@
 
 .screen__background--disclaimer {
   background: #f4f5f4;
+}
+
+.screen__background--menu::before,
+.screen__background--menu::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background-image: url('../assets/images/background-menu.webp');
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  animation: scroll 8s linear infinite;
+}
+
+.screen__background--menu::after {
+  left: 100%;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
 }
 
 .screen__canvas {

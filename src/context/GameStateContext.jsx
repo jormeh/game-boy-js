@@ -1,6 +1,7 @@
 import { useState, createContext, useEffect } from 'react';
 import playStartupScene from '../modules/playStartupScene';
 import playDisclaimerScene from '../modules/playDisclaimerScene';
+import playMenuScene from '../modules/playMenuScene';
 
 export const GameStateContext = createContext();
 
@@ -14,8 +15,13 @@ export function GameStateProvider({ children }) {
     switch (gameState) {
       case 'startup':
         playStartupScene(timeouts, audios, setGameState);
+        break;
       case 'disclaimer':
         playDisclaimerScene(timeouts, setGameState);
+        break;
+      case 'menu':
+        playMenuScene(timeouts, audios, setGameState);
+        break;
     }
 
     return () => {

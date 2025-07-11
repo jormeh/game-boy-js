@@ -17,6 +17,9 @@ export default function GameBoy() {
   const handlePowerButton = () =>
     setGameState((previous) => (previous === 'off' ? 'startup' : 'off'));
 
+  const handleStartButton = () =>
+    setGameState((previous) => (previous === 'menu' ? 'off' : previous));
+
   return (
     <div className="gameboy">
       <Screen width="84.6%" height="33.6%" y="6.5%" />
@@ -32,8 +35,8 @@ export default function GameBoy() {
         <LetterBIcon size="40%" />
       </Button>
       <DPad size="22%" x="15.1%" y="69%" />
-      <Button size="6.8%" x="36.6%" y="91.8%" />
-      <Button size="6.8%" x="56.4%" y="91.8%" />
+      <Button size="6.8%" x="36.6%" y="91.8%" onPress={handleStartButton} />
+      <Button size="6.8%" x="56.4%" y="91.8%" onPress={handleStartButton} />
       <img className="gameboy__shell" src={gameboyShell} />
     </div>
   );
