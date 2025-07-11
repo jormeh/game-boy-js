@@ -1,4 +1,6 @@
-html, body, #root {
+html,
+body,
+#root {
   margin: 0;
   padding: 0;
   overflow-x: hidden; /* prevent horizontal scroll */
@@ -6,12 +8,12 @@ html, body, #root {
 }
 
 button {
-    all: unset;
-    cursor: pointer;
+  all: unset;
+  cursor: pointer;
 }
 
 p {
-    all: unset;
+  all: unset;
 }
 
 @font-face {
@@ -19,4 +21,10 @@ p {
   font-style: normal;
   font-weight: 400;
   src: url('../assets/fonts/inter-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'PressStart2P';
+  src: url('public/fonts/press-start-2p.woff2') format('woff2');
+  font-display: swap;
 }
