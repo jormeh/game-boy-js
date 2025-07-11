@@ -1,4 +1,4 @@
-import gameboyShell from '../assets/ui/gameboy-shell.png';
+import gameboyShell from '../assets/ui/gameboy-shell.webp';
 import '../styles/GameBoy.css';
 import DPad from './DPad';
 import Button from './Button';
