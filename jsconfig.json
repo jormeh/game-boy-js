@@ -9,6 +9,7 @@
       "@icons/*": ["components/icons/*"],
       "@animations/*": ["components/animations/*"],
       "@assets/*": ["assets/*"],
+      "@scenes/*": ["scenes/*"],
       "@styles/*": ["styles/*"]
     }
   },
