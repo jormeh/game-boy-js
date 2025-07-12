@@ -33,6 +33,10 @@ export default function Screen({ width, height, y }) {
     return `screen__background screen__background--${gameState}`;
   }, [gameState]);
 
+  const fadeClassName = useMemo(() => {
+    return `screen__fade screen__fade--${gameState}`;
+  }, [gameState]);
+
   const startUpGifUrl = useMemo(() => {
     return `url(${StartupGif}?${Date.now()})`;
   }, [gameState]);
@@ -53,6 +57,7 @@ export default function Screen({ width, height, y }) {
         <Foreground gameState={gameState} />
       </div>
       <canvas ref={canvasRef} className="screen__canvas"></canvas>
+      <div className={fadeClassName}></div>
     </div>
   );
 }

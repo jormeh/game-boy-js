@@ -1,4 +1,5 @@
 .screen,
+.screen__fade,
 .screen__foreground,
 .screen__canvas,
 .screen__background {
@@ -6,11 +7,24 @@
   border-radius: 4%;
 }
 
+.screen__fade,
 .screen__foreground,
 .screen__canvas,
 .screen__background {
   width: 100%;
   height: 100%;
+}
+
+.screen__fade--startup {
+  background: #0a0a0a;
+  animation: transitionFade 1s ease-in forwards 3s;
+  opacity: 0;
+}
+
+@keyframes transitionFade {
+  to {
+    opacity: 100%;
+  }
 }
 
 .screen__background {
