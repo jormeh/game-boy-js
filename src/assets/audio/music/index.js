@@ -1,1 +1,1 @@
-export { default as MenuSong } from '@assets/audio/music/menus-song.mp3';
+export { default as MenuSong } from '@assets/audio/music/menu-song.mp3';
