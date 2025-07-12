@@ -1,9 +1,11 @@
 import { useState, createContext, useEffect } from 'react';
-import playStartupScene from '../modules/playStartupScene';
-import playDisclaimerScene from '../modules/playDisclaimerScene';
-import playMenuStartScene from '../modules/playMenuStartScene';
-import playMenuExitScene from '../modules/playMenuExitScene';
-import playTutorialStartScene from '../modules/playTutorialStartScene';
+import {
+  playStartupScene,
+  playDisclaimerScene,
+  playMenuStartScene,
+  playMenuExitScene,
+  playTutorialStartScene,
+} from '@scenes';
 
 export const GameStateContext = createContext();
 
