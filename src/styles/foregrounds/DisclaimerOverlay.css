@@ -4,6 +4,9 @@
 
 .screen__statement {
   font-family: 'PressStart2P', monospace;
+  display: inline-block;
+  text-align: justify;
+  line-height: 2;
   color: white;
   font-size: 10px;
   text-transform: uppercase;
