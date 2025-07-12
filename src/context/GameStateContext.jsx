@@ -3,6 +3,7 @@ import playStartupScene from '../modules/playStartupScene';
 import playDisclaimerScene from '../modules/playDisclaimerScene';
 import playMenuStartScene from '../modules/playMenuStartScene';
 import playMenuExitScene from '../modules/playMenuExitScene';
+import playTutorialStartScene from '../modules/playTutorialStartScene';
 
 export const GameStateContext = createContext();
 
@@ -25,6 +26,9 @@ export function GameStateProvider({ children }) {
         break;
       case 'menu-exit':
         playMenuExitScene(timeouts, audios, setGameState);
+        break;
+      case 'tutorial-start':
+        playTutorialStartScene(audios, setGameState);
         break;
     }
 

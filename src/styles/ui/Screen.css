@@ -54,22 +54,36 @@
 .screen__background--menu-start::before,
 .screen__background--menu-start::after,
 .screen__background--menu-exit::before,
-.screen__background--menu-exit::after {
+.screen__background--menu-exit::after,
+.screen__background--tutorial-start::before,
+.screen__background--tutorial-start::after {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 200%;
   height: 100%;
-  background-image: url('/src/assets/images/background-menu.webp');
   background-repeat: repeat-x;
   background-size: auto 100%;
   animation: scroll 8s linear infinite;
 }
 
 .screen__background--menu-start::after,
-.screen__background--menu-exit::after {
+.screen__background--menu-exit::after,
+.screen__background--tutorial-start::after {
   left: 100%;
+}
+
+.screen__background--menu-start::before,
+.screen__background--menu-start::after,
+.screen__background--menu-exit::before,
+.screen__background--menu-exit::after {
+  background-image: url('/src/assets/images/background-menu.webp');
+}
+
+.screen__background--tutorial-start::before,
+.screen__background--tutorial-start::after {
+  background-image: url('/src/assets/images/background-tutorial.webp');
 }
 
 @keyframes scroll {
