@@ -1,6 +1,6 @@
-import { Children, useState } from 'react';
-import '../styles/Button.css';
-import '../styles/index.css';
+import { useState } from 'react';
+import '@styles/ui/Button.css';
+import '@styles/index.css';
 
 // A reusable Button component
 export default function Button({ size, x, y, children, onPress = () => {} }) {

@@ -1,14 +1,9 @@
-import gameboyShell from '../assets/ui/gameboy-shell.webp';
-import '../styles/GameBoy.css';
-import DPad from './DPad';
-import Button from './Button';
-import PowerIcon from './PowerIcon';
-import LetterAIcon from './LetterAIcon';
-import LetterBIcon from './LetterBIcon';
-import PowerLight from './PowerLight';
-import Screen from './Screen';
-import { GameStateContext } from '../context/GameStateContext';
+import { DPad, Button, PowerLight, Screen } from '@components/ui';
+import { LetterAIcon, LetterBIcon, PowerIcon } from '@components/icons';
+import { GameBoyShell } from '@assets/ui';
+import { GameStateContext } from '@context/GameStateContext';
 import { useContext } from 'react';
+import '@styles/ui/GameBoy.css';
 
 export default function GameBoy() {
   const { gameState, setGameState } = useContext(GameStateContext);
@@ -37,7 +32,7 @@ export default function GameBoy() {
       <DPad size="22%" x="15.1%" y="69%" />
       <Button size="6.8%" x="36.6%" y="91.8%" onPress={handleStartButton} />
       <Button size="6.8%" x="56.4%" y="91.8%" onPress={handleStartButton} />
-      <img className="gameboy__shell" src={gameboyShell} />
+      <img className="gameboy__shell" src={GameBoyShell} />
     </div>
   );
 }

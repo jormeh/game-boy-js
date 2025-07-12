@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@context/*": ["context/*"],
+      "@ui/*": ["components/ui/*"],
+      "@foregrounds/*": ["components/foregrounds/*"],
+      "@icons/*": ["components/icons/*"],
+      "@animations/*": ["components/animations/*"],
+      "@assets/*": ["assets/*"],
+      "@styles/*": ["styles/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}

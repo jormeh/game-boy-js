@@ -1,5 +1,5 @@
-import DisclaimerOverlay from './foregrounds/DisclaimerOverlay';
-import MenuOverlay from './foregrounds/MenuOverlay';
+import DisclaimerOverlay from './DisclaimerOverlay';
+import MenuOverlay from './MenuOverlay';
 
 export function Foreground({ gameState }) {
   switch (gameState) {

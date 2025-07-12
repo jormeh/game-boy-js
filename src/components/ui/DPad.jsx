@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import '../styles/DPad.css';
-import '../styles/index.css';
+import '@styles/ui/DPad.css';
+import '@styles/index.css';
 
 // Helper function to dynamically add a modifier class
 // based on which D-pad direction is currently pressed.

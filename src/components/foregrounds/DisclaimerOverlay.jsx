@@ -1,5 +1,5 @@
 import Fade from '../animations/Fade';
-import '/src/styles/foregrounds/DisclaimerOverlay.css';
+import '@styles/foregrounds/DisclaimerOverlay.css';
 
 export default function DisclaimerOverlay() {
   return (

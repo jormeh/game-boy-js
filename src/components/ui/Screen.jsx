@@ -1,7 +1,8 @@
 import { useContext, useEffect, useMemo, useRef } from 'react';
-import '../styles/Screen.css';
-import { GameStateContext } from '../context/GameStateContext';
-import { Foreground } from './Foreground';
+import { GameStateContext } from '@context/GameStateContext';
+import { Foreground } from '@components/foregrounds/Foreground';
+import { StartupGif } from '@assets/ui';
+import '@styles/ui/Screen.css';
 
 function resizeCanvas(canvas, ctx) {
   const rect = canvas.getBoundingClientRect();
@@ -33,7 +34,7 @@ export default function Screen({ width, height, y }) {
   }, [gameState]);
 
   const startUpGifUrl = useMemo(() => {
-    return `url(src/assets/ui/startup-screen.gif?${Date.now()})`;
+    return `url(${StartupGif}?${Date.now()})`;
   }, [gameState]);
 
   return (
