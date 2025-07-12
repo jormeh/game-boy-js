@@ -4,7 +4,7 @@
 
 .screen__statement {
   font-family: 'PressStart2P', monospace;
-  text-align: center;
+  color: white;
   font-size: 10px;
   text-transform: uppercase;
   opacity: 0;
