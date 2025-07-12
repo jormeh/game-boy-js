@@ -21,6 +21,12 @@
   opacity: 0;
 }
 
+.screen__fade--menu-exit {
+  background: #0a0a0a;
+  animation: transitionFade 1.5s ease-in forwards;
+  opacity: 0;
+}
+
 @keyframes transitionFade {
   to {
     opacity: 100%;
@@ -46,7 +52,9 @@
 }
 
 .screen__background--menu-start::before,
-.screen__background--menu-start::after {
+.screen__background--menu-start::after,
+.screen__background--menu-exit::before,
+.screen__background--menu-exit::after {
   content: '';
   position: absolute;
   top: 0;
@@ -59,7 +67,8 @@
   animation: scroll 8s linear infinite;
 }
 
-.screen__background--menu-start::after {
+.screen__background--menu-start::after,
+.screen__background--menu-exit::after {
   left: 100%;
 }
 
