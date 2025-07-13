@@ -1,0 +1,7 @@
+.screen__canvas {
+  position: absolute;
+  border-radius: 4%;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+}
