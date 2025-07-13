@@ -1,6 +1,11 @@
 import { useEffect, useRef } from 'react';
 import '@styles/GameCanvas.css';
 
+const TARGET_FPS = 60;
+const FRAME_DURATION = 1000 / TARGET_FPS;
+const VIRTUAL_WIDTH = 340;
+const VIRTUAL_HEIGHT = 293;
+
 function resizeCanvas(canvas) {
   const rect = canvas.getBoundingClientRect();
   canvas.width = rect.width;
@@ -9,6 +14,8 @@ function resizeCanvas(canvas) {
 
 export default function GameCanvas() {
   const canvasRef = useRef(null);
+  const lastRenderTime = useRef(0);
+  const animationFrameId = useRef(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -22,7 +29,24 @@ export default function GameCanvas() {
     const observer = new ResizeObserver(handleResize);
     observer.observe(canvas);
 
-    return () => observer.disconnect();
+    function gameLoop(timeStamp) {
+      const delta = timeStamp - lastRenderTime.current;
+
+      if (delta >= FRAME_DURATION) {
+        lastRenderTime.current = timeStamp;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+
+      animationFrameId.current = requestAnimationFrame(gameLoop);
+    }
+
+    animationFrameId.current = requestAnimationFrame(gameLoop);
+
+    return () => {
+      observer.disconnect();
+      cancelAnimationFrame(animationFrameId.current);
+    };
   }, []);
 
   return <canvas ref={canvasRef} className="screen__canvas"></canvas>;
