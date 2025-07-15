@@ -1,53 +1,48 @@
-import { useState, createContext, useEffect, useMemo } from 'react';
-import {
-  playStartupScene,
-  playDisclaimerScene,
-  playMenuStartScene,
-  playMenuExitScene,
-  playTutorialStartScene,
-} from '@scenes';
-import MusicManager from '@classes/managers/MusicManager';
+import { useState, createContext, useEffect, useRef } from 'react';
+import { TransitionManager, MusicManager, SFXManager } from '@classes/managers';
 
 export const GameStateContext = createContext();
 
 export function GameStateProvider({ children }) {
   const [gameState, setGameState] = useState('off');
-  const musicManager = useMemo(() => new MusicManager(), []);
+  const transitionManager = useRef(new TransitionManager()).current;
+  const musicManager = useRef(new MusicManager()).current;
+  const sfxManager = useRef(new SFXManager()).current;
 
   useEffect(() => {
-    const timeouts = [];
-    const audios = [];
+    function reset() {
+      transitionManager.stop();
+      musicManager.stop();
+      sfxManager.stop();
+    }
 
     switch (gameState) {
       case 'startup':
-        playStartupScene(timeouts, audios, setGameState);
+        transitionManager.play('disclaimer', setGameState, 4000);
+        sfxManager.play('startup');
         break;
       case 'disclaimer':
-        playDisclaimerScene(timeouts, setGameState);
+        transitionManager.play('menu-start', setGameState, 7000);
         break;
       case 'menu-start':
-        playMenuStartScene(audios);
+        musicManager.play(gameState);
         break;
       case 'menu-exit':
-        playMenuExitScene(timeouts, audios, setGameState);
+        transitionManager.play('tutorial-start', setGameState, 2500);
+        sfxManager.play('coin');
         break;
       case 'tutorial-start':
-        playTutorialStartScene(audios, setGameState);
+        musicManager.play(gameState);
+        break;
+      case 'off':
+        reset();
         break;
       default:
-        musicManager.stop();
+        console.warn(`The following game state doesn't exist: ${gameState}`);
         break;
     }
 
-    musicManager.play(gameState);
-
-    return () => {
-      timeouts.forEach((timeout) => clearTimeout(timeout));
-      audios.forEach((audio) => {
-        audio.pause();
-        audio.currentTime = 0;
-      });
-    };
+    return () => reset();
   }, [gameState]);
 
   return (
