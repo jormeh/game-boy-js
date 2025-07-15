@@ -1,4 +1,4 @@
-import { useState, createContext, useEffect } from 'react';
+import { useState, createContext, useEffect, useMemo } from 'react';
 import {
   playStartupScene,
   playDisclaimerScene,
@@ -6,11 +6,13 @@ import {
   playMenuExitScene,
   playTutorialStartScene,
 } from '@scenes';
+import MusicManager from '@classes/managers/MusicManager';
 
 export const GameStateContext = createContext();
 
 export function GameStateProvider({ children }) {
   const [gameState, setGameState] = useState('off');
+  const musicManager = useMemo(() => new MusicManager(), []);
 
   useEffect(() => {
     const timeouts = [];
@@ -32,7 +34,12 @@ export function GameStateProvider({ children }) {
       case 'tutorial-start':
         playTutorialStartScene(audios, setGameState);
         break;
+      default:
+        musicManager.stop();
+        break;
     }
+
+    musicManager.play(gameState);
 
     return () => {
       timeouts.forEach((timeout) => clearTimeout(timeout));
