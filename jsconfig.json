@@ -2,6 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
+      "@classes/*": ["classes/*"],
       "@components/*": ["components/*"],
       "@context/*": ["context/*"],
       "@ui/*": ["components/ui/*"],
