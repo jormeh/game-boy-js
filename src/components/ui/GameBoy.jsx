@@ -2,20 +2,30 @@ import { DPad, Button, PowerLight, Screen } from '@components/ui';
 import { LetterAIcon, LetterBIcon, PowerIcon } from '@components/icons';
 import { GameBoyShell } from '@assets/ui';
 import { GameStateContext } from '@context/GameStateContext';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import '@styles/ui/GameBoy.css';
 
 export default function GameBoy() {
-  const { gameState, setGameState } = useContext(GameStateContext);
+  const { gameState, setGameState, controller } = useContext(GameStateContext);
   const isGameOn = gameState !== 'off';
 
-  const handlePowerButton = () =>
+  const handlePowerButton = () => {
     setGameState((previous) => (previous === 'off' ? 'startup' : 'off'));
+  };
 
-  const handleStartButton = () =>
+  const handleStartButton = () => {
     setGameState((previous) =>
       previous === 'menu-start' ? 'menu-exit' : previous
     );
+  };
+
+  useEffect(() => {
+    if (controller.isPowerPressed) handlePowerButton();
+  }, [controller.isPowerPressed]);
+
+  useEffect(() => {
+    if (controller.isStartPressed) handleStartButton();
+  }, [controller.isStartPressed]);
 
   return (
     <div className="gameboy">

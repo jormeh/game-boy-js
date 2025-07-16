@@ -1,5 +1,6 @@
 import { useState, createContext, useEffect, useRef } from 'react';
 import { TransitionManager, MusicManager, SFXManager } from '@classes/managers';
+import useInput from '@hooks/useInput';
 
 export const GameStateContext = createContext();
 
@@ -8,6 +9,7 @@ export function GameStateProvider({ children }) {
   const transitionManager = useRef(new TransitionManager()).current;
   const musicManager = useRef(new MusicManager()).current;
   const sfxManager = useRef(new SFXManager()).current;
+  const controller = useInput();
 
   useEffect(() => {
     function reset() {
@@ -46,7 +48,7 @@ export function GameStateProvider({ children }) {
   }, [gameState]);
 
   return (
-    <GameStateContext.Provider value={{ gameState, setGameState }}>
+    <GameStateContext.Provider value={{ gameState, setGameState, controller }}>
       {children}
     </GameStateContext.Provider>
   );

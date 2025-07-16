@@ -10,6 +10,7 @@ export default defineConfig({
       '@components': path.resolve(__dirname, 'src/components'),
       '@context': path.resolve(__dirname, 'src/context'),
       '@ui': path.resolve(__dirname, 'src/components/ui'),
+      '@hooks': path.resolve(__dirname, 'src/hooks'),
       '@foregrounds': path.resolve(__dirname, 'src/components/foregrounds'),
       '@icons': path.resolve(__dirname, 'src/components/icons'),
       '@animations': path.resolve(__dirname, 'src/components/animations'),

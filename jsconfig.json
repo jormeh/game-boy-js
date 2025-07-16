@@ -5,6 +5,7 @@
       "@classes/*": ["classes/*"],
       "@components/*": ["components/*"],
       "@context/*": ["context/*"],
+      "@hooks/*": ["hooks/*"],
       "@ui/*": ["components/ui/*"],
       "@foregrounds/*": ["components/foregrounds/*"],
       "@icons/*": ["components/icons/*"],
