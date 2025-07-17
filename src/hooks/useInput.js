@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 
 export default function useInput() {
   const [controller, setController] = useState({
@@ -23,6 +23,19 @@ export default function useInput() {
 
       setController((previous) => {
         switch (normalizedKey) {
+          case 'arrowleft':
+          case 'a':
+            return { ...previous, isLeftPressed: isPressed.current };
+          case 'arrowright':
+          case 'd':
+            return { ...previous, isRightPressed: isPressed.current };
+          case 'arrowup':
+          case 'w':
+          case ' ':
+            return { ...previous, isUpPressed: isPressed.current };
+          case 'arrowdown':
+          case 's':
+            return { ...previous, isDownPressed: isPressed.current };
           case 'p':
             return { ...previous, isStartPressed: isPressed.current };
           case 'enter':
