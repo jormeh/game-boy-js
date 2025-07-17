@@ -1,6 +1,7 @@
-import { useState, useEffect, useRef, useMemo } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
-export default function useInput() {
+export default function useGameController() {
+  const isPressed = useRef(false);
   const [controller, setController] = useState({
     isLeftPressed: false,
     isRightPressed: false,
@@ -9,8 +10,6 @@ export default function useInput() {
     isPowerPressed: false,
     isStartPressed: false,
   });
-
-  const isPressed = useRef(false);
 
   useEffect(() => {
     function handleKeyEvent({ key, type }) {

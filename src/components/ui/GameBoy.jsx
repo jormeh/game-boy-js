@@ -6,7 +6,8 @@ import { useContext, useEffect } from 'react';
 import '@styles/ui/GameBoy.css';
 
 export default function GameBoy() {
-  const { gameState, setGameState, controller } = useContext(GameStateContext);
+  const { gameState, setGameState, gameController } =
+    useContext(GameStateContext);
   const isGameOn = gameState !== 'off';
 
   const handlePowerButton = () => {
@@ -20,12 +21,12 @@ export default function GameBoy() {
   };
 
   useEffect(() => {
-    if (controller.isPowerPressed) handlePowerButton();
-  }, [controller.isPowerPressed]);
+    if (gameController.isPowerPressed) handlePowerButton();
+  }, [gameController.isPowerPressed]);
 
   useEffect(() => {
-    if (controller.isStartPressed) handleStartButton();
-  }, [controller.isStartPressed]);
+    if (gameController.isStartPressed) handleStartButton();
+  }, [gameController.isStartPressed]);
 
   return (
     <div className="gameboy">
