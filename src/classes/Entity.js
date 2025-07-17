@@ -2,9 +2,17 @@ import Hitbox from './Hitbox';
 import Sprite from './Sprite';
 
 export default class Entity {
-  constructor() {
-    this.hitbox = new Hitbox();
-    this.sprite = new Sprite();
+  constructor(
+    hitboxX,
+    hitboxY,
+    hitboxW,
+    hitboxH,
+    spriteName,
+    spriteOffsetX,
+    spriteOffsetY
+  ) {
+    this.hitbox = new Hitbox(hitboxX, hitboxY, hitboxW, hitboxH);
+    this.sprite = new Sprite(spriteName, spriteOffsetX, spriteOffsetY);
   }
 
   get position() {
