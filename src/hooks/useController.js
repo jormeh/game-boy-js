@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 
-export default function useGameController() {
+export default function useController() {
   const isPressed = useRef(false);
   const [controller, setController] = useState({
     isLeftPressed: false,

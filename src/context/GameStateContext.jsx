@@ -1,15 +1,19 @@
 import { useState, createContext, useEffect, useRef } from 'react';
 import { TransitionManager, MusicManager, SFXManager } from '@classes/managers';
-import useGameController from '@hooks/useGameController';
+import useMario from '@hooks/useMario';
+import useController from '@hooks/useController';
 
 export const GameStateContext = createContext();
 
 export function GameStateProvider({ children }) {
   const [gameState, setGameState] = useState('off');
+
   const transitionManager = useRef(new TransitionManager()).current;
   const musicManager = useRef(new MusicManager()).current;
   const sfxManager = useRef(new SFXManager()).current;
-  const gameController = useGameController();
+
+  const controller = useController();
+  const mario = useMario(controller, sfxManager);
 
   useEffect(() => {
     function reset() {
@@ -49,7 +53,7 @@ export function GameStateProvider({ children }) {
 
   return (
     <GameStateContext.Provider
-      value={{ gameState, setGameState, gameController }}
+      value={{ gameState, setGameState, mario, controller }}
     >
       {children}
     </GameStateContext.Provider>

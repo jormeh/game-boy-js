@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import useResizeCanvas from '@hooks/useResizeCanvas';
 import '@styles/GameCanvas.css';
 import useGameLoop from '@hooks/useGameLoop';

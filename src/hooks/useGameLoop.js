@@ -1,9 +1,11 @@
-import { useEffect, useRef } from 'react';
+import { GameStateContext } from '@context/GameStateContext';
+import { useContext, useEffect, useRef } from 'react';
 
 const TARGET_FPS = 60;
 const FRAME_DURATION = 1000 / TARGET_FPS;
 
 export default function useGameLoop(canvas) {
+  const { mario, controller } = useContext(GameStateContext);
   const lastTime = useRef(0);
   const animationFrame = useRef(null);
 
@@ -14,6 +16,9 @@ export default function useGameLoop(canvas) {
       lastTime.current = time;
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      mario.draw(ctx);
+      mario.move(controller);
     }
 
     animationFrame.current = requestAnimationFrame((time) => loop(time, ctx));
