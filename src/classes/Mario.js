@@ -19,7 +19,6 @@ export default class Mario extends Entity {
 
   move() {
     if (this.isMovingLeft) {
-      console.log(this.isMovingLeft);
       this.hitbox.x -= this.speed.x;
     }
 
