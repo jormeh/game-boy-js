@@ -22,8 +22,8 @@ export default class Entity {
     };
   }
 
-  draw(ctx) {
+  draw(canvas, ctx) {
     const { x, y } = this.position;
-    this.sprite.draw(ctx, x, y);
+    this.sprite.draw(canvas, ctx, x, y);
   }
 }

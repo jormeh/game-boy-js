@@ -17,7 +17,7 @@ export default function useGameLoop(canvas) {
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      mario.draw(ctx);
+      mario.draw(canvas, ctx);
       mario.move(canvas);
     }
 
