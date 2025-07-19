@@ -5,7 +5,7 @@ const TARGET_FPS = 60;
 const FRAME_DURATION = 1000 / TARGET_FPS;
 
 export default function useGameLoop(canvas) {
-  const { mario, controller } = useContext(GameStateContext);
+  const { mario } = useContext(GameStateContext);
   const lastTime = useRef(0);
   const animationFrame = useRef(null);
 
@@ -18,7 +18,7 @@ export default function useGameLoop(canvas) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       mario.draw(ctx);
-      mario.move(controller);
+      mario.move(canvas);
     }
 
     animationFrame.current = requestAnimationFrame((time) => loop(time, ctx));
