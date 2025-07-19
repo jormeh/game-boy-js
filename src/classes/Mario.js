@@ -5,8 +5,7 @@ export default class Mario extends Entity {
     super(0, 0, 100, 100, 'mario', 0, 0);
 
     this.speed = { x: 10, y: 2, jump: 2 };
-    this.gravity = 1;
-    this.drag = 0.5;
+    this.gravity = 0;
 
     this.startingLives = 5;
     this.lives = this.startingLives;
@@ -59,10 +58,6 @@ export default class Mario extends Entity {
 
     if (this.isDiving) {
       this.hitbox.y += this.speed.y;
-    }
-
-    if (this.isInsideLeftBound) {
-      this.hitbox.x -= this.drag;
     }
 
     this.hitbox.y += this.gravity;
