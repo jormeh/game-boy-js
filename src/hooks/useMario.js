@@ -3,11 +3,16 @@ import { useEffect, useRef } from 'react';
 
 export default function useMario(controller, sfxManager) {
   const mario = useRef(new Mario()).current;
-  const { isLeftPressed, isRightPressed, isUpPressed, isDownPressed } =
-    controller;
+  const {
+    isLeftPressed,
+    isRightPressed,
+    isUpPressed,
+    isDownPressed,
+    isJumpPressed,
+  } = controller;
 
   const spriteEffects = () => {
-    if (isUpPressed) {
+    if (isUpPressed || isJumpPressed) {
       mario.sprite.index = 1;
     } else if (isDownPressed) {
       mario.sprite.index = 0;
@@ -19,7 +24,8 @@ export default function useMario(controller, sfxManager) {
   const moveEffects = () => {
     mario.isMovingLeft = isLeftPressed;
     mario.isMovingRight = isRightPressed;
-    mario.isJumping = isUpPressed;
+    mario.isMovingUp = isUpPressed;
+    mario.isJumping = isJumpPressed;
     mario.isDiving = isDownPressed;
   };
 
@@ -33,7 +39,13 @@ export default function useMario(controller, sfxManager) {
     spriteEffects();
     moveEffects();
     soundEffects();
-  }, [isLeftPressed, isRightPressed, isUpPressed, isDownPressed]);
+  }, [
+    isLeftPressed,
+    isRightPressed,
+    isUpPressed,
+    isDownPressed,
+    isJumpPressed,
+  ]);
 
   return mario;
 }

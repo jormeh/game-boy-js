@@ -6,6 +6,7 @@ export default function useController() {
     isRightPressed: false,
     isUpPressed: false,
     isDownPressed: false,
+    isJumpPressed: false,
     isPowerPressed: false,
     isStartPressed: false,
   });
@@ -24,11 +25,12 @@ export default function useController() {
             return { ...previous, isRightPressed: isKeyPressed };
           case 'arrowup':
           case 'w':
-          case ' ':
             return { ...previous, isUpPressed: isKeyPressed };
           case 'arrowdown':
           case 's':
             return { ...previous, isDownPressed: isKeyPressed };
+          case ' ':
+            return { ...previous, isJumpPressed: isKeyPressed };
           default:
             return previous;
         }

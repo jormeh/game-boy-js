@@ -21,11 +21,11 @@ export default function GameBoy() {
   };
 
   const pressStartA = () => {
-    setController((previous) => ({ ...previous, isUpPressed: true }));
+    setController((previous) => ({ ...previous, isJumpPressed: true }));
   };
 
   const pressEndA = () => {
-    setController((previous) => ({ ...previous, isUpPressed: false }));
+    setController((previous) => ({ ...previous, isJumpPressed: false }));
   };
 
   const pressStartB = () => {
