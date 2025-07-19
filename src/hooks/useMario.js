@@ -30,7 +30,7 @@ export default function useMario(controller, sfxManager) {
   };
 
   const soundEffects = () => {
-    if (isUpPressed) {
+    if (isJumpPressed) {
       sfxManager.play('jump');
     }
   };
