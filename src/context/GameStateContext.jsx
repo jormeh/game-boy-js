@@ -12,7 +12,7 @@ export function GameStateProvider({ children }) {
   const musicManager = useRef(new MusicManager()).current;
   const sfxManager = useRef(new SFXManager()).current;
 
-  const controller = useController();
+  const [controller, setController] = useController();
   const mario = useMario(controller, sfxManager);
 
   useEffect(() => {
@@ -53,7 +53,7 @@ export function GameStateProvider({ children }) {
 
   return (
     <GameStateContext.Provider
-      value={{ gameState, setGameState, mario, controller }}
+      value={{ gameState, setGameState, mario, controller, setController }}
     >
       {children}
     </GameStateContext.Provider>

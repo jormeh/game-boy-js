@@ -67,5 +67,5 @@ export default function useController() {
     };
   }, []);
 
-  return controller;
+  return [controller, setController];
 }

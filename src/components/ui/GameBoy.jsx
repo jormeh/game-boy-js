@@ -6,7 +6,8 @@ import { useContext, useEffect } from 'react';
 import '@styles/ui/GameBoy.css';
 
 export default function GameBoy() {
-  const { gameState, setGameState, controller } = useContext(GameStateContext);
+  const { gameState, setGameState, controller, setController } =
+    useContext(GameStateContext);
   const isGameOn = gameState !== 'off';
 
   const togglePower = () => {
@@ -17,6 +18,22 @@ export default function GameBoy() {
     setGameState((previous) =>
       previous === 'menu-start' ? 'menu-exit' : previous
     );
+  };
+
+  const pressStartA = () => {
+    setController((previous) => ({ ...previous, isUpPressed: true }));
+  };
+
+  const pressEndA = () => {
+    setController((previous) => ({ ...previous, isUpPressed: false }));
+  };
+
+  const pressStartB = () => {
+    setController((previous) => ({ ...previous, isDownPressed: true }));
+  };
+
+  const pressEndB = () => {
+    setController((previous) => ({ ...previous, isDownPressed: false }));
   };
 
   useEffect(() => {
@@ -38,10 +55,22 @@ export default function GameBoy() {
       >
         <PowerIcon size="60%" />
       </Button>
-      <Button size="14%" x="77.5%" y="67.6%">
+      <Button
+        size="14%"
+        x="77.5%"
+        y="67.6%"
+        onPressStart={pressStartA}
+        onPressEnd={pressEndA}
+      >
         <LetterAIcon size="50%" />
       </Button>
-      <Button size="14%" x="58.1%" y="70.1%">
+      <Button
+        size="14%"
+        x="58.1%"
+        y="70.1%"
+        onPressStart={pressStartB}
+        onPressEnd={pressEndB}
+      >
         <LetterBIcon size="40%" />
       </Button>
       <DPad size="22%" x="15.1%" y="69%" />
