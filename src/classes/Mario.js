@@ -4,9 +4,9 @@ export default class Mario extends Entity {
   constructor() {
     super(0, 0, 100, 100, 'mario', 0, 0);
 
-    this.speed = { x: 10, y: 10 };
+    this.speed = { x: 10, y: 10, jump: 2 };
     this.gravity = 1;
-    this.drag = 1;
+    this.drag = 0.5;
 
     this.startingLives = 5;
     this.lives = this.startingLives;
@@ -39,7 +39,17 @@ export default class Mario extends Entity {
     }
 
     if (this.isJumping && this.isInsideTopBound) {
-      this.hitbox.y -= this.speed.y;
+      let count = 0;
+      let interval = setInterval(() => {
+        if (count > 7) {
+          clearInterval(interval);
+          this.isJumping = false;
+          count = 0;
+        } else {
+          this.hitbox.y -= this.speed.jump;
+        }
+        count += 1;
+      }, 10);
     }
 
     if (this.isDiving) {
