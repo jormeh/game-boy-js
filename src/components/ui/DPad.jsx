@@ -12,7 +12,7 @@ const changeStyle = (className, buttonState) => {
   return `${className} ${className}--${active}-pressed`;
 };
 
-export default function DPad({ size, x, y }) {
+export default function DPad({ size, x, y, handlers }) {
   // State to track which directional buttons are pressed
   const [isPressed, setIsPressed] = useState({
     up: false,
@@ -24,11 +24,13 @@ export default function DPad({ size, x, y }) {
   // Factory to create press start handler for a given input
   const handlePressStart = (input) => () => {
     setIsPressed((prev) => ({ ...prev, [input]: true }));
+    handlers[input].start();
   };
 
   // Factory to create press end handler for a given input
   const handlePressEnd = (input) => () => {
     setIsPressed((prev) => ({ ...prev, [input]: false }));
+    handlers[input].end();
   };
 
   // Creates all relevant press handlers for mouse and touch events

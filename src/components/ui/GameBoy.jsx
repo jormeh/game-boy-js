@@ -36,6 +36,45 @@ export default function GameBoy() {
     setController((previous) => ({ ...previous, isDownPressed: false }));
   };
 
+  const pressStartLeft = () => {
+    setController((previous) => ({ ...previous, isLeftPressed: true }));
+  };
+
+  const pressEndLeft = () => {
+    setController((previous) => ({ ...previous, isLeftPressed: false }));
+  };
+
+  const pressStartRight = () => {
+    setController((previous) => ({ ...previous, isRightPressed: true }));
+  };
+
+  const pressEndRight = () => {
+    setController((previous) => ({ ...previous, isRightPressed: false }));
+  };
+
+  const pressStartUp = () => {
+    setController((previous) => ({ ...previous, isUpPressed: true }));
+  };
+
+  const pressEndUp = () => {
+    setController((previous) => ({ ...previous, isUpPressed: false }));
+  };
+
+  const pressStartDown = () => {
+    setController((previous) => ({ ...previous, isDownPressed: true }));
+  };
+
+  const pressEndDown = () => {
+    setController((previous) => ({ ...previous, isDownPressed: false }));
+  };
+
+  const dPadHandlers = {
+    up: { start: pressStartUp, end: pressEndUp },
+    left: { start: pressStartLeft, end: pressEndLeft },
+    right: { start: pressStartRight, end: pressEndRight },
+    down: { start: pressStartDown, end: pressEndDown },
+  };
+
   useEffect(() => {
     if (controller.isPowerPressed) togglePower();
     if (controller.isStartPressed) toggleStart();
@@ -73,7 +112,7 @@ export default function GameBoy() {
       >
         <LetterBIcon size="40%" />
       </Button>
-      <DPad size="22%" x="15.1%" y="69%" />
+      <DPad size="22%" x="15.1%" y="69%" handlers={dPadHandlers} />
       <Button
         size="6.8%"
         x="36.6%"
