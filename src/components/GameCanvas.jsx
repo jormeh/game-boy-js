@@ -1,7 +1,6 @@
 import { useRef } from 'react';
-import useResizeCanvas from '@hooks/useResizeCanvas';
+import { useResizeCanvas, useGameLoop } from '@hooks';
 import '@styles/GameCanvas.css';
-import useGameLoop from '@hooks/useGameLoop';
 
 export default function GameCanvas() {
   const canvasRef = useRef(null);
