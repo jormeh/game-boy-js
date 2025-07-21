@@ -10,15 +10,14 @@ export default class Sprite {
     this.data = SPRITE_SHEET_DATA.find((sprite) => sprite.name === name);
   }
 
-  scale(canvasWidth) {
-    return canvasWidth * 0.0016;
+  scaleToCanvas(value, canvasWidth) {
+    return value * canvasWidth * 0.0016;
   }
 
   draw(canvas, ctx, x, y) {
-    const { data, index } = this;
+    const { data, index, scaleToCanvas } = this;
     if (Object.keys(data).length === 0) return;
     const frame = data.frames[index];
-    const scale = this.scale(canvas.width);
     ctx.drawImage(
       SPRITE_SHEET,
       frame.x,
@@ -27,8 +26,8 @@ export default class Sprite {
       frame.h,
       x,
       y,
-      frame.w * scale,
-      frame.h * scale
+      scaleToCanvas(frame.w, canvas.width),
+      scaleToCanvas(frame.h, canvas.width)
     );
   }
 }
