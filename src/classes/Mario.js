@@ -4,9 +4,16 @@ export default class Mario extends Entity {
   constructor() {
     super(0, 0, 42, 42, 'mario', 12, 14);
 
-    this.speed = { x: 5, y: 6, jump: 2.5 };
-    this.gravity = 2;
+    this.initial = {
+      speed: {
+        x: 5,
+        y: 6,
+        jump: 2.5,
+        gravity: 2,
+      },
+    };
 
+    this.speed = { ...this.initial.speed };
     this.startingLives = 5;
     this.lives = this.startingLives;
 
@@ -60,6 +67,6 @@ export default class Mario extends Entity {
       this.hitbox.y += this.speed.y;
     }
 
-    this.hitbox.y += this.gravity;
+    this.hitbox.y += this.speed.gravity;
   }
 }

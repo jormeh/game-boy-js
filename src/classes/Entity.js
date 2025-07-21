@@ -1,6 +1,7 @@
 import { BASE_CANVAS_HEIGHT, BASE_CANVAS_WIDTH } from '@constants/index';
 import Hitbox from './Hitbox';
 import Sprite from './Sprite';
+import Mario from './Mario';
 
 export default class Entity {
   constructor(
@@ -33,6 +34,13 @@ export default class Entity {
     this.hitbox.height = scaleToHeight(this.hitbox.initial.height);
     this.sprite.offset.x = scaleToWidth(this.sprite.initial.offset.x);
     this.sprite.offset.y = scaleToHeight(this.sprite.initial.offset.y);
+    this.speed.x = scaleToWidth(this.initial.speed.x);
+    this.speed.y = scaleToHeight(this.initial.speed.y);
+
+    if (this instanceof Mario) {
+      this.speed.jump = scaleToHeight(this.initial.speed.jump);
+      this.speed.gravity = scaleToHeight(this.initial.speed.gravity);
+    }
   }
 
   draw(canvas, ctx) {
