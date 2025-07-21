@@ -1,4 +1,5 @@
 import { SPRITE_SHEET_DATA, SPRITE_SHEET_URL } from '@assets/spritesheet';
+import { BASE_CANVAS_WIDTH, SPRITE_SCALE } from '@constants/index';
 
 const SPRITE_SHEET = new Image();
 SPRITE_SHEET.src = SPRITE_SHEET_URL;
@@ -10,12 +11,12 @@ export default class Sprite {
     this.data = SPRITE_SHEET_DATA.find((sprite) => sprite.name === name);
   }
 
-  scaleToCanvas(value, canvasWidth) {
-    return value * canvasWidth * 0.0016;
+  getRenderSize(dimension, canvasWidth) {
+    return (dimension * SPRITE_SCALE * canvasWidth) / BASE_CANVAS_WIDTH;
   }
 
   draw(canvas, ctx, x, y) {
-    const { data, index, scaleToCanvas } = this;
+    const { data, index, getRenderSize } = this;
     if (Object.keys(data).length === 0) return;
     const frame = data.frames[index];
     ctx.drawImage(
@@ -26,8 +27,8 @@ export default class Sprite {
       frame.h,
       x,
       y,
-      scaleToCanvas(frame.w, canvas.width),
-      scaleToCanvas(frame.h, canvas.width)
+      getRenderSize(frame.w, canvas.width),
+      getRenderSize(frame.h, canvas.width)
     );
   }
 }
