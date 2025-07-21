@@ -43,15 +43,18 @@ export default class Entity {
     }
   }
 
-  draw(canvas, ctx) {
+  draw(canvas, ctx, showHitbox = false) {
     const { x, y } = this.position;
     this.sprite.draw(canvas, ctx, x, y);
-    ctx.fillStyle = 'rgba(256, 0, 0, 0.8)';
-    ctx.fillRect(
-      this.hitbox.x,
-      this.hitbox.y,
-      this.hitbox.width,
-      this.hitbox.height
-    );
+
+    if (showHitbox) {
+      ctx.fillStyle = 'rgba(256, 0, 0, 0.8)';
+      ctx.fillRect(
+        this.hitbox.x,
+        this.hitbox.y,
+        this.hitbox.width,
+        this.hitbox.height
+      );
+    }
   }
 }
