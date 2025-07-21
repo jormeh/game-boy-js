@@ -1,8 +1,6 @@
-import { GameStateContext } from '@context/GameStateContext';
 import { useContext, useEffect, useRef } from 'react';
-
-const TARGET_FPS = 60;
-const FRAME_DURATION = 1000 / TARGET_FPS;
+import { GameStateContext } from '@context/GameStateContext';
+import { FRAME_DURATION } from '@constants/index';
 
 export default function useGameLoop(canvas) {
   const { mario } = useContext(GameStateContext);

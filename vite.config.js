@@ -8,6 +8,7 @@ export default defineConfig({
     alias: {
       '@classes': path.resolve(__dirname, 'src/classes'),
       '@components': path.resolve(__dirname, 'src/components'),
+      '@constants': path.resolve(__dirname, 'src/constants'),
       '@context': path.resolve(__dirname, 'src/context'),
       '@ui': path.resolve(__dirname, 'src/components/ui'),
       '@hooks': path.resolve(__dirname, 'src/hooks'),
