@@ -1,3 +1,4 @@
+import { BASE_CANVAS_HEIGHT, BASE_CANVAS_WIDTH } from '@constants/index';
 import Hitbox from './Hitbox';
 import Sprite from './Sprite';
 
@@ -22,8 +23,27 @@ export default class Entity {
     };
   }
 
+  scaleValuesToCanvas({ width, height }) {
+    const scaleToWidth = (value) => (value * width) / BASE_CANVAS_WIDTH;
+    const scaleToHeight = (value) => (value * height) / BASE_CANVAS_HEIGHT;
+
+    this.hitbox.x = scaleToWidth(this.hitbox.initial.x);
+    this.hitbox.y = scaleToHeight(this.hitbox.initial.y);
+    this.hitbox.width = scaleToWidth(this.hitbox.initial.width);
+    this.hitbox.height = scaleToHeight(this.hitbox.initial.height);
+    this.sprite.offset.x = scaleToWidth(this.sprite.initial.offset.x);
+    this.sprite.offset.y = scaleToHeight(this.sprite.initial.offset.y);
+  }
+
   draw(canvas, ctx) {
     const { x, y } = this.position;
     this.sprite.draw(canvas, ctx, x, y);
+    ctx.fillStyle = 'rgba(256, 0, 0, 0.8)';
+    ctx.fillRect(
+      this.hitbox.x,
+      this.hitbox.y,
+      this.hitbox.width,
+      this.hitbox.height
+    );
   }
 }

@@ -1,5 +1,12 @@
 export default class Hitbox {
   constructor(x, y, width, height) {
+    this.initial = {
+      x,
+      y,
+      width,
+      height,
+    };
+
     this.x = x;
     this.y = y;
     this.width = width;

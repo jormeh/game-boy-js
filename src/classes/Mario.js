@@ -2,10 +2,10 @@ import Entity from './Entity';
 
 export default class Mario extends Entity {
   constructor() {
-    super(0, 0, 100, 100, 'mario', 0, 0);
+    super(0, 0, 42, 42, 'mario', 12, 14);
 
-    this.speed = { x: 10, y: 2, jump: 2 };
-    this.gravity = 0;
+    this.speed = { x: 5, y: 6, jump: 2.5 };
+    this.gravity = 2;
 
     this.startingLives = 5;
     this.lives = this.startingLives;

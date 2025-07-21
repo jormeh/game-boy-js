@@ -6,6 +6,7 @@ SPRITE_SHEET.src = SPRITE_SHEET_URL;
 
 export default class Sprite {
   constructor(name, offsetX, offsetY, index = 0) {
+    this.initial = { offset: { x: offsetX, y: offsetY } };
     this.offset = { x: offsetX, y: offsetY };
     this.index = index;
     this.data = SPRITE_SHEET_DATA.find((sprite) => sprite.name === name);
