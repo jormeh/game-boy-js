@@ -1,12 +1,11 @@
-import { useState, createContext, useEffect, useRef } from 'react';
+import { createContext, useEffect, useRef } from 'react';
 import { TransitionManager, MusicManager, SFXManager } from '@classes/managers';
-import useMario from '@hooks/useMario';
-import useController from '@hooks/useController';
+import { useGameState, useController, useMario } from '@hooks';
 
 export const GameStateContext = createContext();
 
 export function GameStateProvider({ children }) {
-  const [gameState, setGameState] = useState('off');
+  const [gameState, setGameState, isStatePlayable] = useGameState();
 
   const transitionManager = useRef(new TransitionManager()).current;
   const musicManager = useRef(new MusicManager()).current;
