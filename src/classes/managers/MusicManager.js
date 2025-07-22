@@ -16,12 +16,12 @@ export default class MusicManager {
     }
   }
 
-  play(trackName) {
+  play(trackName, loop = false) {
     if (this.currentTrack) this.reset();
 
     const track = this.audioElements[trackName];
     if (track) {
-      track.loop = true;
+      track.loop = loop;
       track.play();
       this.currentTrack = track;
     } else {
