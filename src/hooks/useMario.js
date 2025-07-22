@@ -1,7 +1,7 @@
-import Mario from '@classes/Mario';
 import { useEffect, useRef } from 'react';
+import Mario from '@classes/Mario';
 
-export default function useMario(controller, sfxManager) {
+export default function useMario(controller, sfxManager, isStatePlayable) {
   const mario = useRef(new Mario()).current;
   const {
     isLeftPressed,
@@ -36,6 +36,7 @@ export default function useMario(controller, sfxManager) {
   };
 
   useEffect(() => {
+    if (!isStatePlayable) return;
     spriteEffects();
     moveEffects();
     soundEffects();
@@ -45,6 +46,7 @@ export default function useMario(controller, sfxManager) {
     isUpPressed,
     isDownPressed,
     isJumpPressed,
+    isStatePlayable,
   ]);
 
   return mario;
