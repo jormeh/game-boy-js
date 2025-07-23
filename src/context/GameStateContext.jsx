@@ -15,11 +15,11 @@ export function GameStateProvider({ children }) {
   const mario = useMario(controller, sfxManager, isStatePlayable);
 
   useEffect(() => {
-    function reset() {
+    const reset = () => {
       transitionManager.stop();
       musicManager.stop();
       sfxManager.stop();
-    }
+    };
 
     switch (gameState) {
       case 'startup':
