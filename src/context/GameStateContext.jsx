@@ -52,7 +52,14 @@ export function GameStateProvider({ children }) {
 
   return (
     <GameStateContext.Provider
-      value={{ gameState, setGameState, mario, controller, setController }}
+      value={{
+        gameState,
+        setGameState,
+        isStatePlayable,
+        mario,
+        controller,
+        setController,
+      }}
     >
       {children}
     </GameStateContext.Provider>

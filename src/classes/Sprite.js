@@ -12,6 +12,10 @@ export default class Sprite {
     this.data = SPRITE_SHEET_DATA.find((sprite) => sprite.name === name);
   }
 
+  get currentFrame() {
+    return this.data.frames[this.index];
+  }
+
   getRenderSize(dimension, canvasWidth) {
     return (dimension * SPRITE_SCALE * canvasWidth) / BASE_CANVAS_WIDTH;
   }
@@ -19,7 +23,7 @@ export default class Sprite {
   draw(canvas, ctx, x, y) {
     const { data, index, getRenderSize } = this;
     if (Object.keys(data).length === 0) return;
-    const frame = data.frames[index];
+    const frame = this.currentFrame;
     ctx.drawImage(
       SPRITE_SHEET,
       frame.x,

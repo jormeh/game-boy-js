@@ -3,7 +3,8 @@ import { GameStateContext } from '@context/GameStateContext';
 import { FRAME_DURATION } from '@constants/index';
 
 export default function useGameLoop(canvas) {
-  const { mario } = useContext(GameStateContext);
+  const { gameState, setGameState, isStatePlayable, mario } =
+    useContext(GameStateContext);
   const lastTime = useRef(0);
   const animationFrame = useRef(null);
 
@@ -14,19 +15,21 @@ export default function useGameLoop(canvas) {
       lastTime.current = time;
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
       mario.draw(canvas, ctx);
-      mario.move(canvas);
+      mario.move(canvas, gameState, setGameState);
     }
 
     animationFrame.current = requestAnimationFrame((time) => loop(time, ctx));
   };
 
   useEffect(() => {
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    animationFrame.current = requestAnimationFrame((time) => loop(time, ctx));
-  }, [canvas]);
+    if (isStatePlayable) {
+      const ctx = canvas.getContext('2d');
+      animationFrame.current = requestAnimationFrame((time) => loop(time, ctx));
+    } else {
+      cancelAnimationFrame(animationFrame.current);
+    }
+  }, [isStatePlayable]);
 
   return () => {
     cancelAnimationFrame(animationFrame.current);
