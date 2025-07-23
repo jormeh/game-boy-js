@@ -22,7 +22,8 @@
   opacity: 0;
 }
 
-.screen__fade--menu-exit {
+.screen__fade--menu-exit,
+.screen__fade--tutorial-exit {
   background: #0a0a0a;
   animation: transitionFade 1.5s ease-in forwards;
   opacity: 0;
@@ -57,7 +58,9 @@
 .screen__background--menu-exit::before,
 .screen__background--menu-exit::after,
 .screen__background--tutorial-start::before,
-.screen__background--tutorial-start::after {
+.screen__background--tutorial-start::after,
+.screen__background--tutorial-exit::before,
+.screen__background--tutorial-exit::after {
   content: '';
   position: absolute;
   top: 0;
@@ -71,7 +74,8 @@
 
 .screen__background--menu-start::after,
 .screen__background--menu-exit::after,
-.screen__background--tutorial-start::after {
+.screen__background--tutorial-start::after,
+.screen__background--tutorial-exit::after {
   left: 100%;
 }
 
@@ -83,7 +87,9 @@
 }
 
 .screen__background--tutorial-start::before,
-.screen__background--tutorial-start::after {
+.screen__background--tutorial-start::after,
+.screen__background--tutorial-exit::before,
+.screen__background--tutorial-exit::after {
   background-image: url('/src/assets/images/background-tutorial.webp');
 }
 

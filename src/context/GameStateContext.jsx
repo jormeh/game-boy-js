@@ -39,6 +39,10 @@ export function GameStateProvider({ children }) {
       case 'tutorial-start':
         musicManager.play(gameState);
         break;
+      case 'tutorial-exit':
+        transitionManager.play('level-start', setGameState, 2500);
+        sfxManager.play('correct');
+        break;
       case 'off':
         reset();
         break;
