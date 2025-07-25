@@ -8,16 +8,20 @@ import '@components/ui/GameBoy/GameBoy.css';
 export default function GameBoy() {
   const { gameState, setGameState, controller, setController } =
     useContext(GameStateContext);
-  const isGameOn = gameState !== 'off';
+  const isGameOn = gameState.mode !== 'off';
 
   const togglePower = () => {
-    setGameState((previous) => (previous === 'off' ? 'startup' : 'off'));
+    setGameState((previous) => ({
+      ...previous,
+      mode: previous.mode === 'off' ? 'startup' : 'off',
+    }));
   };
 
   const toggleStart = () => {
-    setGameState((previous) =>
-      previous === 'menu-start' ? 'menu-exit' : previous
-    );
+    setGameState((previous) => ({
+      ...previous,
+      mode: previous.mode === 'menu-start' ? 'menu-exit' : previous.mode,
+    }));
   };
 
   const pressStartA = () => {

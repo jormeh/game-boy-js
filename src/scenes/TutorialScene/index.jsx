@@ -7,7 +7,7 @@ export default new TransitionScene({
   Background,
   Foreground,
   Transition,
-  nextState: 'level',
+  nextMode: 'level',
   transitionDelay: 2500,
 });
 
@@ -17,8 +17,8 @@ function Background() {
   );
 }
 
-export function Foreground({ gameState }) {
-  return gameState === 'tutorial-start' ? (
+export function Foreground({ mode }) {
+  return mode === 'tutorial-start' ? (
     <div className="screen__box">
       <p className="screen__tutorial">
         Press A to jump, B to dive, and D-Pad to move. Exit right when ready!
@@ -27,8 +27,8 @@ export function Foreground({ gameState }) {
   ) : null;
 }
 
-function Transition({ gameState }) {
-  return gameState === 'tutorial-exit' ? (
+function Transition({ mode }) {
+  return mode === 'tutorial-exit' ? (
     <div className="screen__fade screen__fade--tutorial"></div>
   ) : null;
 }

@@ -6,17 +6,17 @@ export default class TransitionScene extends Scene {
     Background,
     Foreground = null,
     Transition = null,
-    nextState,
+    nextMode,
     transitionDelay,
   }) {
     super({ name, Background, Foreground, Transition });
-    this.nextState = nextState;
+    this.nextMode = nextMode;
     this.transitionDelay = transitionDelay;
   }
 
   transition(timeouts, setGameState) {
     const timeout = setTimeout(
-      () => setGameState(this.nextState),
+      () => setGameState((previous) => ({ ...previous, mode: this.nextMode })),
       this.transitionDelay
     );
 

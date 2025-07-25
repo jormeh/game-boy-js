@@ -13,14 +13,14 @@ import {
 export const GameStateContext = createContext();
 
 export function GameStateProvider({ children }) {
-  const [gameState, setGameState, isStatePlayable] = useGameState();
+  const [gameState, setGameState, isModePlayable] = useGameState();
   const [currentScene, setCurrentScene] = useState(OffScene);
   const sceneManager = useRef(new SceneManager()).current;
   const musicManager = useRef(new MusicManager()).current;
   const sfxManager = useRef(new SFXManager()).current;
 
   const [controller, setController] = useController();
-  const mario = useMario(controller, sfxManager, isStatePlayable);
+  const mario = useMario(controller, sfxManager, isModePlayable);
 
   useEffect(() => {
     const reset = () => {
@@ -29,7 +29,7 @@ export function GameStateProvider({ children }) {
       sfxManager.stop();
     };
 
-    switch (gameState) {
+    switch (gameState.mode) {
       case 'startup':
         setCurrentScene(StartupScene);
         sceneManager.transitionScene(currentScene, setGameState);
@@ -75,7 +75,7 @@ export function GameStateProvider({ children }) {
       value={{
         gameState,
         setGameState,
-        isStatePlayable,
+        isModePlayable,
         currentScene,
         mario,
         controller,

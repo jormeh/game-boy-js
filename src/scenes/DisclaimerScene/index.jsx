@@ -6,7 +6,7 @@ export default new TransitionScene({
   name: 'disclaimer',
   Background,
   Foreground,
-  nextState: 'menu-start',
+  nextMode: 'menu-start',
   transitionDelay: 7000,
 });
 

@@ -4,19 +4,23 @@ import GameCanvas from '@components/GameCanvas';
 import '@components/ui/Screen/Screen.css';
 
 export default function Screen({ width, height, y }) {
-  const { gameState, currentScene } = useContext(GameStateContext);
+  const {
+    gameState: { mode },
+    currentScene,
+  } = useContext(GameStateContext);
+
   const Background = currentScene?.Background;
   const Foreground = currentScene?.Foreground;
   const Transition = currentScene?.Transition;
 
   return (
     <div className="screen" style={{ width, height, top: y }}>
-      {Background && <Background gameState={gameState} />}
+      {Background && <Background mode={mode} />}
       <div className="screen__foreground">
-        {Foreground && <Foreground gameState={gameState} />}
+        {Foreground && <Foreground mode={mode} />}
       </div>
       <GameCanvas />
-      {Transition && <Transition gameState={gameState} />}
+      {Transition && <Transition mode={mode} />}
     </div>
   );
 }

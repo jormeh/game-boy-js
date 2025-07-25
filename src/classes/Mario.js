@@ -78,7 +78,7 @@ export default class Mario extends Entity {
 
   move(canvas, gameState, setGameState) {
     const { height: ch, width: cw } = canvas;
-    const inTutorial = gameState === 'tutorial-start';
+    const inTutorial = gameState.mode === 'tutorial-start';
 
     if (this.isMovingLeft && this.canMoveLeft) {
       this.hitbox.x -= this.speed.x;
@@ -90,7 +90,10 @@ export default class Mario extends Entity {
       }
 
       if (this.pastTutorial(cw)) {
-        setGameState('tutorial-exit');
+        setGameState((previous) => ({
+          ...previous,
+          mode: 'tutorial-exit',
+        }));
       }
     }
 

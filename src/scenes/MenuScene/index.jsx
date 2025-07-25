@@ -8,7 +8,7 @@ export default new TransitionScene({
   Background,
   Foreground,
   Transition,
-  nextState: 'tutorial-start',
+  nextMode: 'tutorial-start',
   transitionDelay: 2500,
 });
 
@@ -16,8 +16,8 @@ function Background() {
   return <div className="screen__background screen__background--menu"></div>;
 }
 
-function Foreground({ gameState }) {
-  return gameState === 'menu-start' ? (
+function Foreground({ mode }) {
+  return mode === 'menu-start' ? (
     <div className="screen__menu">
       <img className="screen__logo" src={MenuLogo} />
       <img className="screen__mario" src={MenuMario} />
@@ -26,8 +26,8 @@ function Foreground({ gameState }) {
   ) : null;
 }
 
-function Transition({ gameState }) {
-  return gameState === 'menu-exit' ? (
+function Transition({ mode }) {
+  return mode === 'menu-exit' ? (
     <div className="screen__fade screen__fade--menu"></div>
   ) : null;
 }

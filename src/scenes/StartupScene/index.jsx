@@ -8,14 +8,14 @@ export default new TransitionScene({
   name: 'startup',
   Background,
   Transition,
-  nextState: 'disclaimer',
+  nextMode: 'disclaimer',
   transitionDelay: 4500,
 });
 
-function Background({ gameState }) {
+function Background({ mode }) {
   const startUpGifUrl = useMemo(() => {
     return `url(${StartupGif}?${Date.now()})`;
-  }, [gameState]);
+  }, [mode]);
 
   return (
     <div
