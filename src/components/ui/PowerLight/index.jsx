@@ -1,4 +1,4 @@
-import '@styles/ui/PowerLight.css';
+import '@components/ui/PowerLight/PowerLight.css';
 
 export default function PowerLight({ x = 0, y, size, isPowerOn = false }) {
   return (

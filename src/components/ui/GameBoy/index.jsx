@@ -1,9 +1,9 @@
+import { useContext, useEffect } from 'react';
 import { DPad, Button, PowerLight, Screen } from '@components/ui';
 import { LetterAIcon, LetterBIcon, PowerIcon } from '@components/icons';
 import { GameBoyShell } from '@assets/ui';
 import { GameStateContext } from '@context/GameStateContext';
-import { useContext, useEffect } from 'react';
-import '@styles/ui/GameBoy.css';
+import '@components/ui/GameBoy/GameBoy.css';
 
 export default function GameBoy() {
   const { gameState, setGameState, controller, setController } =

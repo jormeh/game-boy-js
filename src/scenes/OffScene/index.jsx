@@ -1,6 +1,6 @@
 import { Scene } from '@classes/scenes';
-import '@styles/ui/Screen.css';
 import '@scenes/OffScene/OffScene.css';
+import '@components/ui/Screen/Screen.css';
 
 export default new Scene({
   name: 'off',

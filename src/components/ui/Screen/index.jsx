@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { GameStateContext } from '@context/GameStateContext';
-import '@styles/ui/Screen.css';
 import GameCanvas from '@components/GameCanvas';
+import '@components/ui/Screen/Screen.css';
 
 export default function Screen({ width, height, y }) {
   const { gameState, currentScene } = useContext(GameStateContext);

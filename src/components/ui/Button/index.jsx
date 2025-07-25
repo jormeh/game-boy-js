@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import '@styles/ui/Button.css';
-import '@styles/index.css';
+import '@components/ui/Button/Button.css';
+import '/src/index.css';
 
 // A reusable Button component
 export default function Button({

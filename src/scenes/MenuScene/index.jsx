@@ -1,6 +1,6 @@
 import { TransitionScene } from '@classes/scenes';
 import { MenuLogo, MenuMario } from '@assets/ui';
-import '@styles/ui/Screen.css';
+import '@components/ui/Screen/Screen.css';
 import '@scenes/MenuScene/MenuScene.css';
 
 export default new TransitionScene({

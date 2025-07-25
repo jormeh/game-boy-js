@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 import { StartupGif } from '@assets/ui';
 import { TransitionScene } from '@classes/scenes';
-import '@styles/ui/Screen.css';
 import '@scenes/StartupScene/StartupScene.css';
+import '@components/ui/Screen/Screen.css';
 
 export default new TransitionScene({
   name: 'startup',

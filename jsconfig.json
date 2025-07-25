@@ -2,18 +2,14 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
+      "@App/*": ["App/*"],
+      "@assets/*": ["assets/*"],
       "@classes/*": ["classes/*"],
       "@components/*": ["components/*"],
       "@constants/*": ["constants/*"],
       "@context/*": ["context/*"],
       "@hooks/*": ["hooks/*"],
-      "@ui/*": ["components/ui/*"],
-      "@foregrounds/*": ["components/foregrounds/*"],
-      "@icons/*": ["components/icons/*"],
-      "@animations/*": ["components/animations/*"],
-      "@assets/*": ["assets/*"],
-      "@scenes/*": ["scenes/*"],
-      "@styles/*": ["styles/*"]
+      "@scenes/*": ["scenes/*"]
     }
   },
   "exclude": ["node_modules", "dist"]

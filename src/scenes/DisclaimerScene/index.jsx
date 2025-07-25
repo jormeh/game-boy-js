@@ -1,5 +1,5 @@
 import { TransitionScene } from '@classes/scenes';
-import '@styles/ui/Screen.css';
+import '@components/ui/Screen/Screen.css';
 import '@scenes/DisclaimerScene/DisclaimerScene.css';
 
 export default new TransitionScene({

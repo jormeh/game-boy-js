@@ -1,7 +1,7 @@
 import { useContext, useRef } from 'react';
 import { useResizeCanvas, useGameLoop } from '@hooks';
 import { GameStateContext } from '@context/GameStateContext';
-import '@styles/GameCanvas.css';
+import '@components/GameCanvas/GameCanvas.css';
 
 export default function GameCanvas() {
   const { mario } = useContext(GameStateContext);

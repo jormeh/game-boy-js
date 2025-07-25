@@ -1,6 +1,6 @@
 import { TransitionScene } from '@classes/scenes';
 import '@scenes/TutorialScene/TutorialScene.css';
-import '@styles/ui/Screen.css';
+import '@components/ui//Screen/Screen.css';
 
 export default new TransitionScene({
   name: 'tutorial',
