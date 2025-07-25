@@ -20,7 +20,13 @@ export function GameStateProvider({ children }) {
   const sfxManager = useRef(new SFXManager()).current;
 
   const [controller, setController] = useController();
-  const mario = useMario(controller, sfxManager, isModePlayable);
+  const mario = useMario(
+    controller,
+    sfxManager,
+    gameState,
+    setGameState,
+    isModePlayable
+  );
 
   useEffect(() => {
     const reset = () => {
@@ -53,7 +59,7 @@ export function GameStateProvider({ children }) {
         break;
       case 'tutorial-exit':
         sceneManager.transitionScene(currentScene, setGameState);
-        sfxManager.play('coin');
+        sfxManager.play('correct');
         break;
       case 'level':
         setCurrentScene(OffScene);
@@ -68,7 +74,21 @@ export function GameStateProvider({ children }) {
     }
 
     return () => reset();
-  }, [gameState, currentScene]);
+  }, [gameState.mode, currentScene]);
+
+  useEffect(() => {
+    console.l;
+    switch (gameState.event) {
+      case 'mistake':
+        setGameState((previous) => ({
+          ...previous,
+          event: 'idle',
+        }));
+
+        sfxManager.play('incorrect');
+        break;
+    }
+  }, [gameState.event]);
 
   return (
     <GameStateContext.Provider

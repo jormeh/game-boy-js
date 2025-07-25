@@ -1,4 +1,10 @@
-import { CoinSFX, CorrectSFX, JumpSFX, StartupSFX } from '@assets/audio/sfx';
+import {
+  CoinSFX,
+  CorrectSFX,
+  IncorrectSFX,
+  JumpSFX,
+  StartupSFX,
+} from '@assets/audio/sfx';
 
 export default class SFXManager {
   constructor() {
@@ -6,6 +12,7 @@ export default class SFXManager {
     this.audioElements = {
       coin: new Audio(CoinSFX),
       correct: new Audio(CorrectSFX),
+      incorrect: new Audio(IncorrectSFX),
       jump: new Audio(JumpSFX),
       startup: new Audio(StartupSFX),
     };

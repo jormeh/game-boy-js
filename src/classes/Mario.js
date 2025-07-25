@@ -94,6 +94,8 @@ export default class Mario extends Entity {
           ...previous,
           mode: 'tutorial-exit',
         }));
+
+        this.resetPosition(canvas);
       }
     }
 
@@ -111,6 +113,11 @@ export default class Mario extends Entity {
 
     if (this.hasFallen(cw, ch)) {
       if (inTutorial) {
+        setGameState((previous) => ({
+          ...previous,
+          event: 'mistake',
+        }));
+
         this.resetPosition(canvas);
       }
     }
