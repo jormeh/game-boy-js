@@ -1,0 +1,66 @@
+.screen__background--tutorial::before,
+.screen__background--tutorial::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  animation: scrollTutorial 8s linear infinite;
+}
+
+@keyframes scrollTutorial {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.screen__background--tutorial::after {
+  left: 100%;
+}
+
+.screen__background--tutorial::before,
+.screen__background--tutorial::after {
+  background-image: url('/src/assets/images/background-tutorial.webp');
+}
+
+.screen__box {
+  background: #0a0a0a;
+  width: 85%;
+  margin: 0 auto;
+  position: relative;
+  padding: 2% 4% 2.3%;
+  top: 4%;
+}
+
+.screen__tutorial {
+  display: inline-block;
+  text-align: justify;
+  line-height: 1.6;
+  font-family: 'PressStart2p', monospace;
+  color: white;
+  font-size: 10px;
+}
+
+@media (max-width: 375px) {
+  .screen__tutorial {
+    font-size: 8px;
+  }
+}
+
+.screen__fade--tutorial {
+  background: #0a0a0a;
+  animation: fadeTutorial 1.5s ease-in forwards;
+  opacity: 0;
+}
+
+@keyframes fadeTutorial {
+  to {
+    opacity: 100%;
+  }
+}

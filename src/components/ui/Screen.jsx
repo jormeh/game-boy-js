@@ -1,42 +1,22 @@
-import { useContext, useEffect, useMemo } from 'react';
+import { useContext } from 'react';
 import { GameStateContext } from '@context/GameStateContext';
-import { Foreground } from '@components/foregrounds/Foreground';
-import GameCanvas from '@components/GameCanvas';
-import { StartupGif } from '@assets/ui';
 import '@styles/ui/Screen.css';
+import GameCanvas from '@components/GameCanvas';
 
 export default function Screen({ width, height, y }) {
-  const { gameState } = useContext(GameStateContext);
-
-  const backgroundClassName = useMemo(() => {
-    return `screen__background screen__background--${gameState}`;
-  }, [gameState]);
-
-  const fadeClassName = useMemo(() => {
-    return `screen__fade screen__fade--${gameState}`;
-  }, [gameState]);
-
-  const startUpGifUrl = useMemo(() => {
-    return `url(${StartupGif}?${Date.now()})`;
-  }, [gameState]);
+  const { gameState, currentScene } = useContext(GameStateContext);
+  const Background = currentScene?.Background;
+  const Foreground = currentScene?.Foreground;
+  const Transition = currentScene?.Transition;
 
   return (
     <div className="screen" style={{ width, height, top: y }}>
-      <div
-        className={backgroundClassName}
-        style={
-          gameState === 'startup'
-            ? {
-                backgroundImage: startUpGifUrl,
-              }
-            : {}
-        }
-      ></div>
-      <GameCanvas />
+      {Background && <Background gameState={gameState} />}
       <div className="screen__foreground">
-        <Foreground gameState={gameState} />
+        {Foreground && <Foreground gameState={gameState} />}
       </div>
-      <div className={fadeClassName}></div>
+      <GameCanvas />
+      {Transition && <Transition gameState={gameState} />}
     </div>
   );
 }

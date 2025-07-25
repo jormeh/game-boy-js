@@ -4,8 +4,8 @@ export default class MusicManager {
   constructor() {
     this.currentTrack = null;
     this.audioElements = {
-      'menu-start': new Audio(MenuSong),
-      'tutorial-start': new Audio(TutorialSong),
+      menu: new Audio(MenuSong),
+      tutorial: new Audio(TutorialSong),
     };
   }
 

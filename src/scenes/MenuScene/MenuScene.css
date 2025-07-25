@@ -1,0 +1,83 @@
+.screen__background--menu::before,
+.screen__background--menu::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  animation: scrollMenu 8s linear infinite;
+}
+
+@keyframes scrollMenu {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.screen__background--menu::after {
+  left: 100%;
+}
+
+.screen__background--menu::before,
+.screen__background--menu::after {
+  background-image: url('/src/assets/images/background-menu.webp');
+}
+
+.screen__menu {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.screen__logo {
+  width: 90%;
+}
+
+.screen__mario {
+  width: 17%;
+}
+
+.screen__start {
+  position: relative;
+  top: -5%;
+  font-family: 'PressStart2p', monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-align: center;
+  animation: blink linear infinite 1.5s;
+}
+
+@keyframes blink {
+  from {
+    opacity: 100%;
+  }
+  to {
+    opacity: 0%;
+  }
+}
+
+.screen__fade--menu {
+  background: #0a0a0a;
+  animation: fadeMenu 1.5s ease-in forwards;
+  opacity: 0;
+}
+
+@keyframes fadeMenu {
+  to {
+    opacity: 100%;
+  }
+}
+
+@media (max-width: 374px) {
+  .screen__start {
+    font-size: 10.5px;
+  }
+}

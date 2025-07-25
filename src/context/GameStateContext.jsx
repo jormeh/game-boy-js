@@ -1,13 +1,21 @@
-import { createContext, useEffect, useRef } from 'react';
-import { TransitionManager, MusicManager, SFXManager } from '@classes/managers';
+import { createContext, useEffect, useRef, useState } from 'react';
+import { MusicManager, SFXManager } from '@classes/managers';
 import { useGameState, useController, useMario } from '@hooks';
+import SceneManager from '@classes/managers/SceneManager';
+import {
+  OffScene,
+  StartupScene,
+  DisclaimerScene,
+  MenuScene,
+  TutorialScene,
+} from '@scenes';
 
 export const GameStateContext = createContext();
 
 export function GameStateProvider({ children }) {
   const [gameState, setGameState, isStatePlayable] = useGameState();
-
-  const transitionManager = useRef(new TransitionManager()).current;
+  const [currentScene, setCurrentScene] = useState(OffScene);
+  const sceneManager = useRef(new SceneManager()).current;
   const musicManager = useRef(new MusicManager()).current;
   const sfxManager = useRef(new SFXManager()).current;
 
@@ -16,43 +24,51 @@ export function GameStateProvider({ children }) {
 
   useEffect(() => {
     const reset = () => {
-      transitionManager.stop();
+      sceneManager.stop();
       musicManager.stop();
       sfxManager.stop();
     };
 
     switch (gameState) {
       case 'startup':
-        transitionManager.play('disclaimer', setGameState, 4000);
+        setCurrentScene(StartupScene);
+        sceneManager.transitionScene(currentScene, setGameState);
         sfxManager.play('startup');
         break;
       case 'disclaimer':
-        transitionManager.play('menu-start', setGameState, 7000);
+        setCurrentScene(DisclaimerScene);
+        sceneManager.transitionScene(currentScene, setGameState);
         break;
       case 'menu-start':
-        musicManager.play(gameState);
+        setCurrentScene(MenuScene);
+        musicManager.play('menu');
         break;
       case 'menu-exit':
-        transitionManager.play('tutorial-start', setGameState, 2500);
+        sceneManager.transitionScene(currentScene, setGameState);
         sfxManager.play('coin');
         break;
       case 'tutorial-start':
-        musicManager.play(gameState);
+        setCurrentScene(TutorialScene);
+        musicManager.play('tutorial');
         break;
       case 'tutorial-exit':
-        transitionManager.play('level-start', setGameState, 2500);
-        sfxManager.play('correct');
+        sceneManager.transitionScene(currentScene, setGameState);
+        sfxManager.play('coin');
+        break;
+      case 'level':
+        setCurrentScene(OffScene);
         break;
       case 'off':
-        reset();
+        setCurrentScene(OffScene);
         break;
       default:
+        setCurrentScene(OffScene);
         console.warn(`The following game state doesn't exist: ${gameState}`);
         break;
     }
 
     return () => reset();
-  }, [gameState]);
+  }, [gameState, currentScene]);
 
   return (
     <GameStateContext.Provider
@@ -60,6 +76,7 @@ export function GameStateProvider({ children }) {
         gameState,
         setGameState,
         isStatePlayable,
+        currentScene,
         mario,
         controller,
         setController,
