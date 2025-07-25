@@ -77,7 +77,6 @@ export function GameStateProvider({ children }) {
   }, [gameState.mode, currentScene]);
 
   useEffect(() => {
-    console.l;
     switch (gameState.event) {
       case 'mistake':
         setGameState((previous) => ({
