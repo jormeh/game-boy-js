@@ -5,7 +5,6 @@
   border-radius: 4%;
 }
 
-.screen__fade,
 .screen__foreground,
 .screen__background {
   width: 100%;
@@ -13,7 +12,9 @@
 }
 
 .screen__fade {
-  border-radius: 3.8%;
+  width: 103%;
+  height: 103%;
+  border-radius: 3%;
 }
 
 .screen__background {
