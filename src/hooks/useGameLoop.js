@@ -27,6 +27,8 @@ export default function useGameLoop(canvas) {
       const ctx = canvas.getContext('2d');
       animationFrame.current = requestAnimationFrame((time) => loop(time, ctx));
     } else {
+      const ctx = canvas?.getContext('2d');
+      ctx?.clearRect(0, 0, canvas.width, canvas.height);
       cancelAnimationFrame(animationFrame.current);
     }
   }, [isStatePlayable]);
