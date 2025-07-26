@@ -6,15 +6,15 @@
   align-items: center;
 }
 
-.screen__logo {
+.screen__menu-logo {
   width: 90%;
 }
 
-.screen__mario {
+.screen__menu-mario {
   width: 17%;
 }
 
-.screen__start {
+.screen__menu-start {
   position: relative;
   top: -5%;
   font-family: 'PressStart2p', monospace;
@@ -34,7 +34,7 @@
 }
 
 @media (max-width: 374px) {
-  .screen__start {
+  .screen__menu-start {
     font-size: 10.5px;
   }
 }

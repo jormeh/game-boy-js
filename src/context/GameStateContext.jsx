@@ -3,12 +3,12 @@ import { MusicManager, SFXManager } from '@classes/managers';
 import { useGameState, useController, useMario } from '@hooks';
 import SceneManager from '@classes/managers/SceneManager';
 import {
-  OffScene,
-  StartupScene,
   DisclaimerScene,
   MenuScene,
+  OffScene,
+  StartupScene,
   TutorialScene,
-} from '@scenes';
+} from '@scenes/index';
 
 export const GameStateContext = createContext();
 
@@ -61,7 +61,7 @@ export function GameStateProvider({ children }) {
         sceneManager.transitionScene(currentScene, setGameState);
         sfxManager.play('correct');
         break;
-      case 'level':
+      case 'level-start':
         setCurrentScene(OffScene);
         break;
       case 'off':

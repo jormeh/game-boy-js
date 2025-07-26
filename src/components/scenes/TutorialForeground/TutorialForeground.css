@@ -1,4 +1,4 @@
-.screen__box {
+.screen__tutorial {
   background: #0a0a0a;
   width: 85%;
   margin: 0 auto;
@@ -7,7 +7,7 @@
   top: 4%;
 }
 
-.screen__tutorial {
+.screen__tutorial-message {
   display: inline-block;
   text-align: justify;
   line-height: 1.6;
@@ -17,7 +17,7 @@
 }
 
 @media (max-width: 375px) {
-  .screen__tutorial {
+  .screen__tutorial-message {
     font-size: 8px;
   }
 }

@@ -1,12 +1,8 @@
-.screen__background--disclaimer {
-  background: #0a0a0a;
-}
-
 .screen__disclaimer {
   padding: 5%;
 }
 
-.screen__statement {
+.screen__disclaimer-message {
   font-family: 'PressStart2P', monospace;
   display: inline-block;
   text-align: justify;
@@ -15,24 +11,23 @@
   font-size: 10px;
   text-transform: uppercase;
   opacity: 0;
-  animation: fadeInDisclaimer 1s ease-in forwards,
-    fadeOutDisclaimer 1s ease-in 5.5s forwards;
+  animation: fadeIn 1s ease-in forwards, fadeOut 1s ease-in 5.5s forwards;
 }
 
-@keyframes fadeInDisclaimer {
+@keyframes fadeIn {
   to {
     opacity: 100%;
   }
 }
 
-@keyframes fadeOutDisclaimer {
+@keyframes fadeOut {
   to {
     opacity: 0%;
   }
 }
 
 @media (max-width: 375px) {
-  .screen__statement {
+  .screen__disclaimer-message {
     font-size: 7.5px;
   }
 }
