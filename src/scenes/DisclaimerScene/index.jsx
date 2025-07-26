@@ -6,8 +6,8 @@ export default new TransitionScene({
   name: 'disclaimer',
   Background,
   Foreground,
-  nextMode: 'menu-start',
-  transitionDelay: 7000,
+  targetMode: 'menu-start',
+  modeSwitchDelay: 7000,
 });
 
 function Background() {

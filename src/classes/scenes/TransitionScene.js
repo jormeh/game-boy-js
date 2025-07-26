@@ -6,19 +6,25 @@ export default class TransitionScene extends Scene {
     Background,
     Foreground = null,
     Transition = null,
-    nextMode,
-    transitionDelay,
+    targetMode,
+    triggerMode = '',
+    visualStartDelay = 0,
+    modeSwitchDelay,
+    animationDuration,
   }) {
     super({ name, Background, Foreground, Transition });
-    this.nextMode = nextMode;
-    this.transitionDelay = transitionDelay;
+    this.targetMode = targetMode;
+    this.triggerMode = triggerMode;
+    this.visualStartDelay = visualStartDelay;
+    this.modeSwitchDelay = modeSwitchDelay;
+    this.animationDuration = animationDuration;
+    this.isTransitioning = false;
   }
 
   transition(timeouts, setGameState) {
-    const timeout = setTimeout(
-      () => setGameState((previous) => ({ ...previous, mode: this.nextMode })),
-      this.transitionDelay
-    );
+    const timeout = setTimeout(() => {
+      setGameState((previous) => ({ ...previous, mode: this.targetMode }));
+    }, this.modeSwitchDelay);
 
     timeouts.push(timeout);
   }

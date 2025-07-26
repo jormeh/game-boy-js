@@ -1,15 +1,18 @@
 import { useMemo } from 'react';
 import { StartupGif } from '@assets/ui';
 import { TransitionScene } from '@classes/scenes';
+import { FadeTransition } from '@components/scenes';
 import '@scenes/StartupScene/StartupScene.css';
 import '@components/ui/Screen/Screen.css';
 
 export default new TransitionScene({
   name: 'startup',
   Background,
-  Transition,
-  nextMode: 'disclaimer',
-  transitionDelay: 4500,
+  Transition: FadeTransition,
+  targetMode: 'disclaimer',
+  modeSwitchDelay: 4500,
+  visualStartDelay: 3250,
+  animationDuration: 1,
 });
 
 function Background({ mode }) {
@@ -23,8 +26,4 @@ function Background({ mode }) {
       style={{ backgroundImage: startUpGifUrl }}
     ></div>
   );
-}
-
-function Transition() {
-  return <div className="screen__fade screen__fade--startup"></div>;
 }

@@ -1,6 +1,6 @@
 import { TransitionScene } from '@classes/scenes';
 import { MenuLogo, MenuMario } from '@assets/ui';
-import { ScrollingBackground } from '@components/scenes';
+import { FadeTransition, ScrollingBackground } from '@components/scenes';
 import '@components/ui/Screen/Screen.css';
 import '@scenes/MenuScene/MenuScene.css';
 
@@ -8,9 +8,11 @@ export default new TransitionScene({
   name: 'menu',
   Background: ScrollingBackground,
   Foreground,
-  Transition,
-  nextMode: 'tutorial-start',
-  transitionDelay: 2500,
+  Transition: FadeTransition,
+  targetMode: 'tutorial-start',
+  triggerMode: 'menu-exit',
+  modeSwitchDelay: 2500,
+  animationDuration: 1.5,
 });
 
 function Foreground({ mode }) {
@@ -20,11 +22,5 @@ function Foreground({ mode }) {
       <img className="screen__mario" src={MenuMario} />
       <p className="screen__start">Press Start</p>
     </div>
-  ) : null;
-}
-
-function Transition({ mode }) {
-  return mode === 'menu-exit' ? (
-    <div className="screen__fade screen__fade--menu"></div>
   ) : null;
 }

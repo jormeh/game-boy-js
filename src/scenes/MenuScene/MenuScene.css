@@ -33,18 +33,6 @@
   }
 }
 
-.screen__fade--menu {
-  background: #0a0a0a;
-  animation: fadeMenu 1.5s ease-in forwards;
-  opacity: 0;
-}
-
-@keyframes fadeMenu {
-  to {
-    opacity: 100%;
-  }
-}
-
 @media (max-width: 374px) {
   .screen__start {
     font-size: 10.5px;

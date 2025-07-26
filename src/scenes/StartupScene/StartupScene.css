@@ -3,15 +3,3 @@
   background-repeat: no-repeat;
   background-position: center;
 }
-
-.screen__fade--startup {
-  background: #0a0a0a;
-  animation: fadeStartup 1s ease-in forwards 3s;
-  opacity: 0;
-}
-
-@keyframes fadeStartup {
-  to {
-    opacity: 100%;
-  }
-}

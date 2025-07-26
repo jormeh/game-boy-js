@@ -1,13 +1,12 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { GameStateContext } from '@context/GameStateContext';
 import GameCanvas from '@components/GameCanvas';
+import useSceneTransition from '@hooks/useSceneTransition';
 import '@components/ui/Screen/Screen.css';
 
 export default function Screen({ width, height, y }) {
-  const {
-    gameState: { mode },
-    currentScene,
-  } = useContext(GameStateContext);
+  const { gameState, currentScene } = useContext(GameStateContext);
+  const isTransitioning = useSceneTransition(currentScene, gameState);
 
   const Background = currentScene?.Background;
   const Foreground = currentScene?.Foreground;
@@ -15,12 +14,16 @@ export default function Screen({ width, height, y }) {
 
   return (
     <div className="screen" style={{ width, height, top: y }}>
-      {Background && <Background name={currentScene.name} mode={mode} />}
+      {Background && (
+        <Background name={currentScene.name} mode={gameState.mode} />
+      )}
       <div className="screen__foreground">
-        {Foreground && <Foreground mode={mode} />}
+        {Foreground && <Foreground mode={gameState.mode} />}
       </div>
       <GameCanvas />
-      {Transition && <Transition mode={mode} />}
+      {Transition && (
+        <Transition isTransitioning={isTransitioning} scene={currentScene} />
+      )}
     </div>
   );
 }

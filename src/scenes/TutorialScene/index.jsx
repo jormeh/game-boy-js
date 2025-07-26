@@ -1,5 +1,5 @@
 import { TransitionScene } from '@classes/scenes';
-import { ScrollingBackground } from '@components/scenes';
+import { FadeTransition, ScrollingBackground } from '@components/scenes';
 import '@scenes/TutorialScene/TutorialScene.css';
 import '@components/ui//Screen/Screen.css';
 
@@ -7,9 +7,11 @@ export default new TransitionScene({
   name: 'tutorial',
   Background: ScrollingBackground,
   Foreground,
-  Transition,
-  nextMode: 'level',
-  transitionDelay: 2500,
+  Transition: FadeTransition,
+  targetMode: 'level',
+  triggerMode: 'tutorial-exit',
+  modeSwitchDelay: 2500,
+  animationDuration: 1.5,
 });
 
 export function Foreground({ mode }) {
@@ -19,11 +21,5 @@ export function Foreground({ mode }) {
         Press A to jump, B to dive, and D-Pad to move. Exit right when ready!
       </p>
     </div>
-  ) : null;
-}
-
-function Transition({ mode }) {
-  return mode === 'tutorial-exit' ? (
-    <div className="screen__fade screen__fade--tutorial"></div>
   ) : null;
 }
