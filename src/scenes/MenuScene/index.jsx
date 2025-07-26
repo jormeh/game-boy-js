@@ -1,20 +1,17 @@
 import { TransitionScene } from '@classes/scenes';
 import { MenuLogo, MenuMario } from '@assets/ui';
+import { ScrollingBackground } from '@components/scenes';
 import '@components/ui/Screen/Screen.css';
 import '@scenes/MenuScene/MenuScene.css';
 
 export default new TransitionScene({
   name: 'menu',
-  Background,
+  Background: ScrollingBackground,
   Foreground,
   Transition,
   nextMode: 'tutorial-start',
   transitionDelay: 2500,
 });
-
-function Background() {
-  return <div className="screen__background screen__background--menu"></div>;
-}
 
 function Foreground({ mode }) {
   return mode === 'menu-start' ? (

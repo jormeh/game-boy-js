@@ -1,0 +1,38 @@
+.screen__background--menu::before,
+.screen__background--menu::after,
+.screen__background--tutorial::before,
+.screen__background--tutorial::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  animation: scroll 8s linear infinite;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.screen__background--menu::after,
+.screen__background--tutorial::after {
+  left: 100%;
+}
+
+.screen__background--menu::before,
+.screen__background--menu::after {
+  background-image: url('/src/assets/images/background-menu.webp');
+}
+
+.screen__background--tutorial::before,
+.screen__background--tutorial::after {
+  background-image: url('/src/assets/images/background-tutorial.webp');
+}

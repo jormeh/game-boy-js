@@ -1,21 +1,16 @@
 import { TransitionScene } from '@classes/scenes';
+import { ScrollingBackground } from '@components/scenes';
 import '@scenes/TutorialScene/TutorialScene.css';
 import '@components/ui//Screen/Screen.css';
 
 export default new TransitionScene({
   name: 'tutorial',
-  Background,
+  Background: ScrollingBackground,
   Foreground,
   Transition,
   nextMode: 'level',
   transitionDelay: 2500,
 });
-
-function Background() {
-  return (
-    <div className="screen__background screen__background--tutorial"></div>
-  );
-}
 
 export function Foreground({ mode }) {
   return mode === 'tutorial-start' ? (

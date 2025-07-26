@@ -15,7 +15,7 @@ export default function Screen({ width, height, y }) {
 
   return (
     <div className="screen" style={{ width, height, top: y }}>
-      {Background && <Background mode={mode} />}
+      {Background && <Background name={currentScene.name} mode={mode} />}
       <div className="screen__foreground">
         {Foreground && <Foreground mode={mode} />}
       </div>
