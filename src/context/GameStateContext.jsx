@@ -47,7 +47,7 @@ export function GameStateProvider({ children }) {
         break;
       case 'menu-start':
         setCurrentScene(MenuScene);
-        musicManager.play('menu');
+        musicManager.play(currentScene.song);
         break;
       case 'menu-exit':
         sceneManager.transitionScene(currentScene, setGameState);
@@ -55,7 +55,7 @@ export function GameStateProvider({ children }) {
         break;
       case 'tutorial-start':
         setCurrentScene(TutorialScene);
-        musicManager.play('tutorial');
+        musicManager.play(currentScene.song);
         break;
       case 'tutorial-exit':
         sceneManager.transitionScene(currentScene, setGameState);

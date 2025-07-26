@@ -7,6 +7,7 @@ import {
 
 export default new TransitionScene({
   name: 'menu',
+  song: 'menu',
   Background: ScrollingBackground,
   Foreground: MenuForeground,
   Transition: FadeTransition,

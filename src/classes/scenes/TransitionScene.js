@@ -3,6 +3,7 @@ import Scene from './Scene';
 export default class TransitionScene extends Scene {
   constructor({
     name,
+    song,
     Background,
     Foreground = null,
     Transition = null,
@@ -12,7 +13,7 @@ export default class TransitionScene extends Scene {
     modeSwitchDelay,
     animationDuration,
   }) {
-    super({ name, Background, Foreground, Transition });
+    super({ name, song, Background, Foreground, Transition });
     this.targetMode = targetMode;
     this.triggerMode = triggerMode;
     this.visualStartDelay = visualStartDelay;
