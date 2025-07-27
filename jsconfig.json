@@ -9,6 +9,7 @@
       "@constants/*": ["constants/*"],
       "@context/*": ["context/*"],
       "@hooks/*": ["hooks/*"],
+      "@levels/*": ["levels/*"],
       "@scenes/*": ["scenes/*"]
     }
   },

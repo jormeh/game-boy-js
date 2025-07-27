@@ -13,6 +13,7 @@ export default defineConfig({
       '@constants': path.resolve(__dirname, 'src/constants'),
       '@context': path.resolve(__dirname, 'src/context'),
       '@hooks': path.resolve(__dirname, 'src/hooks'),
+      '@levels': path.resolve(__dirname, 'src/levels'),
       '@scenes': path.resolve(__dirname, 'src/scenes'),
     },
   },
