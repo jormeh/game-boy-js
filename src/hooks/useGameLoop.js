@@ -24,6 +24,7 @@ export default function useGameLoop(canvas) {
 
   useEffect(() => {
     if (isModePlayable) {
+      mario.resetPosition(canvas);
       const ctx = canvas.getContext('2d');
       animationFrame.current = requestAnimationFrame((time) => loop(time, ctx));
     } else {
