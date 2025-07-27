@@ -25,8 +25,9 @@ export function GameStateProvider({ children }) {
   const mario = useMario(controller, sfxManager, isModePlayable);
 
   useEffect(() => {
-    const reset = () => {
+    const resetManagers = (stopMusic = true) => {
       sceneManager.stop();
+      if (stopMusic) musicManager.stop();
       sfxManager.stop();
     };
 
@@ -46,7 +47,6 @@ export function GameStateProvider({ children }) {
         break;
       case 'menu-exit':
         sceneManager.transitionScene(currentScene, gameState, setGameState);
-        musicManager.stop();
         sfxManager.play('coin');
         break;
       case 'tutorial-start':
@@ -55,7 +55,6 @@ export function GameStateProvider({ children }) {
         break;
       case 'tutorial-exit':
         sceneManager.transitionScene(currentScene, gameState, setGameState);
-        musicManager.stop();
         sfxManager.play('correct');
         break;
       case 'level-start':
@@ -67,15 +66,19 @@ export function GameStateProvider({ children }) {
         console.log('hello');
         break;
       case 'off':
-        setCurrentScene(OffScene);
-        break;
       default:
         setCurrentScene(OffScene);
-        console.warn(`The following game state doesn't exist: ${gameState}`);
+        resetManagers();
         break;
     }
 
-    return reset;
+    return () => {
+      if (gameState.mode === 'level-start') {
+        resetManagers(false);
+      } else {
+        resetManagers();
+      }
+    };
   }, [gameState.mode, currentScene]);
 
   useEffect(() => {
