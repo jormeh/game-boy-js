@@ -22,13 +22,7 @@ export function GameStateProvider({ children }) {
   const sfxManager = useRef(new SFXManager()).current;
 
   const [controller, setController] = useController();
-  const mario = useMario(
-    controller,
-    sfxManager,
-    gameState,
-    setGameState,
-    isModePlayable
-  );
+  const mario = useMario(controller, sfxManager, isModePlayable);
 
   useEffect(() => {
     const reset = () => {
