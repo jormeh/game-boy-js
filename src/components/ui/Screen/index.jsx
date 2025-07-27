@@ -18,7 +18,9 @@ export default function Screen({ width, height, y }) {
         <Background name={currentScene.name} mode={gameState.mode} />
       )}
       <div className="screen__foreground">
-        {Foreground && <Foreground mode={gameState.mode} />}
+        {Foreground && (
+          <Foreground mode={gameState.mode} scene={currentScene} />
+        )}
       </div>
       <GameCanvas />
       {Transition && (

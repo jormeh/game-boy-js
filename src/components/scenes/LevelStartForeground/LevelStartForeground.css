@@ -1,0 +1,50 @@
+.screen__level-start {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0a0a0a;
+  width: 100%;
+  height: 100%;
+  border-radius: 3%;
+  animation: hide 0.25s linear 1.7s forwards;
+}
+
+@keyframes hide {
+  from {
+    opacity: 100%;
+  }
+  to {
+    opacity: 0%;
+  }
+}
+
+.screen__level-start-title {
+  font-size: 0.9em;
+  text-transform: uppercase;
+  font-family: 'PressStart2p', monospace;
+  position: relative;
+  bottom: 2%;
+  color: yellow;
+  animation: blurOut 0.25s linear 1.7s forwards;
+}
+
+@keyframes blurOut {
+  from {
+    filter: blur(0px);
+  }
+  to {
+    filter: blur(50px);
+  }
+}
+
+@media (max-width: 375px) {
+  .screen__level-start-title {
+    font-size: 0.6em;
+  }
+}
+
+@media (max-width: 410px) {
+  .screen__level-start-title {
+    font-size: 0.75em;
+  }
+}

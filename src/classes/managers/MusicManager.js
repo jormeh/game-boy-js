@@ -1,10 +1,11 @@
-import { MenuSong, TutorialSong } from '@assets/audio/music';
+import { MenuSong, OverworldSong, TutorialSong } from '@assets/audio/music';
 
 export default class MusicManager {
   constructor() {
     this.currentTrack = null;
     this.audioElements = {
       menu: new Audio(MenuSong),
+      overworld: new Audio(OverworldSong),
       tutorial: new Audio(TutorialSong),
     };
   }

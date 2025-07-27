@@ -22,7 +22,7 @@ export default class TransitionScene extends Scene {
     this.isTransitioning = false;
   }
 
-  transition(timeouts, setGameState) {
+  transition(timeouts, gameState, setGameState) {
     const timeout = setTimeout(() => {
       setGameState((previous) => ({ ...previous, mode: this.targetMode }));
     }, this.modeSwitchDelay);

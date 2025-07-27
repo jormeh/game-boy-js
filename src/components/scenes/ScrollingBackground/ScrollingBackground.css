@@ -1,7 +1,9 @@
 .screen__background--menu::before,
 .screen__background--menu::after,
 .screen__background--tutorial::before,
-.screen__background--tutorial::after {
+.screen__background--tutorial::after,
+.screen__background--overworld::before,
+.screen__background--overworld::after {
   content: '';
   position: absolute;
   top: 0;
@@ -23,7 +25,8 @@
 }
 
 .screen__background--menu::after,
-.screen__background--tutorial::after {
+.screen__background--tutorial::after,
+.screen__background--overworld::after {
   left: 100%;
 }
 
@@ -35,4 +38,9 @@
 .screen__background--tutorial::before,
 .screen__background--tutorial::after {
   background-image: url('/src/assets/images/background-tutorial.webp');
+}
+
+.screen__background--overworld::before,
+.screen__background--overworld::after {
+  background-image: url('/src/assets//images/background-overworld.webp');
 }

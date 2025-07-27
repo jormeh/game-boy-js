@@ -1,6 +1,6 @@
 import { createContext, useEffect, useRef, useState } from 'react';
 import { MusicManager, SFXManager } from '@classes/managers';
-import { useGameState, useController, useMario } from '@hooks';
+import { useGameState, useController, useLevels, useMario } from '@hooks';
 import SceneManager from '@classes/managers/SceneManager';
 import {
   DisclaimerScene,
@@ -9,12 +9,14 @@ import {
   StartupScene,
   TutorialScene,
 } from '@scenes/index';
+import Overworld from '@levels/Overworld';
 
 export const GameStateContext = createContext();
 
 export function GameStateProvider({ children }) {
   const [gameState, setGameState, isModePlayable] = useGameState();
   const [currentScene, setCurrentScene] = useState(OffScene);
+  const currentLevel = useLevels([Overworld]);
   const sceneManager = useRef(new SceneManager()).current;
   const musicManager = useRef(new MusicManager()).current;
   const sfxManager = useRef(new SFXManager()).current;
@@ -31,26 +33,26 @@ export function GameStateProvider({ children }) {
   useEffect(() => {
     const reset = () => {
       sceneManager.stop();
-      musicManager.stop();
       sfxManager.stop();
     };
 
     switch (gameState.mode) {
       case 'startup':
         setCurrentScene(StartupScene);
-        sceneManager.transitionScene(currentScene, setGameState);
+        sceneManager.transitionScene(currentScene, gameState, setGameState);
         sfxManager.play('startup');
         break;
       case 'disclaimer':
         setCurrentScene(DisclaimerScene);
-        sceneManager.transitionScene(currentScene, setGameState);
+        sceneManager.transitionScene(currentScene, gameState, setGameState);
         break;
       case 'menu-start':
         setCurrentScene(MenuScene);
         musicManager.play(currentScene.song);
         break;
       case 'menu-exit':
-        sceneManager.transitionScene(currentScene, setGameState);
+        sceneManager.transitionScene(currentScene, gameState, setGameState);
+        musicManager.stop();
         sfxManager.play('coin');
         break;
       case 'tutorial-start':
@@ -58,11 +60,17 @@ export function GameStateProvider({ children }) {
         musicManager.play(currentScene.song);
         break;
       case 'tutorial-exit':
-        sceneManager.transitionScene(currentScene, setGameState);
+        sceneManager.transitionScene(currentScene, gameState, setGameState);
+        musicManager.stop();
         sfxManager.play('correct');
         break;
       case 'level-start':
-        setCurrentScene(OffScene);
+        setCurrentScene(currentLevel);
+        sceneManager.transitionScene(currentScene, gameState, setGameState);
+        musicManager.play(currentLevel.song);
+        break;
+      case 'level-playing':
+        console.log('hello');
         break;
       case 'off':
         setCurrentScene(OffScene);
@@ -73,7 +81,7 @@ export function GameStateProvider({ children }) {
         break;
     }
 
-    return () => reset();
+    return reset;
   }, [gameState.mode, currentScene]);
 
   useEffect(() => {
