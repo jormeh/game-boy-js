@@ -1,5 +1,6 @@
 export { default as DisclaimerBackground } from '@components/scenes/DisclaimerBackground';
 export { default as DisclaimerForeground } from '@components/scenes/DisclaimerForeground';
+export { default as HeadsUpDisplay } from '@components/scenes/HeadsUpDisplay';
 export { default as MenuForeground } from '@components/scenes/MenuForeground';
 export { default as OffBackground } from '@components/scenes//OffBackground';
 export { default as ScrollingBackground } from '@components/scenes/ScrollingBackground';

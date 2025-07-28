@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { GameStateContext } from '@context/GameStateContext';
 import GameCanvas from '@components/GameCanvas';
 import '@components/ui/Screen/Screen.css';
-import { TransitionLayer } from '@components/scenes';
+import { HeadsUpDisplay, TransitionLayer } from '@components/scenes';
 
 export default function Screen({ width, height, y }) {
   const { gameState, currentScene, currentTransition } =
@@ -18,8 +18,9 @@ export default function Screen({ width, height, y }) {
           <Foreground mode={gameState.mode} scene={currentScene} />
         )}
       </div>
-      <TransitionLayer transition={currentTransition} />
       <GameCanvas />
+      <HeadsUpDisplay gameState={gameState} />
+      <TransitionLayer transition={currentTransition} />
     </div>
   );
 }
