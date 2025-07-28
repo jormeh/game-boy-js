@@ -80,6 +80,11 @@ export function GameStateProvider({ children }) {
       case 'level-playing':
         console.log('hello');
         break;
+      case 'player-died':
+        sceneManager.changeMode('level-start', 4000);
+        sceneManager.transition(new Transition('fade', 0.5, 3.2));
+        sfxManager.play('died');
+        break;
       case 'off':
       default:
         sceneManager.play(OffScene);

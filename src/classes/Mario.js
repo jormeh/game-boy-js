@@ -117,8 +117,12 @@ export default class Mario extends Entity {
           ...previous,
           event: 'mistake',
         }));
-
         this.resetPosition(canvas);
+      } else {
+        setGameState((previous) => ({
+          ...previous,
+          mode: 'player-died',
+        }));
       }
     }
 
