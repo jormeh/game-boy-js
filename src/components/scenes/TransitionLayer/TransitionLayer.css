@@ -1,0 +1,67 @@
+.screen__transition {
+  position: absolute;
+  border-radius: 4%;
+  width: 100%;
+  height: 100%;
+}
+
+.screen__transition--fade,
+.screen__transition--overlay {
+  background: #0a0a0a;
+}
+
+.screen__transition--fade {
+  animation-name: fade;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+
+.screen__transition--overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation-name: blur;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+@keyframes blur {
+  from {
+    opacity: 100%;
+    filter: blur(0px);
+  }
+  to {
+    opacity: 0%;
+    filter: blur(8px);
+  }
+}
+
+.screen__transition-text {
+  font-size: 0.7em;
+  text-transform: uppercase;
+  font-family: 'PressStart2p', monospace;
+  position: relative;
+  bottom: 2%;
+  color: yellow;
+}
+
+@media (max-width: 375px) {
+  .screen__transition-text {
+    font-size: 0.5em;
+  }
+}
+
+@media (max-width: 410px) {
+  .screen__level-start-title {
+    font-size: 0.6em;
+  }
+}

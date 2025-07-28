@@ -11,12 +11,6 @@
   height: 100%;
 }
 
-.screen__fade {
-  width: 103%;
-  height: 103%;
-  border-radius: 3%;
-}
-
 .screen__background {
   overflow: hidden;
 }

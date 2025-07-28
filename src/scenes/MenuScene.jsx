@@ -1,18 +1,9 @@
-import { TransitionScene } from '@classes/scenes';
-import {
-  FadeTransition,
-  MenuForeground,
-  ScrollingBackground,
-} from '@components/scenes';
+import { Scene } from '@classes/scenes';
+import { MenuForeground, ScrollingBackground } from '@components/scenes';
 
-export default new TransitionScene({
+export default new Scene({
   name: 'menu',
   song: 'menu',
   Background: ScrollingBackground,
   Foreground: MenuForeground,
-  Transition: FadeTransition,
-  targetMode: 'tutorial-start',
-  triggerMode: 'menu-exit',
-  modeSwitchDelay: 2500,
-  animationDuration: 1.5,
 });

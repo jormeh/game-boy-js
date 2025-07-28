@@ -4,4 +4,4 @@ export { default as useGameState } from '@hooks/useGameState';
 export { default as useLevels } from '@hooks/useLevels';
 export { default as useMario } from '@hooks/useMario';
 export { default as useResizeCanvas } from '@hooks/useResizeCanvas';
-export { default as useSceneTransition } from '@hooks/useSceneTransition';
+export { default as useSceneManager } from '@hooks/useSceneManager';

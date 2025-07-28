@@ -1,18 +1,9 @@
-import { TransitionScene } from '@classes/scenes';
-import {
-  FadeTransition,
-  ScrollingBackground,
-  TutorialForeground,
-} from '@components/scenes';
+import { Scene } from '@classes/scenes';
+import { ScrollingBackground, TutorialForeground } from '@components/scenes';
 
-export default new TransitionScene({
+export default new Scene({
   name: 'tutorial',
   song: 'tutorial',
   Background: ScrollingBackground,
   Foreground: TutorialForeground,
-  Transition: FadeTransition,
-  targetMode: 'level-start',
-  triggerMode: 'tutorial-exit',
-  modeSwitchDelay: 2500,
-  animationDuration: 1.5,
 });
