@@ -1,4 +1,4 @@
-import Entity from './Entity';
+import { Entity } from '@classes/entities';
 
 export default class Mario extends Entity {
   constructor() {

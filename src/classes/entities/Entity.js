@@ -1,7 +1,5 @@
 import { BASE_CANVAS_HEIGHT, BASE_CANVAS_WIDTH } from '@constants/index';
-import Hitbox from './Hitbox';
-import Sprite from './Sprite';
-import Mario from './Mario';
+import { Hitbox, Sprite, Mario } from '@classes/entities';
 
 export default class Entity {
   constructor(

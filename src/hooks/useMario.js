@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import Mario from '@classes/Mario';
+import { Mario } from '@classes/entities/';
 
 export default function useMario(controller, sfxManager, isModePlayable) {
   const mario = useRef(new Mario()).current;
