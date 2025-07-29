@@ -1,0 +1,34 @@
+import Overworld from '@levels/Overworld';
+
+export default class LevelManager {
+  constructor() {
+    this.levels = [Overworld];
+    this.timeouts = [];
+    this.entities = [];
+    this.index = 0;
+  }
+
+  get currentLevel() {
+    return this.levels[this.index];
+  }
+
+  get beatGame() {
+    return this.index + 1 === this.levels.length;
+  }
+
+  goToNextLevel() {
+    this.index += 1;
+  }
+
+  goToFirstLevel() {
+    this.index = 0;
+  }
+
+  spawnLevel() {
+    this.entities = [];
+  }
+
+  stop() {
+    this.timeouts.forEach((timeout) => clearTimeout(timeout));
+  }
+}

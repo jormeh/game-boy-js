@@ -4,13 +4,8 @@ export default class SceneManager {
   constructor(setGameState, setScene, setTransition) {
     this.timeouts = [];
     this.setGameState = setGameState;
-    this.setScene = setScene;
+    this.render = setScene;
     this.setTransition = setTransition;
-  }
-
-  play(scene) {
-    this.setScene(scene);
-    this.setTransition(new Transition());
   }
 
   changeMode(targetMode, delayMS) {
@@ -30,6 +25,7 @@ export default class SceneManager {
   }
 
   stop() {
+    this.setTransition(new Transition());
     this.timeouts.forEach((timeout) => clearTimeout(timeout));
   }
 }

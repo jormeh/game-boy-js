@@ -1,12 +1,6 @@
 import { createContext, useEffect, useRef, useState } from 'react';
-import { MusicManager, SFXManager } from '@classes/managers';
-import {
-  useGameState,
-  useController,
-  useLevels,
-  useMario,
-  useSceneManager,
-} from '@hooks';
+import { LevelManager, MusicManager, SFXManager } from '@classes/managers';
+import { useGameState, useController, useMario, useSceneManager } from '@hooks';
 import {
   DisclaimerScene,
   MenuScene,
@@ -14,22 +8,19 @@ import {
   StartupScene,
   TutorialScene,
 } from '@scenes/index';
-import Overworld from '@levels/Overworld';
 import { Transition } from '@classes/scenes';
 
 export const GameStateContext = createContext();
-
-useSceneManager;
 
 export function GameStateProvider({ children }) {
   const [gameState, setGameState, isModePlayable] = useGameState();
 
   const [sceneManager, currentScene, currentTransition] =
     useSceneManager(setGameState);
+
+  const levelManager = useRef(new LevelManager()).current;
   const musicManager = useRef(new MusicManager()).current;
   const sfxManager = useRef(new SFXManager()).current;
-
-  const currentLevel = useLevels([Overworld]);
   const [controller, setController] = useController();
   const mario = useMario(controller, sfxManager, isModePlayable);
 
@@ -38,21 +29,22 @@ export function GameStateProvider({ children }) {
       sceneManager.stop();
       if (stopMusic) musicManager.stop();
       sfxManager.stop();
+      levelManager.stop();
     };
 
     switch (gameState.mode) {
       case 'startup':
-        sceneManager.play(StartupScene);
+        sceneManager.render(StartupScene);
         sceneManager.changeMode('disclaimer', 4500);
         sceneManager.transition(new Transition('fade', 1), 3250);
         sfxManager.play('startup');
         break;
       case 'disclaimer':
-        sceneManager.play(DisclaimerScene);
+        sceneManager.render(DisclaimerScene);
         sceneManager.changeMode('menu-start', 7000);
         break;
       case 'menu-start':
-        sceneManager.play(MenuScene);
+        sceneManager.render(MenuScene);
         musicManager.play(currentScene.song);
         break;
       case 'menu-exit':
@@ -61,7 +53,7 @@ export function GameStateProvider({ children }) {
         sfxManager.play('coin');
         break;
       case 'tutorial-start':
-        sceneManager.play(TutorialScene);
+        sceneManager.render(TutorialScene);
         musicManager.play(currentScene.song);
         break;
       case 'tutorial-exit':
@@ -70,14 +62,17 @@ export function GameStateProvider({ children }) {
         sfxManager.play('correct');
         break;
       case 'level-start':
-        sceneManager.play(currentLevel);
+        const levelScene = levelManager.currentLevel;
+        console.log(levelScene);
+        sceneManager.render(levelScene);
         sceneManager.changeMode('level-playing', 1900);
         sceneManager.transition(
-          new Transition('overlay', 0.25, 1.75, currentLevel.title)
+          new Transition('overlay', 0.25, 1.75, levelScene.title)
         );
-        musicManager.play(currentLevel.song);
+        musicManager.play(levelScene.song);
         break;
       case 'level-playing':
+        // levelManager.spawn(currentLevel)
         console.log('playing...');
         break;
       case 'player-died':
@@ -103,7 +98,7 @@ export function GameStateProvider({ children }) {
         break;
       case 'off':
       default:
-        sceneManager.play(OffScene);
+        sceneManager.render(OffScene);
         resetManagers();
         break;
     }
@@ -115,7 +110,7 @@ export function GameStateProvider({ children }) {
         resetManagers();
       }
     };
-  }, [gameState.mode, currentScene]);
+  }, [gameState.mode]);
 
   useEffect(() => {
     switch (gameState.event) {
