@@ -8,7 +8,9 @@ export default function HeadsUpDisplay({ gameState }) {
       <div className="screen__hud-lives">
         <img className="screen__hud-life-icon" src={HUDLives} />
         <img className="screen__hud-multiply-icon" src={HUDMultiply} />
-        <span className="screen__hud-number">{gameState.lives}</span>
+        <span className="screen__hud-number">
+          {gameState.lives >= 0 ? gameState.lives : 0}
+        </span>
       </div>
       <div className="screen__hud-coins">
         <img className="screen__hud-coin-icon" src={HUDCoins} />

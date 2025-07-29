@@ -78,12 +78,28 @@ export function GameStateProvider({ children }) {
         musicManager.play(currentLevel.song);
         break;
       case 'level-playing':
-        console.log('hello');
+        console.log('playing...');
         break;
       case 'player-died':
-        sceneManager.changeMode('level-start', 4000);
-        sceneManager.transition(new Transition('fade', 0.5, 3.2));
+        if (gameState.lives >= 0) {
+          sceneManager.changeMode('level-start', 4000);
+          sceneManager.transition(new Transition('fade', 0.5, 3.2));
+        } else {
+          sceneManager.changeMode('game-over', 4000);
+        }
+
         sfxManager.play('died');
+        break;
+      case 'game-over':
+        sceneManager.changeMode('menu-start', 8500);
+        sceneManager.transition(new Transition('slide', 3, 0, 'game over'));
+        musicManager.play('game-over');
+
+        setGameState((previous) => ({
+          ...previous,
+          lives: previous.initialLives,
+        }));
+
         break;
       case 'off':
       default:

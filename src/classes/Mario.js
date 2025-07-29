@@ -121,6 +121,7 @@ export default class Mario extends Entity {
       } else {
         setGameState((previous) => ({
           ...previous,
+          lives: previous.lives - 1,
           mode: 'player-died',
         }));
       }

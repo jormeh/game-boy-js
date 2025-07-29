@@ -4,6 +4,7 @@ export default function useGameState() {
   const [state, setState] = useState({
     mode: 'off',
     event: 'idle',
+    initialLives: 4,
     lives: 4,
     coins: 0,
   });

@@ -1,9 +1,15 @@
-import { MenuSong, OverworldSong, TutorialSong } from '@assets/audio/music';
+import {
+  GameOverSong,
+  MenuSong,
+  OverworldSong,
+  TutorialSong,
+} from '@assets/audio/music';
 
 export default class MusicManager {
   constructor() {
     this.currentTrack = null;
     this.audioElements = {
+      'game-over': new Audio(GameOverSong),
       menu: new Audio(MenuSong),
       overworld: new Audio(OverworldSong),
       tutorial: new Audio(TutorialSong),
