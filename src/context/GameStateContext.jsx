@@ -110,7 +110,7 @@ export function GameStateProvider({ children }) {
         resetManagers();
       }
     };
-  }, [gameState.mode]);
+  }, [gameState.mode, currentScene]);
 
   useEffect(() => {
     switch (gameState.event) {
