@@ -11,53 +11,44 @@ export default function useController() {
     isStartPressed: false,
   });
 
+  const actionKeyMap = useRef({
+    arrowleft: 'isLeftPressed',
+    a: 'isLeftPressed',
+    arrowright: 'isRightPressed',
+    d: 'isRightPressed',
+    arrowup: 'isUpPressed',
+    w: 'isUpPressed',
+    arrowdown: 'isDownPressed',
+    s: 'isDownPressed',
+    ' ': 'isJumpPressed',
+  }).current;
+
+  const toggleKeyMap = useRef({
+    enter: 'isPowerPressed',
+    p: 'isStartPressed',
+  }).current;
+
   const isKeyAlreadyPressed = useRef(false);
 
   useEffect(() => {
-    const handleActionButtons = (noramlizedKey, isKeyPressed) => {
-      setController((previous) => {
-        switch (noramlizedKey) {
-          case 'arrowleft':
-          case 'a':
-            return { ...previous, isLeftPressed: isKeyPressed };
-          case 'arrowright':
-          case 'd':
-            return { ...previous, isRightPressed: isKeyPressed };
-          case 'arrowup':
-          case 'w':
-            return { ...previous, isUpPressed: isKeyPressed };
-          case 'arrowdown':
-          case 's':
-            return { ...previous, isDownPressed: isKeyPressed };
-          case ' ':
-            return { ...previous, isJumpPressed: isKeyPressed };
-          default:
-            return previous;
-        }
-      });
-    };
+    const handleKeyEvent = (event) => {
+      const key = event.key.toLowerCase();
+      const isKeyPressed = event.type === 'keydown';
+      const isKeyAction = key in actionKeyMap;
+      const isKeyToggle = key in toggleKeyMap;
 
-    const handleToggleButtons = (noramlizedKey, isKeyPressed) => {
-      if (isKeyPressed && isKeyAlreadyPressed.current) return;
-      isKeyAlreadyPressed.current = isKeyPressed;
+      if (!isKeyAction && !isKeyToggle) return;
+      const mappedKey = actionKeyMap[key] || toggleKeyMap[key];
+
+      if (isKeyToggle) {
+        if (isKeyPressed && isKeyAlreadyPressed.current) return;
+        isKeyAlreadyPressed.current = isKeyPressed;
+      }
 
       setController((previous) => {
-        switch (noramlizedKey) {
-          case 'enter':
-            return { ...previous, isPowerPressed: isKeyPressed };
-          case 'p':
-            return { ...previous, isStartPressed: isKeyPressed };
-          default:
-            return previous;
-        }
+        if (previous[mappedKey] === isKeyPressed) return previous;
+        return { ...previous, [mappedKey]: isKeyPressed };
       });
-    };
-
-    const handleKeyEvent = ({ key, type }) => {
-      const normalizedKey = key.toLowerCase();
-      const isKeyPressed = type === 'keydown';
-      handleActionButtons(normalizedKey, isKeyPressed);
-      handleToggleButtons(normalizedKey, isKeyPressed);
     };
 
     document.addEventListener('keydown', handleKeyEvent);
@@ -67,7 +58,7 @@ export default function useController() {
       document.removeEventListener('keydown', handleKeyEvent);
       document.removeEventListener('keyup', handleKeyEvent);
     };
-  }, []);
+  });
 
   return [controller, setController];
 }
