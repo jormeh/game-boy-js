@@ -11,12 +11,9 @@ export default class Mario extends Entity {
         jump: 2.5,
         gravity: 2,
       },
-
-      lives: 5,
     };
 
     this.speed = { ...this.initial.speed };
-    this.lives = this.initial.lives;
 
     this.isMovingLeft = false;
     this.isMovingRight = false;
