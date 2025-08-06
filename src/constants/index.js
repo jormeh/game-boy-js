@@ -3,3 +3,10 @@ export const BASE_CANVAS_HEIGHT = 293.66;
 export const TARGET_FPS = 60;
 export const FRAME_DURATION = 1000 / TARGET_FPS;
 export const SPRITE_SCALE = 0.55;
+export const INITIAL_STATE = {
+  mode: 'off',
+  event: 'idle',
+  initialLives: 4,
+  lives: 4,
+  coins: 0,
+};

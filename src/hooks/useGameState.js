@@ -1,13 +1,8 @@
 import { useState } from 'react';
+import { INITIAL_STATE } from '@constants/index';
 
 export default function useGameState() {
-  const [state, setState] = useState({
-    mode: 'off',
-    event: 'idle',
-    initialLives: 4,
-    lives: 4,
-    coins: 0,
-  });
+  const [state, setState] = useState(INITIAL_STATE);
 
   const isModePlayable = (mode) => {
     return ['tutorial-start', 'level-playing'].includes(mode);

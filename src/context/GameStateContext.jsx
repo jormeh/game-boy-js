@@ -9,6 +9,7 @@ import {
   TutorialScene,
 } from '@scenes/index';
 import { Transition } from '@classes/scenes';
+import { INITIAL_STATE } from '@constants/index';
 
 export const GameStateContext = createContext();
 
@@ -99,6 +100,7 @@ export function GameStateProvider({ children }) {
       default:
         sceneManager.render(OffScene);
         resetManagers();
+        setGameState(INITIAL_STATE);
         break;
     }
 
