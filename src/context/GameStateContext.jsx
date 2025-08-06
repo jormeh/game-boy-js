@@ -25,11 +25,12 @@ export function GameStateProvider({ children }) {
   const mario = useMario(controller, sfxManager, isModePlayable);
 
   useEffect(() => {
-    const resetManagers = (stopMusic = true) => {
+    const resetManagers = (stopMusic = true, clearEntities = true) => {
       sceneManager.stop();
       if (stopMusic) musicManager.stop();
       sfxManager.stop();
-      levelManager.stop();
+      levelManager.clearTimeouts();
+      if (clearEntities) levelManager.clearEntities();
     };
 
     switch (gameState.mode) {
@@ -63,7 +64,6 @@ export function GameStateProvider({ children }) {
         break;
       case 'level-start':
         const levelScene = levelManager.currentLevel;
-        console.log(levelScene);
         sceneManager.render(levelScene);
         sceneManager.changeMode('level-playing', 1900);
         sceneManager.transition(
@@ -72,8 +72,7 @@ export function GameStateProvider({ children }) {
         musicManager.play(levelScene.song);
         break;
       case 'level-playing':
-        // levelManager.spawn(currentLevel)
-        console.log('playing...');
+        levelManager.startSpawner();
         break;
       case 'player-died':
         if (gameState.lives >= 0) {
@@ -106,6 +105,8 @@ export function GameStateProvider({ children }) {
     return () => {
       if (gameState.mode === 'level-start') {
         resetManagers(false);
+      } else if (gameState.mode === 'player-died') {
+        resetManagers(true, false);
       } else {
         resetManagers();
       }
@@ -133,6 +134,7 @@ export function GameStateProvider({ children }) {
         isModePlayable,
         currentScene,
         currentTransition,
+        levelManager,
         mario,
         controller,
         setController,

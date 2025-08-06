@@ -24,11 +24,15 @@ export default class LevelManager {
     this.index = 0;
   }
 
-  spawnLevel() {
-    this.entities = [];
+  startSpawner() {
+    this.currentLevel.spawner(this.timeouts, this.entities);
   }
 
-  stop() {
+  clearTimeouts() {
     this.timeouts.forEach((timeout) => clearTimeout(timeout));
+  }
+
+  clearEntities() {
+    this.entities = [];
   }
 }

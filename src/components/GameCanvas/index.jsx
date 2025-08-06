@@ -1,14 +1,12 @@
-import { useContext, useRef } from 'react';
+import { useRef } from 'react';
 import { useResizeCanvas, useGameLoop } from '@hooks';
-import { GameStateContext } from '@context/GameStateContext';
 import '@components/GameCanvas/GameCanvas.css';
 
 export default function GameCanvas() {
-  const { mario } = useContext(GameStateContext);
   const canvasRef = useRef(null);
 
   useGameLoop(canvasRef.current);
-  useResizeCanvas(canvasRef.current, [mario]);
+  useResizeCanvas(canvasRef.current);
 
   return <canvas ref={canvasRef} className="screen__canvas"></canvas>;
 }

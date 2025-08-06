@@ -1,4 +1,5 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
+import { GameStateContext } from '@context/GameStateContext';
 
 const resize = (canvas, entities) => {
   const rect = canvas.getBoundingClientRect();
@@ -7,7 +8,10 @@ const resize = (canvas, entities) => {
   entities.forEach((entity) => entity.scaleValuesToCanvas(canvas));
 };
 
-export default function useResizeCanvas(canvas, entities) {
+export default function useResizeCanvas(canvas) {
+  const { mario, levelManager } = useContext(GameStateContext);
+  const entities = [mario, ...levelManager.entities];
+
   useEffect(() => {
     if (!canvas) return;
 
