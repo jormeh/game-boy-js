@@ -10,7 +10,6 @@ const resize = (canvas, entities) => {
 
 export default function useResizeCanvas(canvas) {
   const { mario, levelManager } = useContext(GameStateContext);
-  const entities = [mario, ...levelManager.entities];
 
   useEffect(() => {
     if (!canvas) return;
@@ -18,8 +17,10 @@ export default function useResizeCanvas(canvas) {
     const ctx = canvas.getContext('2d');
     ctx.imageSmoothingEnabled = false;
 
-    resize(canvas, entities);
-    const observer = new ResizeObserver(() => resize(canvas, entities));
+    const handler = () => resize(canvas, [mario, ...levelManager.entities]);
+
+    handler();
+    const observer = new ResizeObserver(handler);
     observer.observe(canvas);
 
     return () => observer.disconnect();
