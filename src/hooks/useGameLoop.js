@@ -24,7 +24,7 @@ export default function useGameLoop(canvas) {
 
   const handleCollision = (entity) => {
     if (entity instanceof Star) {
-      setGameState((prev) => ({ ...prev, mode: 'off' }));
+      setGameState((prev) => ({ ...prev, mode: 'passed-level' }));
     }
   };
 
@@ -64,6 +64,10 @@ export default function useGameLoop(canvas) {
       animationFrame.current = requestAnimationFrame((time) => loop(time, ctx));
     } else if (gameState.mode === 'player-died') {
       drawEntities(ctx);
+      cancelAnimationFrame(animationFrame.current);
+    } else if (gameState.mode === 'passed-level') {
+      ctx?.clearRect(0, 0, canvas.width, canvas.height);
+      mario.draw(canvas, ctx);
       cancelAnimationFrame(animationFrame.current);
     } else {
       ctx?.clearRect(0, 0, canvas.width, canvas.height);
