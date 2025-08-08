@@ -30,9 +30,6 @@ export default function useGameLoop(canvas) {
 
   const getEntities = () => [mario, ...levelManager.entities];
 
-  const drawEntities = (ctx) =>
-    getEntities().forEach((entity) => entity.draw(canvas, ctx));
-
   const updateEntities = (ctx) => {
     getEntities().forEach((entity) => {
       entity.draw(canvas, ctx, true);
@@ -63,7 +60,6 @@ export default function useGameLoop(canvas) {
       mario.resetPosition(canvas);
       animationFrame.current = requestAnimationFrame((time) => loop(time, ctx));
     } else if (gameState.mode === 'player-died') {
-      drawEntities(ctx);
       cancelAnimationFrame(animationFrame.current);
     } else if (gameState.mode === 'passed-level') {
       ctx?.clearRect(0, 0, canvas.width, canvas.height);
@@ -73,7 +69,7 @@ export default function useGameLoop(canvas) {
       ctx?.clearRect(0, 0, canvas.width, canvas.height);
       cancelAnimationFrame(animationFrame.current);
     }
-  }, [isModePlayable]);
+  }, [gameState.mode]);
 
   return () => {
     cancelAnimationFrame(animationFrame.current);

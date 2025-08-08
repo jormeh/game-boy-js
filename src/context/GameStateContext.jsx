@@ -26,12 +26,22 @@ export function GameStateProvider({ children }) {
   const mario = useMario(controller, sfxManager, isModePlayable);
 
   useEffect(() => {
-    const resetManagers = (stopMusic = true, clearEntities = true) => {
+    const resetManagers = () => {
       sceneManager.stop();
-      if (stopMusic) musicManager.stop();
       sfxManager.stop();
       levelManager.clearTimeouts();
-      if (clearEntities) levelManager.clearEntities();
+
+      if (gameState.mode !== 'level-start') {
+        musicManager.stop();
+      }
+
+      if (gameState.mode !== 'player-died') {
+        levelManager.clearEntities();
+      }
+
+      if (['game-over', 'credits', 'off'].includes(gameState.mode)) {
+        levelManager.resetLevels();
+      }
     };
 
     switch (gameState.mode) {
@@ -78,7 +88,6 @@ export function GameStateProvider({ children }) {
       case 'passed-level':
         if (levelManager.beatGame) {
           sceneManager.changeMode('credits', 10000);
-          levelManager.resetLevels();
         } else {
           sceneManager.changeMode('level-start', 10000);
           levelManager.goToNextLevel();
@@ -106,7 +115,6 @@ export function GameStateProvider({ children }) {
         sceneManager.changeMode('menu-start', 8500);
         sceneManager.transition(new Transition('curtain', 2, 0, 'game over'));
         musicManager.play('game-over');
-        levelManager.resetLevels();
 
         setGameState((previous) => ({
           ...previous,
@@ -117,21 +125,11 @@ export function GameStateProvider({ children }) {
       case 'off':
       default:
         sceneManager.render(OffScene);
-        levelManager.resetLevels();
-        resetManagers();
         setGameState(INITIAL_STATE);
         break;
     }
 
-    return () => {
-      if (gameState.mode === 'level-start') {
-        resetManagers(false);
-      } else if (gameState.mode === 'player-died') {
-        resetManagers(true, false);
-      } else {
-        resetManagers();
-      }
-    };
+    return resetManagers;
   }, [gameState.mode, currentScene]);
 
   useEffect(() => {
