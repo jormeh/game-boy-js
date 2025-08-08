@@ -76,11 +76,19 @@ export function GameStateProvider({ children }) {
         levelManager.startSpawner();
         break;
       case 'passed-level':
-        sceneManager.changeMode('level-start', 10000);
+        if (levelManager.beatGame) {
+          sceneManager.changeMode('credits', 10000);
+          levelManager.resetLevels();
+        } else {
+          sceneManager.changeMode('level-start', 10000);
+          levelManager.goToNextLevel();
+        }
+
         sceneManager.transition(
           new Transition('fade', 1, 0, 'course complete')
         );
         sfxManager.play('course-clear');
+
         sceneManager.transition(new Transition('slide'), 8200);
         sfxManager.play('iris', false, 8200);
         break;
@@ -98,6 +106,7 @@ export function GameStateProvider({ children }) {
         sceneManager.changeMode('menu-start', 8500);
         sceneManager.transition(new Transition('curtain', 2, 0, 'game over'));
         musicManager.play('game-over');
+        levelManager.resetLevels();
 
         setGameState((previous) => ({
           ...previous,
@@ -108,6 +117,7 @@ export function GameStateProvider({ children }) {
       case 'off':
       default:
         sceneManager.render(OffScene);
+        levelManager.resetLevels();
         resetManagers();
         setGameState(INITIAL_STATE);
         break;

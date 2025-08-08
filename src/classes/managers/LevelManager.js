@@ -20,7 +20,7 @@ export default class LevelManager {
     this.index += 1;
   }
 
-  goToFirstLevel() {
+  resetLevels() {
     this.index = 0;
   }
 
