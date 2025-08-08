@@ -73,7 +73,7 @@ export default function useGameLoop(canvas) {
       ctx?.clearRect(0, 0, canvas.width, canvas.height);
       cancelAnimationFrame(animationFrame.current);
     }
-  }, [isModePlayable, gameState]);
+  }, [isModePlayable]);
 
   return () => {
     cancelAnimationFrame(animationFrame.current);
