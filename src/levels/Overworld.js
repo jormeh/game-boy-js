@@ -1,4 +1,4 @@
-import { Coin, Mushroom, Star } from '@classes/entities';
+import { Coin, FlyingGoomba, Mushroom, Star } from '@classes/entities';
 import { LevelScene } from '@classes/scenes';
 
 export default new LevelScene({
@@ -7,11 +7,7 @@ export default new LevelScene({
   song: 'overworld',
   spawner: (timeouts, entities) => {
     const timeout = setTimeout(() => {
-      entities.push(new Star());
-      entities.push(new Mushroom());
-      entities.push(new Coin(10));
-      entities.push(new Coin(30));
-      entities.push(new Coin(50));
+      entities.push(new FlyingGoomba());
     }, 0);
     timeouts.push(timeout);
   },

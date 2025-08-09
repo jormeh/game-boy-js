@@ -58,22 +58,28 @@ export default function useGameLoop(canvas) {
       setGameState((previous) => ({ ...previous, coins: previous.coins + 1 }));
       sfxManager.play('coin', true);
       levelManager.entities.splice(index, 1);
+    } else {
+      setGameState((previous) => ({
+        ...previous,
+        lives: previous.lives - 1,
+        mode: 'player-died',
+      }));
     }
   };
 
   const updateEntities = (ctx) => {
-    mario.draw(canvas, ctx);
-    mario.move(canvas, gameState);
-    checkMarioStatus(mario);
-
     levelManager.entities.forEach((entity, index) => {
-      entity.draw(canvas, ctx, true);
+      entity.draw(canvas, ctx, false);
       entity.move();
 
       if (collisionDetected(mario, entity)) {
         handleCollision(entity, index);
       }
     });
+
+    mario.draw(canvas, ctx);
+    mario.move(canvas, gameState);
+    checkMarioStatus(mario);
   };
 
   const loop = (time, ctx) => {
