@@ -25,9 +25,6 @@ export default function useGameLoop(canvas) {
     return !(ex1 >= mx2 || ey1 >= my2 || ex2 <= mx1 || ey2 <= my1);
   };
 
-  const isCollidingWithMario = (entity) =>
-    entity !== mario && collisionDetected(mario, entity);
-
   const handleCollision = (entity, index) => {
     if (entity instanceof Star) {
       setGameState((previous) => ({ ...previous, mode: 'passed-level' }));
@@ -42,16 +39,16 @@ export default function useGameLoop(canvas) {
     }
   };
 
-  const getEntities = () => [mario, ...levelManager.entities];
-
   const updateEntities = (ctx) => {
-    getEntities().forEach((entity, index) => {
-      entity.draw(canvas, ctx, true);
-      entity.move(canvas, gameState, setGameState);
+    mario.draw(canvas, ctx);
+    mario.move(canvas, gameState, setGameState);
 
-      if (isCollidingWithMario(entity)) {
-        const indexMinusMario = index - 1;
-        handleCollision(entity, indexMinusMario);
+    levelManager.entities.forEach((entity, index) => {
+      entity.draw(canvas, ctx, true);
+      entity.move();
+
+      if (collisionDetected(mario, entity)) {
+        handleCollision(entity, index);
       }
     });
   };
