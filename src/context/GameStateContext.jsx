@@ -119,6 +119,7 @@ export function GameStateProvider({ children }) {
         setGameState((previous) => ({
           ...previous,
           lives: previous.initialLives,
+          coins: 0,
         }));
 
         break;
