@@ -52,9 +52,9 @@ const SPRITESHEET_DATA = [
   {
     name: 'coin',
     frames: [
-      { x: 19, y: 1, w: 32, h: 64, ox: 0, oy: 0 },
+      { x: 19, y: 1, w: 32, h: 64, ox: 2, oy: 0 },
       { x: 53, y: 1, w: 40, h: 64, ox: 0, oy: 0 },
-      { x: 1, y: 1, w: 16, h: 64, ox: 0, oy: 0 },
+      { x: 1, y: 1, w: 16, h: 64, ox: 10, oy: 0 },
     ],
   },
   {

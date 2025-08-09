@@ -1,4 +1,5 @@
 export { default as Entity } from '@classes/entities/Entity';
+export { default as Coin } from '@classes/entities/Coin';
 export { default as Hitbox } from '@classes/entities/Hitbox';
 export { default as Mario } from '@classes/entities/Mario';
 export { default as Mushroom } from '@classes/entities/Mushroom';

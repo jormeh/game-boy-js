@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef } from 'react';
 import { GameStateContext } from '@context/GameStateContext';
 import { FRAME_DURATION } from '@constants/index';
-import { Mushroom, Star } from '@classes/entities';
+import { Coin, Mushroom, Star } from '@classes/entities';
 
 export default function useGameLoop(canvas) {
   const {
@@ -34,6 +34,10 @@ export default function useGameLoop(canvas) {
     } else if (entity instanceof Mushroom) {
       setGameState((previous) => ({ ...previous, lives: previous.lives + 1 }));
       sfxManager.play('get-a-life');
+      levelManager.entities.splice(index, 1);
+    } else if (entity instanceof Coin) {
+      setGameState((previous) => ({ ...previous, coins: previous.coins + 1 }));
+      sfxManager.play('coin', true);
       levelManager.entities.splice(index, 1);
     }
   };
