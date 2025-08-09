@@ -34,14 +34,6 @@ export function GameStateProvider({ children }) {
       if (gameState.mode !== 'level-start') {
         musicManager.stop();
       }
-
-      if (gameState.mode !== 'player-died') {
-        levelManager.clearEntities();
-      }
-
-      if (['game-over', 'credits', 'off'].includes(gameState.mode)) {
-        levelManager.resetLevels();
-      }
     };
 
     switch (gameState.mode) {
@@ -66,6 +58,7 @@ export function GameStateProvider({ children }) {
         break;
       case 'tutorial-start':
         sceneManager.render(TutorialScene);
+        levelManager.clearEntities();
         musicManager.play(currentScene.song);
         break;
       case 'tutorial-exit':
@@ -83,6 +76,7 @@ export function GameStateProvider({ children }) {
         musicManager.play(levelScene.song);
         break;
       case 'level-playing':
+        levelManager.clearEntities();
         levelManager.startSpawner();
         break;
       case 'passed-level':
@@ -114,6 +108,8 @@ export function GameStateProvider({ children }) {
       case 'game-over':
         sceneManager.changeMode('menu-start', 8500);
         sceneManager.transition(new Transition('curtain', 2, 0, 'game over'));
+        levelManager.clearEntities();
+        levelManager.resetLevels();
         musicManager.play('game-over');
 
         setGameState((previous) => ({
@@ -123,9 +119,15 @@ export function GameStateProvider({ children }) {
         }));
 
         break;
+      case 'credits':
+        levelManager.clearEntities();
+        levelManager.resetLevels();
+        break;
       case 'off':
       default:
         sceneManager.render(OffScene);
+        levelManager.clearEntities();
+        levelManager.resetLevels();
         setGameState(INITIAL_STATE);
         break;
     }

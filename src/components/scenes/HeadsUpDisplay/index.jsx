@@ -1,4 +1,4 @@
-import { HUDCoins, HUDLives, HUDMultiply } from '@assets/ui';
+import { HUDCoins, HUDLives, HUDMultiply, MarioDeath } from '@assets/ui';
 import '@components/scenes/HeadsUpDisplay/HeadsUpDisplay.css';
 
 export default function HeadsUpDisplay({ gameState }) {
@@ -17,6 +17,9 @@ export default function HeadsUpDisplay({ gameState }) {
         <img className="screen__hud-multiply-icon" src={HUDMultiply} />
         <span className="screen__hud-number">{gameState.coins}</span>
       </div>
+      {gameState.mode === 'player-died' ? (
+        <img id="mario" className="screen__hud-mario-death" src={MarioDeath} />
+      ) : null}
     </div>
   ) : null;
 }

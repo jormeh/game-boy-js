@@ -1,3 +1,4 @@
+import { MarioDeath } from '@assets/ui';
 import { Entity } from '@classes/entities';
 
 export default class Mario extends Entity {
@@ -9,7 +10,7 @@ export default class Mario extends Entity {
         x: 5,
         y: 6,
         jump: 2.5,
-        gravity: 2,
+        gravity: 0,
       },
     };
 
@@ -99,5 +100,11 @@ export default class Mario extends Entity {
     }
 
     this.hitbox.y += this.speed.gravity;
+  }
+
+  setDeathPosition() {
+    const mario = document.getElementById('mario');
+    mario.style.left = `${this.position.x + this.hitbox.width / 2}px`;
+    mario.style.top = `${this.position.y}px`;
   }
 }

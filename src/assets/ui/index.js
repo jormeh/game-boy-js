@@ -1,6 +1,7 @@
 export { default as GameBoyShell } from '@assets/ui/gameboy-shell.webp';
 export { default as HUDCoins } from '@assets/ui/hud-coins.webp';
 export { default as HUDLives } from '@assets/ui/hud-lives.webp';
+export { default as MarioDeath } from '@assets/ui/hud-mario-death.gif';
 export { default as HUDMultiply } from '@assets/ui/hud-multiply.webp';
 export { default as MenuLogo } from '@assets/ui/menu-logo.webp';
 export { default as MenuMario } from '@assets/ui/menu-mario.webp';

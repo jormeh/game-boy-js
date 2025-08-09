@@ -3,14 +3,11 @@
 .screen__foreground {
   position: absolute;
   border-radius: 4%;
+  overflow: hidden;
 }
 
 .screen__background,
 .screen__foreground {
   width: 100%;
   height: 100%;
-}
-
-.screen__background {
-  overflow: hidden;
 }

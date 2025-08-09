@@ -103,6 +103,9 @@ export default function useGameLoop(canvas) {
       mario.resetPosition(canvas);
       animationFrame.current = requestAnimationFrame((time) => loop(time, ctx));
     } else if (gameState.mode === 'player-died') {
+      ctx?.clearRect(0, 0, canvas.width, canvas.height);
+      mario.setDeathPosition();
+      levelManager.drawEntities(canvas, ctx);
       cancelAnimationFrame(animationFrame.current);
     } else if (gameState.mode === 'passed-level') {
       ctx?.clearRect(0, 0, canvas.width, canvas.height);
