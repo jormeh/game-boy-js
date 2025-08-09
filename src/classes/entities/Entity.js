@@ -9,10 +9,17 @@ export default class Entity {
     hitboxH,
     spriteName,
     spriteOffsetX,
-    spriteOffsetY
+    spriteOffsetY,
+    spriteRate
   ) {
     this.hitbox = new Hitbox(hitboxX, hitboxY, hitboxW, hitboxH);
-    this.sprite = new Sprite(spriteName, spriteOffsetX, spriteOffsetY);
+
+    this.sprite = new Sprite(
+      spriteName,
+      spriteOffsetX,
+      spriteOffsetY,
+      spriteRate
+    );
   }
 
   get position() {

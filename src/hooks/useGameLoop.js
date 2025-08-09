@@ -1,11 +1,17 @@
 import { useContext, useEffect, useRef } from 'react';
 import { GameStateContext } from '@context/GameStateContext';
 import { FRAME_DURATION } from '@constants/index';
-import { Star } from '@classes/entities';
+import { Mushroom, Star } from '@classes/entities';
 
 export default function useGameLoop(canvas) {
-  const { gameState, setGameState, isModePlayable, mario, levelManager } =
-    useContext(GameStateContext);
+  const {
+    gameState,
+    setGameState,
+    isModePlayable,
+    mario,
+    levelManager,
+    sfxManager,
+  } = useContext(GameStateContext);
   const lastTime = useRef(0);
   const animationFrame = useRef(null);
 
@@ -22,21 +28,26 @@ export default function useGameLoop(canvas) {
   const isCollidingWithMario = (entity) =>
     entity !== mario && collisionDetected(mario, entity);
 
-  const handleCollision = (entity) => {
+  const handleCollision = (entity, index) => {
     if (entity instanceof Star) {
-      setGameState((prev) => ({ ...prev, mode: 'passed-level' }));
+      setGameState((previous) => ({ ...previous, mode: 'passed-level' }));
+    } else if (entity instanceof Mushroom) {
+      setGameState((previous) => ({ ...previous, lives: previous.lives + 1 }));
+      sfxManager.play('get-a-life');
+      levelManager.entities.splice(index, 1);
     }
   };
 
   const getEntities = () => [mario, ...levelManager.entities];
 
   const updateEntities = (ctx) => {
-    getEntities().forEach((entity) => {
+    getEntities().forEach((entity, index) => {
       entity.draw(canvas, ctx, true);
       entity.move(canvas, gameState, setGameState);
 
       if (isCollidingWithMario(entity)) {
-        handleCollision(entity);
+        const indexMinusMario = index - 1;
+        handleCollision(entity, indexMinusMario);
       }
     });
   };

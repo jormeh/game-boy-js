@@ -154,6 +154,7 @@ export function GameStateProvider({ children }) {
         currentScene,
         currentTransition,
         levelManager,
+        sfxManager,
         mario,
         controller,
         setController,
