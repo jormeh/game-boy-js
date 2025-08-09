@@ -133,19 +133,6 @@ export function GameStateProvider({ children }) {
     return resetManagers;
   }, [gameState.mode, currentScene]);
 
-  useEffect(() => {
-    switch (gameState.event) {
-      case 'mistake':
-        setGameState((previous) => ({
-          ...previous,
-          event: 'idle',
-        }));
-
-        sfxManager.play('incorrect');
-        break;
-    }
-  }, [gameState.event]);
-
   return (
     <GameStateContext.Provider
       value={{

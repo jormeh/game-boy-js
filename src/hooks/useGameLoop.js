@@ -15,6 +15,28 @@ export default function useGameLoop(canvas) {
   const lastTime = useRef(0);
   const animationFrame = useRef(null);
 
+  const checkMarioStatus = (mario) => {
+    if (mario.pastTutorial(canvas.width)) {
+      setGameState((previous) => ({
+        ...previous,
+        mode: 'tutorial-exit',
+      }));
+    }
+
+    if (mario.hasFallen(canvas.width, canvas.height)) {
+      if (gameState.mode === 'tutorial-start') {
+        mario.resetPosition(canvas);
+        sfxManager.play('incorrect');
+      } else {
+        setGameState((previous) => ({
+          ...previous,
+          lives: previous.lives - 1,
+          mode: 'player-died',
+        }));
+      }
+    }
+  };
+
   const collisionDetected = (mario, entity) => {
     const { x: ex1, y: ey1, width: ew, height: eh } = entity.hitbox;
     const { x: mx1, y: my1, width: mw, height: mh } = mario.hitbox;
@@ -41,7 +63,8 @@ export default function useGameLoop(canvas) {
 
   const updateEntities = (ctx) => {
     mario.draw(canvas, ctx);
-    mario.move(canvas, gameState, setGameState);
+    mario.move(canvas, gameState);
+    checkMarioStatus(mario);
 
     levelManager.entities.forEach((entity, index) => {
       entity.draw(canvas, ctx, true);

@@ -73,26 +73,16 @@ export default class Mario extends Entity {
     }, 10);
   }
 
-  move(canvas, gameState, setGameState) {
+  move(canvas, gameState) {
     const { height: ch, width: cw } = canvas;
-    const inTutorial = gameState.mode === 'tutorial-start';
 
     if (this.isMovingLeft && this.canMoveLeft) {
       this.hitbox.x -= this.speed.x;
     }
 
     if (this.isMovingRight) {
-      if (inTutorial || this.canMoveRight(cw)) {
+      if (gameState.mode === 'tutorial-start' || this.canMoveRight(cw)) {
         this.hitbox.x += this.speed.x;
-      }
-
-      if (this.pastTutorial(cw)) {
-        setGameState((previous) => ({
-          ...previous,
-          mode: 'tutorial-exit',
-        }));
-
-        this.resetPosition(canvas);
       }
     }
 
@@ -106,22 +96,6 @@ export default class Mario extends Entity {
 
     if (this.isDiving) {
       this.hitbox.y += this.speed.y;
-    }
-
-    if (this.hasFallen(cw, ch)) {
-      if (inTutorial) {
-        setGameState((previous) => ({
-          ...previous,
-          event: 'mistake',
-        }));
-        this.resetPosition(canvas);
-      } else {
-        setGameState((previous) => ({
-          ...previous,
-          lives: previous.lives - 1,
-          mode: 'player-died',
-        }));
-      }
     }
 
     this.hitbox.y += this.speed.gravity;
