@@ -28,6 +28,14 @@ export default class LevelManager {
     this.currentLevel.spawner(this.timeouts, this.entities);
   }
 
+  drawEntities(canvas, ctx, showHitbox) {
+    this.entities.forEach((entity) => entity.draw(canvas, ctx, showHitbox));
+  }
+
+  moveEntities() {
+    this.entities.forEach((entity) => entity.move());
+  }
+
   clearTimeouts() {
     this.timeouts.forEach((timeout) => clearTimeout(timeout));
   }

@@ -67,19 +67,21 @@ export default function useGameLoop(canvas) {
     }
   };
 
-  const updateEntities = (ctx) => {
-    levelManager.entities.forEach((entity, index) => {
-      entity.draw(canvas, ctx, false);
-      entity.move();
-
+  function checkForCollision(mario, entities) {
+    entities.forEach((entity, index) => {
       if (collisionDetected(mario, entity)) {
         handleCollision(entity, index);
       }
     });
+  }
 
-    mario.draw(canvas, ctx);
+  const updateEntities = (ctx) => {
+    levelManager.drawEntities(canvas, ctx);
+    levelManager.moveEntities();
     mario.move(canvas, gameState);
+    mario.draw(canvas, ctx);
     checkMarioStatus(mario);
+    checkForCollision(mario, levelManager.entities);
   };
 
   const loop = (time, ctx) => {
