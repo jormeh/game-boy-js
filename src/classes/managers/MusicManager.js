@@ -1,4 +1,5 @@
 import {
+  CreditsSong,
   GameOverSong,
   MenuSong,
   OverworldSong,
@@ -9,6 +10,7 @@ export default class MusicManager {
   constructor() {
     this.currentTrack = null;
     this.audioElements = {
+      credits: new Audio(CreditsSong),
       'game-over': new Audio(GameOverSong),
       menu: new Audio(MenuSong),
       overworld: new Audio(OverworldSong),

@@ -1,3 +1,5 @@
+export { default as CreditsBackground } from '@components/scenes/CreditsBackground';
+export { default as CreditsForeground } from '@components/scenes/CreditsForeground';
 export { default as DisclaimerBackground } from '@components/scenes/DisclaimerBackground';
 export { default as DisclaimerForeground } from '@components/scenes/DisclaimerForeground';
 export { default as HeadsUpDisplay } from '@components/scenes/HeadsUpDisplay';

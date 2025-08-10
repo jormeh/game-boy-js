@@ -1,3 +1,4 @@
+export { default as CreditsScene } from '@scenes/CreditsScene';
 export { default as DisclaimerScene } from '@scenes/DisclaimerScene';
 export { default as MenuScene } from '@scenes/MenuScene';
 export { default as OffScene } from '@scenes/OffScene';

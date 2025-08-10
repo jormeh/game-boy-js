@@ -2,6 +2,7 @@ import { createContext, useEffect, useRef, useState } from 'react';
 import { LevelManager, MusicManager, SFXManager } from '@classes/managers';
 import { useGameState, useController, useMario, useSceneManager } from '@hooks';
 import {
+  CreditsScene,
   DisclaimerScene,
   MenuScene,
   OffScene,
@@ -107,7 +108,9 @@ export function GameStateProvider({ children }) {
         break;
       case 'game-over':
         sceneManager.changeMode('menu-start', 8500);
-        sceneManager.transition(new Transition('curtain', 2, 0, 'game over'));
+        sceneManager.transition(
+          new Transition('close-curtain', 2, 0, 'game over')
+        );
         levelManager.clearEntities();
         levelManager.resetLevels();
         musicManager.play('game-over');
@@ -120,8 +123,11 @@ export function GameStateProvider({ children }) {
 
         break;
       case 'credits':
+        sceneManager.render(CreditsScene);
+        sceneManager.transition(new Transition('open-curtain'));
         levelManager.clearEntities();
         levelManager.resetLevels();
+        musicManager.play('credits');
         break;
       case 'off':
       default:

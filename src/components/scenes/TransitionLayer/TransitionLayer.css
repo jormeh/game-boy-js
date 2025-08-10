@@ -9,13 +9,14 @@
 .screen__transition--fade,
 .screen__transition--overlay,
 .screen__transition--slide::before,
-.screen__transition--curtain::before {
+.screen__transition--close-curtain::before,
+.screen__transition--open-curtain::before {
   background: #0a0a0a;
 }
 
 .screen__transition--fade,
 .screen__transition--overlay,
-.screen__transition--curtain {
+.screen__transition--close-curtain {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,22 +67,41 @@
   }
 }
 
-.screen__transition--curtain::before {
+.screen__transition--close-curtain::before {
   content: '';
   position: absolute;
   left: 0;
   width: 100%;
   height: 100%;
   transform: translateY(-100%);
-  animation: curtain 2s linear forwards;
+  animation: closeCurtain 2s linear forwards;
 }
 
-@keyframes curtain {
+@keyframes closeCurtain {
   from {
     transform: translateY(-100%);
   }
   to {
     transform: translateY(0%);
+  }
+}
+
+.screen__transition--open-curtain::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateY(0%);
+  animation: openCurtain 3.75s linear forwards;
+}
+
+@keyframes openCurtain {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(-100%);
   }
 }
 

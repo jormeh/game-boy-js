@@ -1,0 +1,22 @@
+.screen__credits-message {
+  display: block;
+  padding-right: 4%;
+  padding-top: 22%;
+  font-family: 'PressStart2p', monospace;
+  font-weight: bold;
+  text-align: right;
+  text-transform: uppercase;
+  font-size: 8px;
+  line-height: 2;
+  color: white;
+}
+
+.screen__credits-link {
+  color: yellow;
+}
+
+@media (max-width: 375px) {
+  .screen__credits-message {
+    font-size: 6.5px;
+  }
+}
