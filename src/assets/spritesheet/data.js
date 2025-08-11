@@ -17,34 +17,48 @@ const SPRITESHEET_DATA = [
   {
     name: 'big-bubble',
     frames: [
-      { x: 1, y: 513, w: 216, h: 240, ox: 0, oy: 0 },
-      { x: 219, y: 513, w: 224, h: 232, ox: 0, oy: 0 },
+      { x: 1, y: 513, w: 216, h: 240, ox: 2, oy: 0 },
+      { x: 219, y: 513, w: 224, h: 232, ox: 0, oy: 5 },
     ],
   },
   {
-    name: 'boo',
+    name: 'mean-boo',
     frames: [
-      { x: 224, y: 1, w: 62, h: 64, ox: 0, oy: 0 },
-      { x: 890, y: 1, w: 65, h: 64, ox: 0, oy: 0 },
       { x: 362, y: 1, w: 64, h: 64, ox: 0, oy: 0 },
       { x: 428, y: 1, w: 64, h: 64, ox: 0, oy: 0 },
+    ],
+  },
+  {
+    name: 'crazy-boo',
+    frames: [
       { x: 494, y: 1, w: 64, h: 64, ox: 0, oy: 0 },
       { x: 560, y: 1, w: 64, h: 64, ox: 0, oy: 0 },
     ],
   },
   {
-    name: 'bullet-bill',
+    name: 'shy-boo',
     frames: [
-      { x: 95, y: 1, w: 65, h: 56, ox: 0, oy: 0 },
-      { x: 626, y: 1, w: 64, h: 64, ox: 0, oy: 0 },
-      { x: 692, y: 1, w: 64, h: 64, ox: 0, oy: 0 },
+      { x: 224, y: 1, w: 62, h: 64, ox: 2, oy: 0 },
+      { x: 890, y: 1, w: 65, h: 64, ox: 0, oy: 0 },
     ],
+  },
+  {
+    name: 'rising-bullet-bill',
+    frames: [{ x: 692, y: 1, w: 64, h: 64, ox: 0, oy: 0 }],
+  },
+  {
+    name: 'falling-bullet-bill',
+    frames: [{ x: 626, y: 1, w: 64, h: 64, ox: 0, oy: 0 }],
+  },
+  {
+    name: 'straight-bullet-bill',
+    frames: [{ x: 95, y: 1, w: 65, h: 56, ox: 0, oy: 0 }],
   },
   {
     name: 'buzz-saw',
     frames: [
-      { x: 313, y: 181, w: 64, h: 176, ox: 0, oy: 0 },
-      { x: 379, y: 181, w: 64, h: 176, ox: 0, oy: 0 },
+      { x: 313, y: 181, w: 64, h: 176, ox: 0, oy: -10 },
+      { x: 379, y: 181, w: 64, h: 176, ox: 0, oy: -10 },
       { x: 181, y: 181, w: 64, h: 168, ox: 0, oy: 0 },
       { x: 247, y: 181, w: 64, h: 168, ox: 0, oy: 0 },
     ],
@@ -76,7 +90,7 @@ const SPRITESHEET_DATA = [
   {
     name: 'flying-hammer-bro',
     frames: [
-      { x: 475, y: 359, w: 176, h: 152, ox: 0, oy: 0 },
+      { x: 475, y: 359, w: 176, h: 152, ox: 20, oy: 0 },
       { x: 653, y: 359, w: 216, h: 152, ox: 0, oy: 0 },
     ],
   },
@@ -97,16 +111,31 @@ const SPRITESHEET_DATA = [
     ],
   },
   {
-    name: 'paratroopa',
+    name: 'red-paratroopa',
     frames: [
-      { x: 771, y: 67, w: 88, h: 112, ox: 0, oy: 0 },
-      { x: 385, y: 67, w: 68, h: 108, ox: 0, oy: 0 },
-      { x: 861, y: 67, w: 88, h: 112, ox: 0, oy: 0 },
+      { x: 525, y: 67, w: 68, h: 108, ox: 0, oy: 7 },
       { x: 1, y: 181, w: 88, h: 112, ox: 0, oy: 0 },
-      { x: 455, y: 67, w: 68, h: 108, ox: 0, oy: 0 },
-      { x: 525, y: 67, w: 68, h: 108, ox: 0, oy: 0 },
+    ],
+  },
+  {
+    name: 'green-paratroopa',
+    frames: [
+      { x: 455, y: 67, w: 68, h: 108, ox: 0, oy: 7 },
+      { x: 861, y: 67, w: 88, h: 112, ox: 0, oy: 0 },
+    ],
+  },
+  {
+    name: 'blue-paratroopa',
+    frames: [
+      { x: 385, y: 67, w: 68, h: 108, ox: 0, oy: 7 },
+      { x: 771, y: 67, w: 88, h: 112, ox: 0, oy: 0 },
+    ],
+  },
+  {
+    name: 'yellow-paratroopa',
+    frames: [
+      { x: 595, y: 67, w: 68, h: 108, ox: 0, oy: 7 },
       { x: 91, y: 181, w: 88, h: 112, ox: 0, oy: 0 },
-      { x: 595, y: 67, w: 68, h: 108, ox: 0, oy: 0 },
     ],
   },
   {
@@ -114,11 +143,12 @@ const SPRITESHEET_DATA = [
     frames: [{ x: 162, y: 1, w: 60, h: 64, ox: 0, oy: 0 }],
   },
   {
-    name: 'super-koopa',
-    frames: [
-      { x: 1, y: 67, w: 92, h: 52, ox: 0, oy: 0 },
-      { x: 95, y: 67, w: 92, h: 52, ox: 0, oy: 0 },
-    ],
+    name: 'red-super-koopa',
+    frames: [{ x: 1, y: 67, w: 92, h: 52, ox: 0, oy: 0 }],
+  },
+  {
+    name: 'yellow-super-koopa',
+    frames: [{ x: 95, y: 67, w: 92, h: 52, ox: 0, oy: 0 }],
   },
 ];
 

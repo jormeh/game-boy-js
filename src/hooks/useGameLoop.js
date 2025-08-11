@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef } from 'react';
 import { GameStateContext } from '@context/GameStateContext';
 import { FRAME_DURATION } from '@constants/index';
-import { Coin, Mushroom, Star } from '@classes/entities';
+import { Coin, Mushroom, Star } from '@classes/entities/interactables';
 
 export default function useGameLoop(canvas) {
   const {
@@ -76,7 +76,7 @@ export default function useGameLoop(canvas) {
   }
 
   const updateEntities = (ctx) => {
-    levelManager.drawEntities(canvas, ctx);
+    levelManager.drawEntities(canvas, ctx, true);
     levelManager.moveEntities();
     mario.move(canvas, gameState);
     mario.draw(canvas, ctx);

@@ -1,4 +1,4 @@
-import { Entity } from '.';
+import { Entity } from '..';
 
 export default class Coin extends Entity {
   constructor(x) {

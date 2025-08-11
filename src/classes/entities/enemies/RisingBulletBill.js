@@ -1,8 +1,8 @@
-import { Entity } from '.';
+import { Entity } from '..';
 
-export default class Mushroom extends Entity {
+export default class RisingBulletBill extends Entity {
   constructor() {
-    super(220, 220, 26, 28, '1up-mushroom', 16, 17, 250);
+    super(100, 220, 33, 31, 'rising-bullet-bill', 2, 2);
 
     this.initial = {
       speed: {
