@@ -1,3 +1,4 @@
+import { AnchoredPosition, FreePosition } from '@classes/scenes';
 import Overworld from '@levels/Overworld';
 
 export default class LevelManager {
@@ -41,20 +42,32 @@ export default class LevelManager {
     };
   }
 
-  goToNextLevel() {
-    this.index += 1;
-  }
+  getSpawnPosition(positionConfig) {
+    if (positionConfig instanceof FreePosition) {
+      return {
+        x: this.canvasData.width * positionConfig.xPercentage,
+        y: this.canvasData.height * positionConfig.yPercentage,
+      };
+    }
 
-  resetLevels() {
-    this.index = 0;
+    if (positionConfig instanceof AnchoredPosition) {
+      const { axisValue, anchorType } = positionConfig;
+
+      const x = anchorType === 'x' ? this.spawnPoints.x : axisValue;
+      const y =
+        anchorType === 'yBelow' || anchorType === 'yAbove'
+          ? this.spawnPoints[anchorType]
+          : axisValue;
+
+      return { x, y };
+    }
   }
 
   startSpawner() {
     const data = this.currentLevel.spawnData;
 
-    data.forEach(({ EntityType, spawnPosition, spawnTimeS }) => {
-      const x = this.canvasData.width * spawnPosition.xPercentage;
-      const y = this.canvasData.height * spawnPosition.yPercentage;
+    data.forEach(({ EntityType, positionConfig, spawnTimeS }) => {
+      const { x, y } = this.getSpawnPosition(positionConfig);
 
       const timeout = setTimeout(() => {
         this.entities.push(new EntityType(x, y));
@@ -70,6 +83,14 @@ export default class LevelManager {
 
   moveEntities() {
     this.entities.forEach((entity) => entity.move());
+  }
+
+  goToNextLevel() {
+    this.index += 1;
+  }
+
+  resetLevels() {
+    this.index = 0;
   }
 
   clearTimeouts() {

@@ -1,32 +1,17 @@
+import { YellowParatroopa, YellowSuperKoopa } from '@classes/entities/enemies';
 import {
-  BanzaiBullet,
-  BigBoo,
-  BigBubble,
-  BlueParatroopa,
-  BuzzSaw,
-  CrazyBoo,
-  Eerie,
-  FallingBulletBill,
-  FlyingHammerBro,
-  GreenParatroopa,
-  Grinder,
-  MeanBoo,
-  RedParatroopa,
-  RedSuperKoopa,
-  RisingBulletBill,
-  ShyBoo,
-  StraightBulletBill,
-  YellowParatroopa,
-  YellowSuperKoopa,
-} from '@classes/entities/enemies';
-import { Instruction, LevelScene, SpawnPosition } from '@classes/scenes';
+  AnchoredPosition,
+  FreePosition,
+  Instruction,
+  LevelScene,
+} from '@classes/scenes';
 
 export default new LevelScene({
   name: 'overworld',
   title: 'The Overworld',
   song: 'overworld',
   spawnData: [
-    new Instruction(YellowSuperKoopa, new SpawnPosition(0.5, 0.5), 1),
-    new Instruction(YellowParatroopa, new SpawnPosition(0.75, 0.75), 1),
+    new Instruction(YellowSuperKoopa, new FreePosition(0.5, 0.5), 1),
+    new Instruction(YellowParatroopa, new AnchoredPosition('x', 0.75), 1),
   ],
 });

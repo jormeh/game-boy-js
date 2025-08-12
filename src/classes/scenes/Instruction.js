@@ -1,7 +1,7 @@
 export default class Instruction {
-  constructor(EntityType, spawnPosition, spawnTimeS) {
+  constructor(EntityType, positionConfig, spawnTimeS) {
     this.EntityType = EntityType;
-    this.spawnPosition = spawnPosition;
+    this.positionConfig = positionConfig;
     this.spawnTimeS = spawnTimeS;
   }
 }
