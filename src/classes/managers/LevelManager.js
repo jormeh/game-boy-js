@@ -7,10 +7,9 @@ export default class LevelManager {
     this.entities = [];
     this.index = 0;
 
-    this.spawnPoints = {
-      x: undefined,
-      yAbove: undefined,
-      yBelow: undefined,
+    this.canvasData = {
+      width: undefined,
+      height: undefined,
     };
   }
 
@@ -22,15 +21,23 @@ export default class LevelManager {
     return this.index + 1 === this.levels.length;
   }
 
-  updateSpawnPoints(canvas) {
+  get spawnPoints() {
+    const { width: canvasW, height: canvasH } = this.canvasData;
     const xBuffer = 0.1;
     const yAboveBuffer = 0.33;
     const yBelowBuffer = 0.1;
 
-    this.spawnPoints = {
-      x: canvas.width + canvas.width * xBuffer,
-      yAbove: -canvas.height * yAboveBuffer,
-      yBelow: canvas.height + yBelowBuffer,
+    return {
+      x: canvasW + canvasW * xBuffer,
+      yAbove: -canvasH * yAboveBuffer,
+      yBelow: canvasH + canvasH * yBelowBuffer,
+    };
+  }
+
+  updateCanvasData(canvas) {
+    this.canvasData = {
+      width: canvas.width,
+      height: canvas.height,
     };
   }
 
@@ -43,7 +50,18 @@ export default class LevelManager {
   }
 
   startSpawner() {
-    this.currentLevel.spawner(this.timeouts, this.entities);
+    const data = this.currentLevel.spawnData;
+
+    data.forEach(({ EntityType, spawnPosition, spawnTimeS }) => {
+      const x = this.canvasData.width * spawnPosition.xPercentage;
+      const y = this.canvasData.height * spawnPosition.yPercentage;
+
+      const timeout = setTimeout(() => {
+        this.entities.push(new EntityType(x, y));
+      }, spawnTimeS * 1000);
+
+      this.timeouts.push(timeout);
+    });
   }
 
   drawEntities(canvas, ctx, showHitbox) {
