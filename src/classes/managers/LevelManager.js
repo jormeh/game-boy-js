@@ -6,6 +6,11 @@ export default class LevelManager {
     this.timeouts = [];
     this.entities = [];
     this.index = 0;
+
+    this.canvas = {
+      width: undefined,
+      height: undefined,
+    };
   }
 
   get currentLevel() {
@@ -14,6 +19,11 @@ export default class LevelManager {
 
   get beatGame() {
     return this.index + 1 === this.levels.length;
+  }
+
+  updateCanvas(canvasElement) {
+    this.canvas.width = canvasElement.width;
+    this.canvas.height = canvasElement.height;
   }
 
   goToNextLevel() {
