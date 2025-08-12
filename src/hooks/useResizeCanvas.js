@@ -6,7 +6,7 @@ const resize = (canvas, mario, levelManager) => {
 
   canvas.width = rect.width;
   canvas.height = rect.height;
-  levelManager.updateCanvas(canvas);
+  levelManager.updateSpawnPoints(canvas);
 
   const entities = [mario, ...levelManager.entities];
   entities.forEach((entity) => entity.scaleValuesToCanvas(canvas));

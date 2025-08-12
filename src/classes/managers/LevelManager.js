@@ -7,9 +7,10 @@ export default class LevelManager {
     this.entities = [];
     this.index = 0;
 
-    this.canvas = {
-      width: undefined,
-      height: undefined,
+    this.spawnPoints = {
+      x: undefined,
+      yAbove: undefined,
+      yBelow: undefined,
     };
   }
 
@@ -21,9 +22,16 @@ export default class LevelManager {
     return this.index + 1 === this.levels.length;
   }
 
-  updateCanvas(canvasElement) {
-    this.canvas.width = canvasElement.width;
-    this.canvas.height = canvasElement.height;
+  updateSpawnPoints(canvas) {
+    const xBuffer = 0.1;
+    const yAboveBuffer = 0.33;
+    const yBelowBuffer = 0.1;
+
+    this.spawnPoints = {
+      x: canvas.width + canvas.width * xBuffer,
+      yAbove: -canvas.height * yAboveBuffer,
+      yBelow: canvas.height + yBelowBuffer,
+    };
   }
 
   goToNextLevel() {
