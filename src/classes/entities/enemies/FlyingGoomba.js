@@ -1,8 +1,8 @@
 import { Entity } from '..';
 
 export default class FlyingGoomba extends Entity {
-  constructor() {
-    super(100, 220, 30, 32, 'flying-goomba', 19, 19, 200);
+  constructor(x, y) {
+    super(x, y, 30, 32, 'flying-goomba', 19, 19, 200);
 
     this.initial = {
       speed: {

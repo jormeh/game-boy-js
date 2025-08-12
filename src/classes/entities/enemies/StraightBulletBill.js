@@ -1,8 +1,8 @@
 import { Entity } from '..';
 
 export default class StraightBulletBill extends Entity {
-  constructor() {
-    super(100, 220, 33, 31, 'straight-bullet-bill', 2, 0);
+  constructor(x, y) {
+    super(x, y, 33, 31, 'straight-bullet-bill', 2, 0);
 
     this.initial = {
       speed: {

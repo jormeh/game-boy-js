@@ -1,8 +1,8 @@
 import { Entity } from '..';
 
 export default class CrazyBoo extends Entity {
-  constructor() {
-    super(100, 220, 31, 31, 'crazy-boo', 2, 2, 200);
+  constructor(x, y) {
+    super(x, y, 31, 31, 'crazy-boo', 2, 2, 200);
 
     this.initial = {
       speed: {

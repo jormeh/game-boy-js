@@ -1,8 +1,8 @@
 import { Entity } from '..';
 
 export default class RedSuperKoopa extends Entity {
-  constructor() {
-    super(100, 220, 48, 23, 'red-super-koopa', 2, 3);
+  constructor(x, y) {
+    super(x, y, 48, 23, 'red-super-koopa', 2, 3);
 
     this.initial = {
       speed: {
