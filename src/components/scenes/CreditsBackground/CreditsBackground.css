@@ -1,5 +1,5 @@
 .screen__background--credits {
-  background-image: url('src/assets/images/background-credits.webp');
+  background-image: url('/src/assets/images/background-credits.webp');
   background-position: center;
   background-size: cover;
 }
