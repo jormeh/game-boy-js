@@ -18,6 +18,6 @@ p {
 
 @font-face {
   font-family: 'PressStart2P';
-  src: url('public/fonts/press-start-2p.woff2') format('woff2');
+  src: url('/fonts/press-start-2p.woff2') format('woff2');
   font-display: swap;
 }
