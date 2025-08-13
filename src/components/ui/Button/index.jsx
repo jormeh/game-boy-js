@@ -35,12 +35,9 @@ export default function Button({
     <button
       className="button"
       style={{ width: size, left: x, top: y }}
-      onMouseDown={handlePressStart}
-      onMouseUp={handlePressEnd}
-      onMouseLeave={handlePressEnd}
-      onTouchStart={handlePressStart}
-      onTouchEnd={handlePressEnd}
-      onTouchCancel={handlePressEnd}
+      onPointerDown={handlePressStart}
+      onPointerUp={handlePressEnd}
+      onPointerLeave={handlePressEnd}
     >
       {/* Decorative light layer with pressed state styling */}
       <div className={changeStyle('button__light')}></div>
