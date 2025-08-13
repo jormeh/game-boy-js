@@ -84,6 +84,14 @@ export default function GameBoy() {
     if (controller.isStartPressed) toggleStart();
   }, [controller.isPowerPressed, controller.isStartPressed]);
 
+  useEffect(() => {
+    document.addEventListener('contextmenu', (event) => {
+      if (event.target.tagName === 'IMG') {
+        event.preventDefault();
+      }
+    });
+  }, []);
+
   return (
     <div className="gameboy">
       <Screen width="84.6%" height="33.6%" y="6.5%" />
