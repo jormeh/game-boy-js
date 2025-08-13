@@ -6,7 +6,6 @@ export default function useController() {
     isRightPressed: false,
     isUpPressed: false,
     isDownPressed: false,
-    isJumpPressed: false,
     isPowerPressed: false,
     isStartPressed: false,
   });
@@ -18,9 +17,9 @@ export default function useController() {
     d: 'isRightPressed',
     arrowup: 'isUpPressed',
     w: 'isUpPressed',
+    ' ': 'isUpPressed',
     arrowdown: 'isDownPressed',
     s: 'isDownPressed',
-    ' ': 'isJumpPressed',
   }).current;
 
   const toggleKeyMap = useRef({

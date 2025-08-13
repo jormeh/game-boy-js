@@ -5,7 +5,7 @@ export default function useMario(controller, sfxManager, isModePlayable) {
   const mario = useRef(new Mario()).current;
 
   const spriteEffects = () => {
-    if (controller.isUpPressed || controller.isJumpPressed) {
+    if (controller.isUpPressed) {
       mario.sprite.index = 1;
     } else if (controller.isDownPressed) {
       mario.sprite.index = 0;
@@ -18,12 +18,11 @@ export default function useMario(controller, sfxManager, isModePlayable) {
     mario.isMovingLeft = controller.isLeftPressed;
     mario.isMovingRight = controller.isRightPressed;
     mario.isMovingUp = controller.isUpPressed;
-    mario.isJumping = controller.isJumpPressed;
     mario.isDiving = controller.isDownPressed;
   };
 
   const soundEffects = () => {
-    if (controller.isJumpPressed) {
+    if (controller.isUpPressed) {
       sfxManager.play('jump');
     }
   };
@@ -38,7 +37,6 @@ export default function useMario(controller, sfxManager, isModePlayable) {
     controller.isRightPressed,
     controller.isUpPressed,
     controller.isDownPressed,
-    controller.isJumpPressed,
     isModePlayable,
   ]);
 

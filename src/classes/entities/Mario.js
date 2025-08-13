@@ -9,7 +9,6 @@ export default class Mario extends Entity {
       speed: {
         x: 5,
         y: 6,
-        jump: 2.5,
         gravity: 2.5,
       },
     };
@@ -19,7 +18,6 @@ export default class Mario extends Entity {
     this.isMovingLeft = false;
     this.isMovingRight = false;
     this.isMovingUp = false;
-    this.isJumping = false;
     this.isDiving = false;
   }
 
@@ -60,20 +58,6 @@ export default class Mario extends Entity {
     this.hitbox.y = canvas.height * 0.3;
   }
 
-  jump() {
-    let count = 0;
-    let interval = setInterval(() => {
-      if (count > 7) {
-        clearInterval(interval);
-        this.isJumping = false;
-        count = 0;
-      } else {
-        this.hitbox.y -= this.speed.jump;
-      }
-      count += 1;
-    }, 10);
-  }
-
   move(canvas, gameState) {
     const { height: ch, width: cw } = canvas;
 
@@ -89,10 +73,6 @@ export default class Mario extends Entity {
 
     if (this.isMovingUp && this.canMoveUp) {
       this.hitbox.y -= this.speed.y;
-    }
-
-    if (this.isJumping && this.canMoveUp) {
-      this.jump();
     }
 
     if (this.isDiving) {

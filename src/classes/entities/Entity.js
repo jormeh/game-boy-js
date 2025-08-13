@@ -84,7 +84,6 @@ export default class Entity {
     }
 
     if (this instanceof Mario) {
-      this.speed.jump = scaleToHeight(this.initial.speed.jump);
       this.speed.gravity = scaleToHeight(this.initial.speed.gravity);
     }
   }

@@ -3,11 +3,11 @@ import { Button } from '..';
 
 export default function AButton({ setController }) {
   const pressStartA = () => {
-    setController((previous) => ({ ...previous, isJumpPressed: true }));
+    setController((previous) => ({ ...previous, isUpPressed: true }));
   };
 
   const pressEndA = () => {
-    setController((previous) => ({ ...previous, isJumpPressed: false }));
+    setController((previous) => ({ ...previous, isUpPressed: false }));
   };
 
   return (
