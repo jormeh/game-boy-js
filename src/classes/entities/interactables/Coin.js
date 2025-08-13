@@ -1,17 +1,17 @@
 import { Entity } from '..';
 
 export default class Coin extends Entity {
-  constructor(x) {
-    super(x, 220, 17, 34, 'coin', 2, 2, 200);
+  constructor(x, y) {
+    super(x, y, 17, 34, 'coin', 2, 2, 200);
 
     this.initial = {
       speed: {
-        x: 0,
+        x: 2,
       },
     };
 
     this.speed = { ...this.initial.speed };
-  }
 
-  move() {}
+    this.pattern = 'straight';
+  }
 }

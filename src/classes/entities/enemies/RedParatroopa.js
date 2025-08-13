@@ -6,12 +6,18 @@ export default class RedParatroopa extends Entity {
 
     this.initial = {
       speed: {
-        x: 0,
+        x: 3,
+      },
+
+      wave: {
+        amplitude: 3,
+        frequency: 0.08,
       },
     };
 
     this.speed = { ...this.initial.speed };
-  }
+    this.wave = { ...this.initial.wave };
 
-  move() {}
+    this.pattern = 'wave';
+  }
 }

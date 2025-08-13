@@ -76,7 +76,7 @@ export default function useGameLoop(canvas) {
   }
 
   const updateEntities = (ctx) => {
-    levelManager.drawEntities(canvas, ctx, true);
+    levelManager.drawEntities(canvas, ctx);
     levelManager.moveEntities();
     mario.move(canvas, gameState);
     mario.draw(canvas, ctx);

@@ -6,12 +6,12 @@ export default class StraightBulletBill extends Entity {
 
     this.initial = {
       speed: {
-        x: 0,
+        x: 6,
       },
     };
 
     this.speed = { ...this.initial.speed };
-  }
 
-  move() {}
+    this.pattern = 'straight';
+  }
 }

@@ -10,7 +10,7 @@ export default class Mario extends Entity {
         x: 5,
         y: 6,
         jump: 2.5,
-        gravity: 0,
+        gravity: 2.5,
       },
     };
 

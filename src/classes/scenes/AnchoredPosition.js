@@ -1,6 +1,6 @@
 export default class AnchoredPosition {
-  constructor(anchorType, axisValue) {
+  constructor(anchorType, axisPercentage) {
     this.anchorType = anchorType;
-    this.axisValue = axisValue;
+    this.axisPercentage = axisPercentage;
   }
 }

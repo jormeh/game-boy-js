@@ -20,15 +20,51 @@ export default class Entity {
       spriteOffsetY,
       spriteRate
     );
+
+    this.time = 0;
+    this.pattern = null;
   }
 
-  get position() {
-    return {
-      x: this.hitbox.x - this.sprite.offset.x,
-      y: this.hitbox.y - this.sprite.offset.y,
-    };
+  // ===== Movement Helpers =====
+  static sineWave(amplitude, frequency, time) {
+    return Math.sin(time * frequency) * amplitude;
   }
 
+  // ===== Pattern Implementations =====
+  static patterns = {
+    wave(entity) {
+      entity.hitbox.x -= entity.speed.x;
+      entity.hitbox.y += Entity.sineWave(
+        entity.wave.amplitude,
+        entity.wave.frequency,
+        entity.time
+      );
+      entity.time++;
+    },
+
+    straight(entity) {
+      entity.hitbox.x -= entity.speed.x;
+    },
+
+    diagonalUp(entity) {
+      entity.hitbox.x -= entity.speed.x;
+      entity.hitbox.y -= entity.speed.y;
+    },
+
+    diagonalDown(entity) {
+      entity.hitbox.x -= entity.speed.x;
+      entity.hitbox.y += entity.speed.y;
+    },
+  };
+
+  // ===== Unified move method =====
+  move() {
+    if (this.pattern && Entity.patterns[this.pattern]) {
+      Entity.patterns[this.pattern](this);
+    }
+  }
+
+  // ===== Scaling =====
   scaleValuesToCanvas({ width, height }) {
     const scaleToWidth = (value) => (value * width) / BASE_CANVAS_WIDTH;
     const scaleToHeight = (value) => (value * height) / BASE_CANVAS_HEIGHT;
@@ -42,10 +78,22 @@ export default class Entity {
     this.speed.x = scaleToWidth(this.initial.speed.x);
     this.speed.y = scaleToHeight(this.initial.speed.y);
 
+    if (this.wave) {
+      this.wave.amplitude = scaleToHeight(this.initial.wave.amplitude);
+      this.wave.frequency = scaleToHeight(this.initial.wave.frequency);
+    }
+
     if (this instanceof Mario) {
       this.speed.jump = scaleToHeight(this.initial.speed.jump);
       this.speed.gravity = scaleToHeight(this.initial.speed.gravity);
     }
+  }
+
+  get position() {
+    return {
+      x: this.hitbox.x - this.sprite.offset.x,
+      y: this.hitbox.y - this.sprite.offset.y,
+    };
   }
 
   draw(canvas, ctx, showHitbox = false) {

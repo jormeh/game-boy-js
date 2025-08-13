@@ -6,12 +6,12 @@ export default class RedSuperKoopa extends Entity {
 
     this.initial = {
       speed: {
-        x: 0,
+        x: 5,
       },
     };
 
     this.speed = { ...this.initial.speed };
-  }
 
-  move() {}
+    this.pattern = 'straight';
+  }
 }

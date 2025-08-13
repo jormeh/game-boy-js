@@ -6,12 +6,17 @@ export default class YellowParatroopa extends Entity {
 
     this.initial = {
       speed: {
-        x: 0,
+        x: 1,
+      },
+      wave: {
+        amplitude: 3,
+        frequency: 0.1,
       },
     };
 
     this.speed = { ...this.initial.speed };
-  }
+    this.wave = { ...this.initial.wave };
 
-  move() {}
+    this.pattern = 'sine';
+  }
 }

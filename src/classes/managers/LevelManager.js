@@ -51,13 +51,16 @@ export default class LevelManager {
     }
 
     if (positionConfig instanceof AnchoredPosition) {
-      const { axisValue, anchorType } = positionConfig;
+      const { axisPercentage, anchorType } = positionConfig;
 
-      const x = anchorType === 'x' ? this.spawnPoints.x : axisValue;
+      const x =
+        anchorType === 'x'
+          ? this.spawnPoints.x
+          : this.canvasData.width * axisPercentage;
       const y =
         anchorType === 'yBelow' || anchorType === 'yAbove'
           ? this.spawnPoints[anchorType]
-          : axisValue;
+          : this.canvasData.height * axisPercentage;
 
       return { x, y };
     }

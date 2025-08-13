@@ -6,12 +6,18 @@ export default class FlyingGoomba extends Entity {
 
     this.initial = {
       speed: {
-        x: 0,
+        x: 2,
+      },
+
+      wave: {
+        amplitude: 1,
+        frequency: 0.1,
       },
     };
 
     this.speed = { ...this.initial.speed };
-  }
+    this.wave = { ...this.initial.wave };
 
-  move() {}
+    this.pattern = 'wave';
+  }
 }
