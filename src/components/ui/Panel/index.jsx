@@ -9,11 +9,14 @@ export default function Panel() {
           <img src={GameBoyLogo} alt="Wordmark of GameBoy JavaScript." />
         </h1>
         <p className={'panel__text-description'}>
-          A modern twist on the <i>Game Boy Advance SP</i>, built with HTML,
-          CSS, and JavaScript using the React framework. The game runs on the
-          Canvas element, with dynamic visuals driven by DOM event listeners.
-          The design and prototype were crafted in Figma, while visual assets
-          were created using Adobe Creative Suite and AI tools.
+          A modern take on the <i>Game Boy Advance SP,</i> built with HTML, CSS,
+          and JavaScript using React. The game runs on the Canvas element,
+          featuring dynamic visuals powered by DOM event listeners and React
+          state. The project was designed and prototyped in Figma. <br />
+          <br />
+          The artwork and sound originate from the Nintendo classic{' '}
+          <i>Super Mario World</i>. Assets were sourced online and edited using
+          Photoshop, Audacity, and TexutrePacker.
         </p>
       </div>
       <div className={'panel__controls'}>
