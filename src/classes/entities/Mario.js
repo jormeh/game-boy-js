@@ -8,7 +8,7 @@ export default class Mario extends Entity {
     this.initial = {
       speed: {
         x: 5,
-        y: 6,
+        y: 7,
         gravity: 2.5,
       },
     };
