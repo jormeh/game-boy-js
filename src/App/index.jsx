@@ -1,10 +1,15 @@
-import GameBoy from '@components/ui/GameBoy';
 import { GameStateProvider } from '@context/GameStateContext';
+import { GameBoy, Panel } from '@components/ui';
+import '@App/App.css';
 
 export default function App() {
   return (
-    <GameStateProvider>
-      <GameBoy />
-    </GameStateProvider>
+    <div className={'container'}>
+      <Panel />
+      <GameStateProvider>
+        <GameBoy />
+      </GameStateProvider>
+      <div className={'column'}></div>
+    </div>
   );
 }

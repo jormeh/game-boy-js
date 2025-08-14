@@ -2,7 +2,15 @@
   position: relative;
   display: flex;
   justify-content: center;
+  align-self: center;
   width: fit-content;
   max-width: 430px;
   max-height: 934.88px;
+}
+
+@media (min-width: 744px) {
+  .gameboy {
+    width: 402x;
+    height: 874px;
+  }
 }

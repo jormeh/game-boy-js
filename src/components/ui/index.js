@@ -3,6 +3,7 @@ export { default as BButton } from '@components/ui/BButton';
 export { default as Button } from '@components/ui/Button';
 export { default as DPad } from '@components/ui/DPad';
 export { default as GameBoy } from '@components/ui/GameBoy';
+export { default as Panel } from '@components/ui/Panel';
 export { default as PowerButton } from '@components/ui/PowerButton';
 export { default as PowerLight } from '@components/ui/PowerLight';
 export { default as Screen } from '@components/ui/Screen';

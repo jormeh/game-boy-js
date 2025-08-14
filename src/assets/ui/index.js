@@ -1,3 +1,4 @@
+export { default as GameBoyLogo } from '@assets/ui/gameboy-logo.png';
 export { default as GameBoyShell } from '@assets/ui/gameboy-shell.webp';
 export { default as HUDCoins } from '@assets/ui/hud-coins.webp';
 export { default as HUDLives } from '@assets/ui/hud-lives.webp';
