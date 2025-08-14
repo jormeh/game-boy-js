@@ -24,7 +24,7 @@ export default function Panel() {
           <thead>
             <tr>
               <th>Controls</th>
-              <th>Key</th>
+              <th>Keys</th>
             </tr>
           </thead>
           <tbody>
@@ -33,11 +33,7 @@ export default function Panel() {
               <td>P</td>
             </tr>
             <tr>
-              <td>A / B</td>
-              <td>Z / X</td>
-            </tr>
-            <tr>
-              <td>D-pad</td>
+              <td>Movement</td>
               <td>Arrows</td>
             </tr>
             <tr>

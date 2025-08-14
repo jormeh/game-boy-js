@@ -23,8 +23,8 @@ export default function useController() {
   }).current;
 
   const toggleKeyMap = useRef({
-    enter: 'isPowerPressed',
-    p: 'isStartPressed',
+    p: 'isPowerPressed',
+    enter: 'isStartPressed',
   }).current;
 
   const isKeyAlreadyPressed = useRef(false);
