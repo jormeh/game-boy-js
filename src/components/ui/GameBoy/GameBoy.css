@@ -4,6 +4,7 @@
   justify-content: center;
   align-self: center;
   width: fit-content;
+  height: calc(var(--window-height));
   max-width: 430px;
   max-height: 934.88px;
 }
