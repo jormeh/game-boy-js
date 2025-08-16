@@ -2,8 +2,9 @@
 
 [![Game Boy JS Thumbnail](public/thumbnail.webp)](https://gameboy-js-olive.vercel.app/)
 
-**Try the live demo:** [gameboy-js-olive.vercel.app](https://gameboy-js-olive.vercel.app/){:target="_blank" rel="noopener noreferrer"}  
-\_Playable on desktop and mobile!_
+<a href="https://gameboy-js-olive.vercel.app/" target="_blank"><b>[[ VIEW DEMO ]]</a>
+
+_Playable on desktop and mobile!_
 
 A retro-inspired Game Boy emulator and game demo built with modern front-end technologies. This project showcases my skills in UI/UX design, React development, and interactive web experiences.
 
