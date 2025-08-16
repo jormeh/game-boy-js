@@ -2,8 +2,8 @@
 
 [![Game Boy JS Thumbnail](public/thumbnail.webp)](https://gameboy-js-olive.vercel.app/)
 
-**Try the live demo:** [gameboy-js-olive.vercel.app](https://gameboy-js-olive.vercel.app/)  
-_Playable on desktop and mobile!_
+**Try the live demo:** [gameboy-js-olive.vercel.app](https://gameboy-js-olive.vercel.app/){:target="_blank" rel="noopener noreferrer"}  
+\_Playable on desktop and mobile!_
 
 A retro-inspired Game Boy emulator and game demo built with modern front-end technologies. This project showcases my skills in UI/UX design, React development, and interactive web experiences.
 
@@ -65,3 +65,4 @@ Fonts used:
 - Tweak logic for jump sound effect
 - Give Star anchored movement
 - Adjust sizing of disclaimer message
+- Create favicon
