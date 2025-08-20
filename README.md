@@ -63,6 +63,5 @@ Fonts used:
 ## TODO
 
 - Create more levels and enemies
-- Tweak logic for jump sound effect
 - Give Star anchored movement
 - Adjust sizing of disclaimer message

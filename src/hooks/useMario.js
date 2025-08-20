@@ -3,6 +3,7 @@ import { Mario } from '@classes/entities/';
 
 export default function useMario(controller, sfxManager, isModePlayable) {
   const mario = useRef(new Mario()).current;
+  const isJumping = useRef(false);
 
   const spriteEffects = () => {
     if (controller.isUpPressed) {
@@ -22,8 +23,11 @@ export default function useMario(controller, sfxManager, isModePlayable) {
   };
 
   const soundEffects = () => {
-    if (controller.isUpPressed) {
+    if (controller.isUpPressed && !isJumping.current) {
+      isJumping.current = true;
       sfxManager.play('jump');
+    } else if (!controller.isUpPressed) {
+      isJumping.current = false;
     }
   };
 
