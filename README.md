@@ -2,7 +2,7 @@
 
 [![Game Boy JS Thumbnail](public/thumbnail.webp)](https://gameboy-js-olive.vercel.app/)
 
-<a href="https://gameboy-js-olive.vercel.app/" target="_blank"><b>[[ VIEW DEMO ]]</b></a>
+<a href="https://gameboy-js-olive.vercel.app/" target="_blank"><b>[[VIEW DEMO]]</b></a>
 
 _Playable on desktop and mobile!_
 
@@ -66,4 +66,3 @@ Fonts used:
 - Tweak logic for jump sound effect
 - Give Star anchored movement
 - Adjust sizing of disclaimer message
-- Create favicon
