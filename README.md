@@ -62,7 +62,6 @@ Fonts used:
 
 ## TODO
 
-- Fix CSS on macOS
 - Fix delayed spawning
 - Create more levels and enemies
 - Give Star anchored movement
