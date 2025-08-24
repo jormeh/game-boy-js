@@ -66,18 +66,21 @@ export default class LevelManager {
     }
   }
 
-  startSpawner() {
+  async startSpawner() {
     const data = this.currentLevel.spawnData;
 
-    data.forEach(({ EntityType, positionConfig, spawnTimeS }) => {
-      const { x, y } = this.getSpawnPosition(positionConfig);
+    for (const instruction of data) {
+      const { x, y } = this.getSpawnPosition(instruction.positionConfig);
 
-      const timeout = setTimeout(() => {
-        this.entities.push(new EntityType(x, y));
-      }, spawnTimeS * 1000);
+      await new Promise((resolve) => {
+        const timeout = setTimeout(() => {
+          this.entities.push(new instruction.EntityType(x, y));
+          resolve();
+        }, instruction.spawnTimeS * 1000);
 
-      this.timeouts.push(timeout);
-    });
+        this.timeouts.push(timeout);
+      });
+    }
   }
 
   drawEntities(canvas, ctx, showHitbox) {

@@ -63,7 +63,6 @@ Fonts used:
 ## TODO
 
 - Crossbrowser testing (iPhone Mini 12)
-- Fix delayed spawning
 - Create more levels and enemies
 - Give Star anchored movement
 - Adjust sizing of disclaimer message
