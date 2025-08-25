@@ -67,16 +67,14 @@ export default class LevelManager {
   }
 
   async startSpawner() {
-    const data = this.currentLevel.spawnData;
-
-    for (const instruction of data) {
-      const { x, y } = this.getSpawnPosition(instruction.positionConfig);
+    for (const spawnEvent of this.currentLevel.spawnData) {
+      const { x, y } = this.getSpawnPosition(spawnEvent.positionConfig);
 
       await new Promise((resolve) => {
         const timeout = setTimeout(() => {
-          this.entities.push(new instruction.EntityType(x, y));
+          this.entities.push(new spawnEvent.EntityType(x, y));
           resolve();
-        }, instruction.spawnTimeS * 1000);
+        }, spawnEvent.spawnTimeS * 1000);
 
         this.timeouts.push(timeout);
       });
