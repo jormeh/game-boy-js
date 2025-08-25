@@ -64,4 +64,3 @@ Fonts used:
 
 - Crossbrowser testing (iPhone Mini 12)
 - Create more levels and enemies
-- Give Star anchored movement

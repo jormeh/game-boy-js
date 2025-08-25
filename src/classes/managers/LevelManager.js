@@ -85,8 +85,8 @@ export default class LevelManager {
     this.entities.forEach((entity) => entity.draw(canvas, ctx, showHitbox));
   }
 
-  moveEntities() {
-    this.entities.forEach((entity) => entity.move());
+  moveEntities(canvas) {
+    this.entities.forEach((entity) => entity.move(canvas));
   }
 
   goToNextLevel() {

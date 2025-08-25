@@ -46,6 +46,12 @@ export default class Entity {
       entity.hitbox.x -= entity.speed.x;
     },
 
+    float(entity, canvas) {
+      if (entity.hitbox.x > canvas.width * 0.8) {
+        this.straight(entity);
+      }
+    },
+
     diagonalUp(entity) {
       entity.hitbox.x -= entity.speed.x;
       entity.hitbox.y -= entity.speed.y;
@@ -58,9 +64,9 @@ export default class Entity {
   };
 
   // ===== Unified move method =====
-  move() {
+  move(canvas) {
     if (this.pattern && Entity.patterns[this.pattern]) {
-      Entity.patterns[this.pattern](this);
+      Entity.patterns[this.pattern](this, canvas);
     }
   }
 

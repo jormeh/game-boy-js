@@ -52,6 +52,6 @@ export default new LevelScene({
     new SpawnEvent(RedParatroopa, new AnchoredPosition('x', 0.3), 1.5),
     new SpawnEvent(GreenParatroopa, new AnchoredPosition('x', 0.3), 0.5),
     new SpawnEvent(RedParatroopa, new AnchoredPosition('x', 0.3), 0.5),
-    new SpawnEvent(Star, new FreePosition(0.8, 0.5), 3),
+    new SpawnEvent(Star, new AnchoredPosition('x', 0.5), 3),
   ],
 });

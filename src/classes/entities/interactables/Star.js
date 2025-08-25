@@ -6,10 +6,12 @@ export default class Star extends Entity {
 
     this.initial = {
       speed: {
-        y: 3,
+        x: 2,
       },
     };
 
     this.speed = { ...this.initial.speed };
+
+    this.pattern = 'float';
   }
 }
