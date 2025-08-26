@@ -3,15 +3,12 @@
   display: flex;
   justify-content: center;
   align-self: center;
-  width: fit-content;
-  height: 95%;
-  max-width: 430px;
-  max-height: 934.88px;
+  aspect-ratio: 430 / 932;
+  height: 100%;
 }
 
-@media (min-width: 744px) {
+@media (min-width: 1200px) {
   .gameboy {
-    max-width: 402px;
-    max-height: 874px;
+    max-height: 932px;
   }
 }

@@ -1,24 +1,8 @@
 .container {
   width: 100%;
-  height: var(--window-height);
+  height: 95%;
   display: flex;
   justify-content: space-around;
-
-  background-color: #1a1a1a;
-  background-image: repeating-linear-gradient(
-      to right,
-      #303030 0px,
-      #303030 1px,
-      transparent 1px,
-      transparent 25px
-    ),
-    repeating-linear-gradient(
-      to bottom,
-      #303030 0px,
-      #303030 1px,
-      transparent 1px,
-      transparent 25px
-    );
 }
 
 .column {
