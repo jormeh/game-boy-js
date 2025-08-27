@@ -62,5 +62,5 @@ Fonts used:
 
 ## TODO
 
-- Crossbrowser testing (iPhone Mini 12)
+- Crossbrowser testing (iPhone)
 - Create more levels and enemies
