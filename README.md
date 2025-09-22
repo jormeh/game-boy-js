@@ -62,5 +62,7 @@ Fonts used:
 
 ## TODO
 
+- Reduce difficulty
+- Add exit sign in Tutorial Scene
 - Crossbrowser testing (iPhone)
 - Create more levels and enemies
