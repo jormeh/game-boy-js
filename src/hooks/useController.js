@@ -57,7 +57,7 @@ export default function useController() {
       document.removeEventListener('keydown', handleKeyEvent);
       document.removeEventListener('keyup', handleKeyEvent);
     };
-  });
+  }, []);
 
   return [controller, setController];
 }
