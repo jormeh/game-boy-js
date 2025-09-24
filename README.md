@@ -62,7 +62,10 @@ Fonts used:
 
 ## TODO
 
-- Reduce difficulty
+- Reduce level difficulty
+- Simplify state with useReducer
+- Confirm if controller should have state
+- Handle scenes asynchronously
 - Add exit sign in Tutorial Scene
 - Crossbrowser testing (iPhone)
 - Create more levels and enemies
